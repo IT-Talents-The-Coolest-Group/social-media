@@ -1,0 +1,12 @@
+.HeadContainer {
+    margin-top: 0;
+    background-color: rgb(149, 123, 190);
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+  }
+  
+  .HeadH3 { 
+    margin: 0 20px 0 0;
+    color: rgb(255, 255, 255);
+  }
