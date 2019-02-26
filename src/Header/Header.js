@@ -1,12 +1,12 @@
 import React from 'react';
 import styles from './Header.module.css';
-import Button from '../UI/Button/Button';
+import { Button } from 'reactstrap';
 
 const header = props =>
     (<header>
         <div className={styles.HeadContainer}>
             <h3 className={styles.HeadH3}>facebook</h3>
-            <Button title="Registration" />
+            <Button color="success">Sign up</Button>
         </div>
     </header>);
 
