@@ -1,4 +1,8 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is the final assignment from [IT Talents](https://ittalents.bg/home), to recreate the front end of [Facebook](https://facebook.com).
+
+Hosted at [bacefook.herokuapp.com](http://bacefook.herokuapp.com).
+
+Bacefook was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
 
