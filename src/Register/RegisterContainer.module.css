@@ -1,0 +1,18 @@
+.RegisterContainer {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+.RegisterHeadContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    color: white;
+}
+
+.RegisterContainer form input[type=text], .RegisterContainer form input[type=password] {
+  padding: 5px 10px;
+  margin-right: 10px;
+}
