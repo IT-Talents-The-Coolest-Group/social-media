@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Input } from 'reactstrap';
+// import { Button, Input } from 'reactstrap';
 import styles from './Main.module.css';
 
 class Main extends Component {
@@ -8,11 +8,11 @@ class Main extends Component {
             <div className={styles.LoginContainer}>
                 <form>
                     <span>Log into Facebook</span>
-                    <Input placeholder="Email" type="text" />
-                    <Input placeholder="Password" type="password" />
-                    <Button color="primary">Log in</Button>
+                    {/* <Input placeholder="Email" type="text" /> */}
+                    {/* <Input placeholder="Password" type="password" /> */}
+                    {/* <Button color="primary">Log in</Button> */}
                     <span>or</span>
-                    <Button color="success">Create New Account</Button>
+                    {/* <Button color="success">Create New Account</Button> */}
                 </form>
             </div>
         )

@@ -1,0 +1,79 @@
+.FirstElem{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right:40vh;
+}
+
+.LogoBox{
+    width:4vh;
+    background-image: url('../assets/images/fbLogo.png');
+    height:4vh;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-color:transparent;
+    cursor: pointer;
+}
+
+.SearchInput{
+    height:4vh;
+    width:70vh;
+    border-radius: 5px;
+    outline: none;
+    margin-left:1vh;
+    background-image: url('../assets/images/search.png');
+    background-size: 3vh;
+    background-repeat: no-repeat;
+    background-position: right;
+    border:0.5px solid rgb(99, 94, 94);
+}
+
+.SecondElem{
+    display: flex;
+    justify-content: space-evenly;
+    /* align-items: center; */
+    width:70vh;
+}
+
+.Icon{
+    width:10vh;
+    background-size: 4vh;
+    background-repeat: no-repeat;
+    background-position: center; 
+    cursor: pointer;
+}
+
+.Icon:hover{
+    border-radius: 10px;
+    background-color: rgb(55, 89, 156);
+}
+
+.Icon p {
+    padding-top:11px;
+    color:white;
+    font-size: 0.9em;
+}
+
+.FriendsRequests{
+    background-image: url('../assets/images/friendRequest.png');
+}
+
+.Messages{
+    background-image: url('../assets/images/message.png');
+}
+
+.Notifications{
+    background-image: url('../assets/images/notification.png');
+    background-size: 3vh;
+}
+
+.Logout{
+    background-image: url('../assets/images/logout.png');
+}
+
+.Profile {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width:20vh;
+}
