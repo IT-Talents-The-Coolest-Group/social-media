@@ -12,7 +12,7 @@
     color: white;
 }
 
-.RegisterContainer form input[type=text], .RegisterContainer form input[type=password] {
+.RegisterHeadContainer form input[type=text], .RegisterHeadContainer form input[type=password] {
   padding: 5px 10px;
   margin-right: 10px;
 }
