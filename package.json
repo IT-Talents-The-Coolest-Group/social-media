@@ -3,22 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-<<<<<<< HEAD
     "@material-ui/core": "^3.9.2",
     "@material-ui/icons": "^3.0.2",
     "react": "^16.8.3",
     "react-dom": "^16.8.3",
     "react-router-dom": "^4.3.1",
     "react-scripts": "2.1.5",
-=======
-    "@material-ui/icons": "^3.0.2",
-     "react": "^16.8.3",
-    "react-dom": "^16.8.3",
-    "react-router-dom": "^4.3.1",
-    "react-scripts": "2.1.5",
     "prop-types": "latest",
-    "@material-ui/icons": "latest",
->>>>>>> 66eb8779daf978849f1887f6a1051b1776acd3cd
     "typeface-roboto": "0.0.54"
   },
   "scripts": {
