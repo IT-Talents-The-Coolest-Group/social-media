@@ -9,7 +9,7 @@
     "react-router-dom": "^4.3.1",
     "react-scripts": "2.1.5",
     "prop-types": "latest",
-    "@material-ui/icons": "latest"
+    "@material-ui/icons": "latest",
     "typeface-roboto": "0.0.54"
   },
   "scripts": {
