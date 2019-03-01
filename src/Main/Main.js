@@ -29,6 +29,8 @@ class Main extends Component {
         return (
             <div className={styles.LoginContainer}>
                 <form>
+                    <span>Log into Facebook</span>
+
                     <h2>Log into Facebook</h2>
                     <TextField
                         id="outlined-email-input"
