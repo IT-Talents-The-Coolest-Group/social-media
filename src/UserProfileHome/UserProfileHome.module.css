@@ -1,0 +1,81 @@
+.Container{
+    margin-top:5vh;
+    width:30%;
+    background-color: white;
+    display:flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    border-radius: 5px;
+}
+
+.ContainerBox{
+    display:flex;
+    justify-content: flex-start;
+    align-items: center;
+    width:100%;
+    height:20%;
+}
+
+.Icon{
+    width:4vh;
+    height:4vh;
+    display:inline-block;
+    background-position: cover;
+    background-size: 3vh;
+    background-repeat: no-repeat;
+    margin:3vh;
+}
+
+.IntroIcon{
+    padding-top: 3vh;
+    margin-bottom:-1vh;
+    background-image: url('../assets/images/intro1.png');   
+}
+
+span{
+    display:inline-block;   
+    margin-top:2vh;
+    font-size:1.2em;
+    margin-top:-0.1vh;
+    color:black;
+}
+
+hr{
+    width:93%;
+    border:1px solid rgb(197, 191, 191);
+}
+
+.CurrentCity{
+    background-image: url('../assets/images/CurrentCity1.png');   
+}
+
+.Workplace{
+    background-image: url('../assets/images/workplace.png');   
+}
+
+.School{
+    background-image: url('../assets/images/graduate.png');   
+}
+
+.Hometown{
+    background-image: url('../assets/images/hometown1.png');   
+}
+
+.RelationshipStatus{
+    background-image: url('../assets/images/relationship2.png');   
+}
+
+.ContainerBox > a{
+    color:black;
+    font-weight: normal;
+    font-size: 0.8em;
+}
+
+.ContainerBox:hover{
+    background-color: rgb(227, 227, 253);
+}
+
+.Span:hover{
+    background-color: white;
+}
+

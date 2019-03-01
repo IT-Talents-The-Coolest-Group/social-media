@@ -4,15 +4,17 @@ import homeStyle from './UserProfile.module.css';
 import { withStyles } from '@material-ui/core/styles';
 import Avatar from '@material-ui/core/Avatar';
 import img from '../assets/images/girl.jpg';
+import UserProfileHome from '../UserProfileHome/UserProfileHome';
+import PostCreator from '../PostCreator/PostCreator';
 
 const themeStyle = {
     bigAvatar: {
         marginTop: '-20vh',
         marginLeft: 50,
         width: '25vh',
-        position:'fixed',
+        position: 'absolute',
         height: '25vh',
-        zIndex: 9,
+        zIndex: 3,
     },
 };
 
@@ -29,6 +31,8 @@ class UserProfile extends Component {
                         <div className={homeStyle.TollbarInfo}><a href="a">Friends</a></div>
                         <div className={homeStyle.TollbarInfo}><a href="a">Photos</a></div>
                     </div>
+                    <UserProfileHome />
+                    <PostCreator/>
                 </div>
             </React.Fragment>
         )

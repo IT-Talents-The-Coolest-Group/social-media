@@ -41,6 +41,9 @@
     background-repeat: no-repeat;
     background-position: center; 
     cursor: pointer;
+    display:flex;
+    align-items: center;
+    align-content: center;
 }
 
 .Icon:hover{
@@ -50,7 +53,7 @@
 }
 
 .Icon p {
-    padding-top:11px;
+    padding-top:8px;
     text-align: center;
     color:white;
     font-size: 0.9em;
