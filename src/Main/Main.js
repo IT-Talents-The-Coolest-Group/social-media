@@ -20,7 +20,7 @@ const themeStyles = theme => ({
     menu: {
       width: 200,
     },
-  });
+  })
 
 class Main extends Component {
     render() {
@@ -41,7 +41,6 @@ class Main extends Component {
                         autoComplete="email"
                         margin="normal"
                         variant="outlined"
-                        // border-color="green[500]"
                     />
                     <TextField
                         id="outlined-password-input"

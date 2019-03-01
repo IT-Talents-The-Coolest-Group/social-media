@@ -16,8 +16,8 @@
 }
 
 .SearchInput{
-    height:4vh;
-    width:70vh;
+    /* height:4vh; */
+    /* width:70vh; */
     border-radius: 5px;
     outline: none;
     margin-left:1vh;
@@ -36,7 +36,7 @@
 }
 
 .Icon{
-    width:10vh;
+    width:9vh;
     background-size: 4vh;
     background-repeat: no-repeat;
     background-position: center; 
@@ -44,12 +44,14 @@
 }
 
 .Icon:hover{
-    border-radius: 10px;
-    background-color: rgb(55, 89, 156);
+    opacity: 0.5;
+    /* border-radius: 10px; */
+    /* background-color: rgb(55, 89, 156); */
 }
 
 .Icon p {
     padding-top:11px;
+    text-align: center;
     color:white;
     font-size: 0.9em;
 }
