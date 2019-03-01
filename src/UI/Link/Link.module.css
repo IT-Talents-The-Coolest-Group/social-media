@@ -1,0 +1,20 @@
+.Link {
+    border-radius: 5px;
+    border: 1px solid;
+    cursor: pointer;
+    padding: 5px 10px;
+    text-decoration: none;
+    font-size: 1em;
+}
+
+.GreenLink {
+    background-color: #42b72a;
+    border-color: #42b72a;
+    color: #fff;
+}
+
+.BlueLink {
+    background-color: #4267b2;
+    border-color: #4267b2;
+    color: #fff;
+}

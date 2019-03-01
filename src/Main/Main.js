@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import Button from '@material-ui/core/Button';
 import styles from './Main.module.css';
 import TextField from '@material-ui/core/TextField';
 import { withStyles } from '@material-ui/core';
+import Link from '../UI/Link/Link';
+import Button from '../UI/Button/Button';
 
 const themeStyles = theme => ({
     container: {
@@ -29,8 +30,6 @@ class Main extends Component {
         return (
             <div className={styles.LoginContainer}>
                 <form>
-                    <span>Log into Facebook</span>
-
                     <h2>Log into Facebook</h2>
                     <TextField
                         id="outlined-email-input"
@@ -52,9 +51,9 @@ class Main extends Component {
                         variant="outlined"
                         color="green"
                     />
-                    <Button color="primary">Log in</Button>
+                    <Button className="BlueBtn" onClick={() => console.log('login')}>Log in</Button>
                     <span>or</span>
-                    {/* <Button color="success">Create New Account</Button> */}
+                    <Link className="GreenLink" to="/register">Create New Account</Link>
                 </form>
             </div>
         )

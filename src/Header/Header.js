@@ -1,30 +1,13 @@
 import React from 'react';
 import styles from './Header.module.css';
-import Button from '@material-ui/core/Button';
-import green from '@material-ui/core/colors/green';
-import { withStyles, MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
-
-const themeStyles = theme => ({
-    cssRoot: {
-        color: 'rgb(255, 255, 255)'
-    }
-});
-
-const theme = createMuiTheme({
-    palette: {
-        primary: green,
-    }
-});
-
+import Link from '../UI/Link/Link'
 
 const header = props =>
     (<header>
         <div className={styles.HeadContainer}>
             <h2 className={styles.HeadH3}>facebook</h2>
-            <MuiThemeProvider theme={theme}>
-                <Button variant="contained" color="primary" className={props.classes.cssRoot}>Sign up</Button>
-            </MuiThemeProvider>
+                <Link className="GreenLink" to="/register">Sign up</Link>
         </div>
     </header>);
 
-export default withStyles(themeStyles)(header);
+export default header;
