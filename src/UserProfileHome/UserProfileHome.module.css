@@ -71,9 +71,8 @@ hr{
 }
 
 .Active > .ContainerBox:hover{
-    background-color: white;
-    /* border:outset; */
+    background-color: rgb(247, 156, 191);
+    opacity: 0.5;
     box-sizing: border-box;
-    
 }
 

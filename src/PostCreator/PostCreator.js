@@ -8,13 +8,13 @@ import { withStyles } from '@material-ui/core/styles';
 
 const themeStyle = {
     bigAvatar: {
-        marginTop: '-1.3vh',
-        marginLeft: '-51vh',
-        width: '8vh',
+        marginTop: '-1.1vh',
+        marginLeft: '-23%',
+        width: '10vh',
         position: 'absolute',
-        height: '8vh',
+        height: '10vh',
         zIndex: 3,
-        border:'0.3vh solid white'
+        border: '0.3vh solid white'
     },
 };
 
@@ -28,15 +28,18 @@ class PostCreator extends Component {
                         <span className={postStyle.Span}>Create Post :)</span>
                         <hr />
                     </div>
-                    <div className={postStyle.InputContainer}>
-                    <Avatar alt="Profile Photo" src={img} className={classes.bigAvatar} />
-                        <input type="text" className={postStyle.Textarea} />
-                        <hr/>
+                    <br />
+                    <div className={postStyle.BoxCont}>
+                        <Avatar alt="Profile Photo" src={img} className={classes.bigAvatar} />
+                        <input  placeholder="What's on your mind?" type="text" maxLength="100" className={postStyle.Textarea} />
                     </div>
-                    <div className={postStyle.InputContainer}>
-                <Link to="a" className={postStyle.PhotoUpload}>Photo/Video</Link>
-                <Link to="a" className={postStyle.PhotoUpload + ' ' + postStyle.Add}>Add Post</Link>
-                </div>
+                    <br />
+                    <hr />
+
+                    <div className={postStyle.BoxCont}>
+                        <Link to="a" className={postStyle.Upload}>Photo/Video</Link>
+                        <Link to="a" className={postStyle.Upload + ' ' + postStyle.Add}>Add Post</Link>
+                    </div>
                 </div>
             </>
         )

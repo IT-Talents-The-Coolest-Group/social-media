@@ -1,14 +1,13 @@
 .Container{
     width:67%;
-    /* background-color: white; */
     float:right;
     margin-top: 3vh;
     border-radius: 5px;
     background-color: rgb(217, 227, 247);
-    /* background-image: url('../assets/images/3.jpg'); */
-    /* background-position: center; */
-    /* background-size: cover; */
-    /* background-repeat: no-repeat; */
+    background-image: url('../assets/images/7.jpg'); 
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 .Box{
@@ -17,54 +16,69 @@
     background-image: url('../assets/images/lamp.png');
     background-repeat: no-repeat;
     background-position: top left;
-    background-size: 5vh;
-    margin-right:1vh;
+    background-size: 5%;
+    margin-right:1%;
     box-sizing: border-box;
-    height: 7vh;
+    height: 7%;
 }
 
 .Span{
-    margin:48vh;
+    margin:40%;
     font-size:1em;
     font-weight:bold;
     color:rgb(66, 103, 178);
 }
 
-.InputContainer{
+.BoxCont{
     display:flex;
     justify-content: space-evenly;
     align-items: center;
     flex-wrap: wrap;
-    height:10vh;
+    -webkit-font-smoothing: antialiased;
 }
 .Textarea{
     width:80%;
-    height:8vh;
+    height:10vh;
     outline:none;
+    margin-left: 10%;
 }
 
-.PhotoUpload{
-    width:18vh;
-    padding:1.65vh;
+.Upload{
+    width:15%;
+    padding:1.5%;
     text-align: right;
     text-decoration: none;
     font-size:1em;
     background-image: url('../assets/images/photo2.png');
-    background-size: 5.5vh;
+    background-size: 30%;
     background-position: bottom left;
     background-repeat: no-repeat;
-    background-color: white;
+    background-color: rgb(217, 227, 247);
     border-radius: 18px;
-    margin:2vh 0;
+    margin:1% 0;
     color:black;
     outline: none;
+    box-shadow:0 2px 3px 0px rgba(0,0,0,0.25);
+    transition:.2s all; 
     
 }
 
-.PhotoUpload:hover{
-    background-color: rgb(66, 103, 178);
+.BoxCont:hover .Upload{
+    filter:blur(1px);
+    opacity:.5;
+    transform: scale(.98);
+    box-shadow:none;
+}
+
+.Container:hover .Upload:hover{
+    background-color: rgb(247, 156, 191);
+    transform:scale(1.1);
+    filter:blur(0px);
+    opacity:1;
+    box-shadow:0 8px 20px 0px rgba(0,0,0,0.125);
 }
 .Add{
     background-image: url('../assets/images/add.png');
-    width:15vh;
+    width:13%;
 }
+
