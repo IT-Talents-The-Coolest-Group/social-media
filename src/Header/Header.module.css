@@ -4,9 +4,8 @@
     display: flex;
     justify-content: center;
     padding: 10px;
-    z-index: 5;
  }
-  
+
   .HeadH3 { 
     margin: 0 20px 0 0;
     color: rgb(255, 255, 255);

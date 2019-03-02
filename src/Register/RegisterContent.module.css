@@ -1,0 +1,41 @@
+.RegisterContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+}
+
+.RegisterContainer form > * {
+    margin: 10px 0;
+}
+
+.RegisterContainer form {
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+}
+
+.RegisterContainer form > div {
+    display: flex;
+    justify-content: space-between;
+}
+
+.RegisterContainer form > div > input:first-child {
+    margin-right: 5px;
+}
+
+.RegisterContainer form > div > input[type=text] {
+    flex: 1;
+}
+
+.RegisterContainer form > div > select {
+    padding: 5px;
+    margin-left: 5px; 
+    flex: 1;
+}
+
+.birthday {
+    margin-right: 20px;
+}
