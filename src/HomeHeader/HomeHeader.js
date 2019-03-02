@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import styles from '../Header/Header.module.css';
+// import App from '../App/App.css';
+// import styles from '../Header/Header.module.css';
 import style from './HomeHeader.module.css';
 import img from '../assets/images/default-profile-picture-circle-7.png';
 import Avatar from '@material-ui/core/Avatar';
@@ -8,7 +9,7 @@ import InputBase from '@material-ui/core/InputBase';
 import { fade } from '@material-ui/core/styles/colorManipulator';
 import { withStyles } from '@material-ui/core/styles';
 import SearchIcon from '@material-ui/icons/Search';
-
+import { Link } from 'react-router-dom';
 
 const themeStyles = theme => ({
   root: {
@@ -66,7 +67,7 @@ class HomeHeader extends Component {
     const { classes } = this.props;
 
     return (
-      <div className={styles.HeadContainer}>
+      <div className={style.HeadContainer}>
 
         <div className={style.FirstElem}>
           <div className={style.LogoBox}></div>
@@ -91,18 +92,17 @@ class HomeHeader extends Component {
           </div>
         </div>
         <nav className={style.SecondElem}>
-          {/* linkove */}
           <div className={style.Icon + ' ' + style.Profile}>
             <Avatar alt="Profile Photo" src={img} />
-            <p>UserName</p>
+            <Link  className={style.HeaderProf} to="/">UserName</Link>
           </div>
           <div className={style.Icon}>
-            <p>Home</p>
+            <Link className={style.HomePage} to="/">Home</Link>
           </div>
-          <div className={style.Icon + ' ' + style.FriendsRequests}></div>
-          <div className={style.Icon + ' ' + style.Messages}></div>
-          <div className={style.Icon + ' ' + style.Notifications}></div>
-          <div className={style.Icon + ' ' + style.Logout}></div>
+          <Link to="/" className={style.Icon + ' ' + style.FriendsRequests}></Link>
+          <Link to="/" className={style.Icon + ' ' + style.Messages}></Link>
+          <Link to="/" className={style.Icon + ' ' + style.Notifications}></Link>
+          <Link to="/" className={style.Icon + ' ' + style.Logout}></Link>
         </nav>
       </div>
     )

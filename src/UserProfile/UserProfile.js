@@ -6,15 +6,17 @@ import Avatar from '@material-ui/core/Avatar';
 import img from '../assets/images/girl.jpg';
 import UserProfileHome from '../UserProfileHome/UserProfileHome';
 import PostCreator from '../PostCreator/PostCreator';
+import { Link } from 'react-router-dom';
 
 const themeStyle = {
     bigAvatar: {
-        marginTop: '-20vh',
-        marginLeft: 50,
-        width: '25vh',
+        marginTop: '-25vh',
+        marginLeft: 20,
+        width: '28vh',
         position: 'absolute',
-        height: '25vh',
+        height: '28vh',
         zIndex: 3,
+        border:'1vh solid white'
     },
 };
 
@@ -27,9 +29,9 @@ class UserProfile extends Component {
                     <div className={homeStyle.Cover} />
                     <Avatar alt="Profile Photo" src={img} className={classes.bigAvatar} />
                     <div className={homeStyle.ToolbarProfile}>
-                        <div className={homeStyle.TollbarInfo}><a href="a">About</a></div>
-                        <div className={homeStyle.TollbarInfo}><a href="a">Friends</a></div>
-                        <div className={homeStyle.TollbarInfo}><a href="a">Photos</a></div>
+                        <Link to="a" className={homeStyle.TollbarInfo}>About</Link>
+                        <Link to="a" className={homeStyle.TollbarInfo}>Friends</Link>
+                        <Link to="a" className={homeStyle.TollbarInfo}>Photos</Link>
                     </div>
                     <UserProfileHome />
                     <PostCreator/>

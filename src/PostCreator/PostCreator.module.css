@@ -1,8 +1,70 @@
 .Container{
-    /* width:67%; */
+    width:67%;
+    /* background-color: white; */
+    float:right;
+    margin-top: 3vh;
+    border-radius: 5px;
+    background-color: rgb(217, 227, 247);
+    /* background-image: url('../assets/images/3.jpg'); */
+    /* background-position: center; */
+    /* background-size: cover; */
+    /* background-repeat: no-repeat; */
+}
+
+.Box{
+    margin-top:2.5vh;
+    width: 100%;
+    background-image: url('../assets/images/lamp.png');
+    background-repeat: no-repeat;
+    background-position: top left;
+    background-size: 5vh;
+    margin-right:1vh;
+    box-sizing: border-box;
+    height: 7vh;
+}
+
+.Span{
+    margin:48vh;
+    font-size:1em;
+    font-weight:bold;
+    color:rgb(66, 103, 178);
+}
+
+.InputContainer{
+    display:flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+    height:10vh;
+}
+.Textarea{
+    width:80%;
+    height:8vh;
+    outline:none;
+}
+
+.PhotoUpload{
+    width:18vh;
+    padding:1.65vh;
+    text-align: right;
+    text-decoration: none;
+    font-size:1em;
+    background-image: url('../assets/images/photo2.png');
+    background-size: 5.5vh;
+    background-position: bottom left;
+    background-repeat: no-repeat;
     background-color: white;
-    /* border:1px solid green; */
-    /* float:right; */
-    /* height: 10%; */
-    /* display: flex; */
+    border-radius: 18px;
+    margin:2vh 0;
+    color:black;
+    outline: none;
+    
+}
+
+.PhotoUpload:hover{
+    background-color: rgb(66, 103, 178);
+}
+.Add{
+    background-image: url('../assets/images/add.png');
+    width:15vh;
 }

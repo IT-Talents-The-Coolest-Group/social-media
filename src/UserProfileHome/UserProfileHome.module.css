@@ -1,11 +1,10 @@
 .Container{
-    margin-top:5vh;
+    margin-top:3vh;
     width:30%;
-    background-color: white;
-    display:flex;
-    flex-direction: column;
-    box-sizing: border-box;
+    background-color: rgb(217, 227, 247);
+    box-sizing: border-box; 
     border-radius: 5px;
+    display: inline-block;
 }
 
 .ContainerBox{
@@ -13,36 +12,35 @@
     justify-content: flex-start;
     align-items: center;
     width:100%;
-    height:20%;
+    height:8vh;
 }
 
 .Icon{
     width:4vh;
-    height:4vh;
+    height:3vh;
     display:inline-block;
     background-position: cover;
     background-size: 3vh;
     background-repeat: no-repeat;
-    margin:3vh;
+    margin-left:3vh;
 }
 
 .IntroIcon{
+    background-size: 4.3vh;
     padding-top: 3vh;
-    margin-bottom:-1vh;
-    background-image: url('../assets/images/intro1.png');   
+    margin-bottom:-3.3vh;
+    background-image: url('../assets/images/intro3.gif');   
 }
 
-span{
-    display:inline-block;   
-    margin-top:2vh;
+.SpanStyle{
+    padding-top:1vh;
     font-size:1.2em;
-    margin-top:-0.1vh;
     color:black;
 }
 
 hr{
     width:93%;
-    border:1px solid rgb(197, 191, 191);
+    border:1px solid rgb(66, 103, 178);;
 }
 
 .CurrentCity{
@@ -65,17 +63,17 @@ hr{
     background-image: url('../assets/images/relationship2.png');   
 }
 
-.ContainerBox > a{
+.Links{
+    text-decoration: none;
     color:black;
     font-weight: normal;
     font-size: 0.8em;
 }
 
-.ContainerBox:hover{
-    background-color: rgb(227, 227, 253);
-}
-
-.Span:hover{
+.Active > .ContainerBox:hover{
     background-color: white;
+    /* border:outset; */
+    box-sizing: border-box;
+    
 }
 
