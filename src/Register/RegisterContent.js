@@ -18,7 +18,7 @@ class RegisterContent extends Component {
             days.push(<option key={`day-${day}`} value={day}>{day}</option>);
         }
 
-        const allMonths = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'];
+        const allMonths = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
         let months = [];
 
         for (let month = 0; month < allMonths.length; month++) {
