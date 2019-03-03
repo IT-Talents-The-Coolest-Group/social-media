@@ -8,7 +8,7 @@ import { withStyles } from '@material-ui/core/styles';
 
 const themeStyle = {
     bigAvatar: {
-        marginTop: '-1.1vh',
+        marginTop: '-0.5vh',
         marginLeft: '-23%',
         width: '10vh',
         position: 'absolute',

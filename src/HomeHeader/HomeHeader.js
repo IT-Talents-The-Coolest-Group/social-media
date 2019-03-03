@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 // import App from '../App/App.css';
 // import styles from '../Header/Header.module.css';
 import style from './HomeHeader.module.css';
-import img from '../assets/images/default-profile-picture-circle-7.png';
+import img from '../assets/images/girl.jpg';
 import Avatar from '@material-ui/core/Avatar';
 import Toolbar from '@material-ui/core/Toolbar';
 import InputBase from '@material-ui/core/InputBase';
@@ -70,7 +70,7 @@ class HomeHeader extends Component {
       <div className={style.HeadContainer}>
 
         <div className={style.FirstElem}>
-          <div className={style.LogoBox}></div>
+          <Link to="/home" className={style.LogoBox}/>
           {/* <InputBase className= {style.SearchInput} type="text" placeholder="Search"/> */}
 
           <div className={classes.root}>
@@ -92,17 +92,17 @@ class HomeHeader extends Component {
           </div>
         </div>
         <nav className={style.SecondElem}>
-          <div className={style.Icon + ' ' + style.Profile}>
+          <Link to="/profile-home" className={style.Icon + ' ' + style.Profile}>
             <Avatar alt="Profile Photo" src={img} />
-            <Link  className={style.HeaderProf} to="/">UserName</Link>
-          </div>
+            <Link  className={style.HeaderProf} to="/profile-home">UserName</Link>
+          </Link>
           <div className={style.Icon}>
-            <Link className={style.HomePage} to="/">Home</Link>
+            <Link className={style.HomePage} to="/home">Home</Link>
           </div>
           <Link to="/" className={style.Icon + ' ' + style.FriendsRequests}></Link>
           <Link to="/" className={style.Icon + ' ' + style.Messages}></Link>
           <Link to="/" className={style.Icon + ' ' + style.Notifications}></Link>
-          <Link to="/" className={style.Icon + ' ' + style.Logout}></Link>
+          <Link to="/logout" className={style.Icon + ' ' + style.Logout}></Link>
         </nav>
       </div>
     )

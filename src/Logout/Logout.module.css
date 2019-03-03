@@ -1,0 +1,17 @@
+.H1{
+    color:rgb(17, 172, 17);
+    margin-top:8vh;
+    text-decoration: underline;
+}
+
+.Image{
+    width:70%;
+    margin:8vh auto;
+}
+
+.GoBack{
+    text-decoration: none;
+    font-weight: bold;
+    font-size:1.2em;
+    color:rgb(66, 103, 178);
+}

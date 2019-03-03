@@ -1,10 +1,16 @@
 .Container{
     margin-top:3vh;
     width:30%;
-    background-color: rgb(217, 227, 247);
+    /* background-color: rgb(217, 227, 247);
     box-sizing: border-box; 
+    border-radius: 5px;*/
+    display: inline-block; 
     border-radius: 5px;
-    display: inline-block;
+    /* background-color: rgb(217, 227, 247); */
+    background-image: url('../assets/images/7.jpg'); 
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 .ContainerBox{
@@ -71,7 +77,8 @@ hr{
 }
 
 .Active > .ContainerBox:hover{
-    background-color: rgb(247, 156, 191);
+    /* background-color: rgb(247, 156, 191); */
+    background-color: white;
     opacity: 0.5;
     box-sizing: border-box;
 }
