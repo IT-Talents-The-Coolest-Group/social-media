@@ -1,23 +1,28 @@
-.LoginContainer {
+.LoginContent {
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 100%;
-    height: calc(100% - 67px);
+    min-height: calc(100vh - 53px);
+    height: auto;
     justify-content: center;
 }
 
-.LoginContainer form > * {
+.LoginContent > h2 {
+    margin-top: 0;
+}
+
+.LoginContent form > * {
     margin: 10px 0;
 }
 
-.LoginContainer form {
+.LoginContent form {
     display: flex;
     flex-direction: column;
     width: 40%;
 }
 
-.LoginContainer > a {
+.LoginContent > a {
     width: calc(40% - 20px);
     margin-top: 10px;
 }

@@ -22,7 +22,7 @@ class LoginContent extends Component {
         // const { classes } = this.props;
 
         return (
-            <div className={styles.LoginContainer}>
+            <div className={styles.LoginContent}>
                 <h2>Log into Facebook</h2>
                 <LoginForm onChange={this.onChange} />
                 <span>or</span>
