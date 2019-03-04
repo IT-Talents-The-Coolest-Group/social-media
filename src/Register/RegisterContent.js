@@ -58,13 +58,19 @@ class RegisterContent extends Component {
     };
 
     validate = () => {
-        let errors = {};
+        let errors = {
+            firstName: '',
+            lastName: '',
+            email: '',
+            password: '',
+            confirmPassword: '',
+            year: ''
+        };
 
         if (this.state.firstName.length < 3) {
             errors.firstName = 'Your name must be more than 3 symbols length!';
         }
 
-        console.log(this.state.lastName, this.state.lastName.length);
         if (this.state.lastName.length < 3) {
             errors.lastName = 'Your lastname must be more than 3 symbols length!';
         }
@@ -77,7 +83,7 @@ class RegisterContent extends Component {
 
         const passRegex = new RegExp("^[a-zA-Z0-9]{8,30}$");
 
-        if (passRegex.test(this.state.password)) {
+        if (!passRegex.test(this.state.password)) {
             errors.password = 'Invalid password!';
         }
 
@@ -103,49 +109,82 @@ class RegisterContent extends Component {
 
     render() {
         // const { classes } = this.props;
+        let classes = {
+            firstName: [styles.regCont, styles.firstNameContainer],
+            lastName: [styles.regCont, styles.lastNameContainer],
+            email: [styles.regCont],
+            password: [styles.regCont],
+            confirmPassword: [styles.regCont],
+            year: ['']
+        };
+
+        if (this.state.errors.firstName !== '') {
+            classes.firstName.push(styles.error);
+        }
+
+        if (this.state.errors.lastName !== '') {
+            classes.lastName.push(styles.error);
+        }
+
+        if (this.state.errors.email !== '') {
+            classes.email.push(styles.error);
+        }
+
+        if (this.state.errors.password !== '') {
+            classes.password.push(styles.error);
+        }
+
+        if (this.state.errors.confirmPassword !== '') {
+            classes.confirmPassword.push(styles.error);
+        }
+
+        if (this.state.errors.year !== '') {
+            classes.year.push(styles.dropdownErr);
+        }
+
         return (
             <div className={styles.RegisterContent}>
                 <form>
                     <h2>Create a New Account</h2>
                     <div className={styles.namesContainer}>
-                        <div className={styles.firstNameContainer}>
+                        <div className={classes.firstName.join(' ')}>
                             <Input type="text" id="first-name" name="firstName" placeholder="First Name" onChange={this.onChange} />
                             {this.state.errors.firstName !== '' && this.state.errors.firstName}
                         </div>
-                        <div className={styles.lastNameContainer}>
+                        <div className={classes.lastName.join(' ')}>
                             <Input type="text" id="last-name" name="lastName" placeholder="Last Name" onChange={this.onChange} />
                             {this.state.errors.lastName !== '' && this.state.errors.lastName}
                         </div>
                     </div>
-                    <div>
-                        <Input required type="email" id="reg-email" name="email" placeholder="Email" onChange={this.onChange} />
+                    <div className={classes.email.join(' ')}>
+                        <Input type="email" id="reg-email" name="email" placeholder="Email" onChange={this.onChange} />
                         {this.state.errors.email !== '' && this.state.errors.email}
                     </div>
-                    <div>
-                        <Input required type="password" id="reg-password" name="password" placeholder="New Password" onChange={this.onChange} />
+                    <div className={classes.password.join(' ')}>
+                        <Input type="password" id="reg-password" name="password" placeholder="New Password" onChange={this.onChange} />
                         {this.state.errors.password !== '' && this.state.errors.password}
                     </div>
-                    <div>
-                        <Input required type="password" id="confirm-password" name="confirmPassword" placeholder="Confirm Password" onChange={this.onChange} />
+                    <div className={classes.confirmPassword.join(' ')}>
+                        <Input type="password" id="confirm-password" name="confirmPassword" placeholder="Confirm Password" onChange={this.onChange} />
                         {this.state.errors.confirmPassword !== '' && this.state.errors.confirmPassword}
                     </div>
 
                     <div>
                         <label className={styles.birthday}>Birthday</label>
-                        <select required name="month" onChange={this.onChange}>
+                        <select name="month" onChange={this.onChange}>
                             <option defaultValue value="">Month</option>
                             {this.state.months}
                         </select>
-                        <select required name="day" onChange={this.onChange}>
+                        <select name="day" onChange={this.onChange}>
                             <option defaultValue value="">Day</option>
                             {this.state.days}
                         </select>
-                        <select required name="year" onChange={this.onChange}>
+                        <select name="year" onChange={this.onChange} className={classes.year.join(' ')} >
                             <option defaultValue value="">Year</option>
                             {this.state.years}
                         </select>
                     </div>
-                    {this.state.errors.confirmPassword !== '' && <div>{this.state.errors.confirmPassword}</div>}
+                    {this.state.errors.year !== '' && <div className={styles.error + ' ' + styles.yearErr}>{this.state.errors.year}</div>}
                     <div>
                         <div>
                             <Input type="radio" id="female" value="female" name="gender" onChange={this.onChange} />

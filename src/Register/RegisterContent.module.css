@@ -22,18 +22,12 @@
     margin-top: 0;
 }
 
-.RegisterContent form > div {
+.RegisterContent form > div:not(.yearErr) {
     display: flex;
     justify-content: space-between;
 }
 
-.RegisterContent form input[type=text],
-.RegisterContent form input[type=email],
-.RegisterContent form input[type=password] {
-    flex: 1;
-}
-
-.RegisterContent form > div > select {
+.RegisterContent select {
     padding: 5px;
     margin-left: 5px; 
     flex: 1;
@@ -56,4 +50,26 @@
 
   .firstNameContainer {
       margin-right: 5px;
+  }
+
+  .error input {
+    border-color: rgb(230, 106, 106);
+  }
+
+  .error {
+      color: rgb(230, 106, 106);
+  }
+
+  .RegisterContent .dropdownErr {
+    border-color: rgb(230, 106, 106);
+  }
+
+  .yearErr {
+      display: flex;
+      justify-content: flex-end;
+  }
+
+  .regCont {
+      display: flex;
+      flex-direction: column;
   }
