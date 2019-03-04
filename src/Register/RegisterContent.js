@@ -17,7 +17,7 @@ class RegisterContent extends Component {
         year: '',
         month: '',
         day: '',
-        gender: '',
+        gender: 'unspecified',
         errors: {
             firstName: '',
             lastName: '',
@@ -67,27 +67,34 @@ class RegisterContent extends Component {
             year: ''
         };
 
+        let hasErrors = false;
+
         if (this.state.firstName.length < 3) {
+            hasErrors = true;
             errors.firstName = 'Your name must be more than 3 symbols length!';
         }
 
         if (this.state.lastName.length < 3) {
+            hasErrors = true;
             errors.lastName = 'Your lastname must be more than 3 symbols length!';
         }
 
         const emailRegex = new RegExp("^[(a-zA-Z-0-9-\\_\\+\\.)]+@[(a-z-A-z)]+\\.[(a-zA-z)]{2,5}$");
 
         if (!emailRegex.test(this.state.email)) {
+            hasErrors = true;
             errors.email = 'Invalid email!';
         }
 
         const passRegex = new RegExp("^[a-zA-Z0-9]{8,30}$");
 
         if (!passRegex.test(this.state.password)) {
+            hasErrors = true;
             errors.password = 'Invalid password!';
         }
 
         if (this.state.password !== this.state.confirmPassword) {
+            hasErrors = true;
             errors.confirmPassword = 'Different passwords!';
         }
 
@@ -96,15 +103,47 @@ class RegisterContent extends Component {
         const MIN_AGE = 13;
 
         if (this.state.year > currentYear - MIN_AGE) {
+            hasErrors = true;
             errors.year = 'Invalid year!';
         }
 
         this.setState({ ...this.state, errors });
+
+        return hasErrors;
     }
 
     onSubmit = (e) => {
         e.preventDefault();
-        this.validate();
+        const hasErrors = this.validate();
+        let url = 'http://bacefookapi.herokuapp.com:8090/signup';
+        if (!hasErrors) {
+            const data = {
+                firstName: this.state.firstName,
+                lastName: this.state.lastName,
+                email: this.state.email,
+                password: this.state.password,
+                confirmPassword: this.state.confirmPassword,
+                year: this.state.year,
+                month: this.state.month,
+                day: this.state.day,
+                gender: this.state.gender,
+            };
+            
+            fetch(url, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                // redirect: "follow",
+                // referrer: "no-referrer", 
+                body: JSON.stringify(data), 
+            })
+            .then(response => response.json())
+            .then(res => {
+                console.log(res);
+            })
+            .catch(error => console.error(error));
+        }
     }
 
     render() {
