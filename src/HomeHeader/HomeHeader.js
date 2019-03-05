@@ -9,6 +9,7 @@ import { withStyles } from '@material-ui/core/styles';
 import SearchIcon from '@material-ui/icons/Search';
 import { NavLink } from 'react-router-dom';
 import Badge from '@material-ui/core/Badge';
+import PropTypes from 'prop-types';
 
 const themeStyles = theme => ({
   root: {
@@ -75,8 +76,7 @@ class HomeHeader extends Component {
 
   render() {
     const { classes } = this.props;
-    const { invisible } = this.state;
-    const { badgeContent } = this.state;
+    const { invisible, badgeContent } = this.state;
 
     return (
       <div className={style.HeadContainer}>
@@ -125,8 +125,8 @@ class HomeHeader extends Component {
   }
 }
 
-//   HomeHeader.propTypes = {
-//    classes: PropTypes.object.isRequired,
-//  };
+  HomeHeader.propTypes = {
+   classes: PropTypes.object.isRequired,
+ };
 
 export default withStyles(themeStyles)(HomeHeader);

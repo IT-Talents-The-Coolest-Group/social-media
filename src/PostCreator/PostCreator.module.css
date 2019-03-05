@@ -44,22 +44,22 @@
 }
 
 .Upload{
-    width:15%;
-    padding:1.5%;
-    text-align: right;
-    text-decoration: none;
-    font-size:1em;
+    width:20%;
+    padding:1.8%;
+    text-align: center;
+    font-size:0.8em;
     background-image: url('../assets/images/photo2.png');
-    background-size: 30%;
+    background-size: 25%;
     background-position: bottom left;
     background-repeat: no-repeat;
-    background-color: rgb(217, 227, 247);
+    background-color: transparent;
     border-radius: 18px;
     margin:1% 0;
     color:black;
-    outline: none;
     box-shadow:0 2px 3px 0px rgba(0,0,0,0.25);
     transition:.2s all; 
+    border:0;
+    outline: none;
     
 }
 
@@ -72,13 +72,14 @@
 
 .Container:hover .Upload:hover{
     background-color: rgb(247, 156, 191);
-    transform:scale(1.1);
+    transform:scale(1);
     filter:blur(0px);
     opacity:1;
+    width:21%;
+    box-sizing: border-box;
     box-shadow:0 8px 20px 0px rgba(0,0,0,0.125);
 }
 .Add{
     background-image: url('../assets/images/add.png');
-    width:13%;
 }
 
