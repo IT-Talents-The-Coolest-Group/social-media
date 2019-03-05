@@ -44,7 +44,7 @@
 }
 
 .Icon{
-    width:9vh;
+    width:18vh;
     background-size: 4vh;
     background-repeat: no-repeat;
     background-position: center; 
@@ -59,14 +59,6 @@
     opacity: 0.5;
  /* transition: 2s all; */
  transform:scale(1);
-}
-
-.Icon > Link {
-    padding-top:8px;
-    text-align: center;
-    color:white;
-    font-size: 0.9em;
-   
 }
 
 .FriendsRequests{
@@ -90,15 +82,16 @@
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    width:20vh;
+    /* width:20vh; */
 }
 
-.HomePage{
-     margin-left:3vh;
-}
 .HomePage, .HeaderProf{
     text-decoration: none;
     color:white;
     font-size:0.8em;
+
 }
 
+.HomePage{
+    margin-left:3vh;
+}

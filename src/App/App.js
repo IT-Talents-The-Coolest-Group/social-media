@@ -8,6 +8,7 @@ import Link from '../UI/Link/Link';
 import RegisterContainer from  '../Register/RegisterContainer';
 import Logout from '../Logout/Logout';
 import HomePage from '../HomePage/HomePage';
+import About from '../UserProfile/About/About';
 
 class App extends Component {
   render() {
@@ -20,6 +21,7 @@ class App extends Component {
             <Route exact path="/register" render={() => { return (<RegisterContainer />) }} />
             <Route exact path="/" render={() => { return (<LoginContainer />) }} />
             <Route exact path="/home" render={() => { return (<HomePage/>) }} />
+            <Route exact path="/profile-home/account-details" render={() => { return (<About/>) }} />
 
             {/* NOT FOUND page */}
             <Route render={

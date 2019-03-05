@@ -7,7 +7,7 @@
     display: inline-block; 
     border-radius: 5px;
     /* background-color: rgb(217, 227, 247); */
-    background-image: url('../assets/images/7.jpg'); 
+    background-image: url('../../assets/images/7.jpg'); 
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -35,7 +35,7 @@
     background-size: 4.3vh;
     padding-top: 3vh;
     margin-bottom:-3.3vh;
-    background-image: url('../assets/images/intro3.gif');   
+    background-image: url('../../assets/images/intro3.gif');   
 }
 
 .SpanStyle{
@@ -50,23 +50,23 @@ hr{
 }
 
 .CurrentCity{
-    background-image: url('../assets/images/CurrentCity1.png');   
+    background-image: url('../../assets/images/CurrentCity1.png');   
 }
 
 .Workplace{
-    background-image: url('../assets/images/workplace.png');   
+    background-image: url('../../assets/images/workplace.png');   
 }
 
 .School{
-    background-image: url('../assets/images/graduate.png');   
+    background-image: url('../../assets/images/graduate.png');   
 }
 
 .Hometown{
-    background-image: url('../assets/images/hometown1.png');   
+    background-image: url('../../assets/images/hometown1.png');   
 }
 
 .RelationshipStatus{
-    background-image: url('../assets/images/relationship2.png');   
+    background-image: url('../../assets/images/relationship2.png');   
 }
 
 .Links{

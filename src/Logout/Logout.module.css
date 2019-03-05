@@ -1,6 +1,5 @@
 .H1{
     color:rgb(17, 172, 17);
-    margin-top:8vh;
     text-decoration: underline;
 }
 
@@ -12,6 +11,6 @@
 .GoBack{
     text-decoration: none;
     font-weight: bold;
-    font-size:1.2em;
+    font-size:1.5em;
     color:rgb(66, 103, 178);
 }

@@ -9,7 +9,7 @@ import InputBase from '@material-ui/core/InputBase';
 import { fade } from '@material-ui/core/styles/colorManipulator';
 import { withStyles } from '@material-ui/core/styles';
 import SearchIcon from '@material-ui/icons/Search';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 const themeStyles = theme => ({
   root: {
@@ -70,7 +70,7 @@ class HomeHeader extends Component {
       <div className={style.HeadContainer}>
 
         <div className={style.FirstElem}>
-          <Link to="/home" className={style.LogoBox}/>
+          <NavLink to="/home" className={style.LogoBox} />
           {/* <InputBase className= {style.SearchInput} type="text" placeholder="Search"/> */}
 
           <div className={classes.root}>
@@ -92,17 +92,19 @@ class HomeHeader extends Component {
           </div>
         </div>
         <nav className={style.SecondElem}>
-          <Link to="/profile-home" className={style.Icon + ' ' + style.Profile}>
+          <NavLink to="/profile-home" className={style.Icon + ' ' + style.Profile}>
             <Avatar alt="Profile Photo" src={img} />
-            <Link  className={style.HeaderProf} to="/profile-home">UserName</Link>
-          </Link>
+          </NavLink>
+          <div className={style.Icon }>
+            <NavLink className={style.HeaderProf} to="/profile-home">UserName</NavLink></div>
+
           <div className={style.Icon}>
-            <Link className={style.HomePage} to="/home">Home</Link>
+            <NavLink className={style.HomePage} to="/home">Home</NavLink>
           </div>
-          <Link to="/" className={style.Icon + ' ' + style.FriendsRequests}></Link>
-          <Link to="/" className={style.Icon + ' ' + style.Messages}></Link>
-          <Link to="/" className={style.Icon + ' ' + style.Notifications}></Link>
-          <Link to="/logout" className={style.Icon + ' ' + style.Logout}></Link>
+          <NavLink to="/" className={style.Icon + ' ' + style.FriendsRequests}></NavLink>
+          <NavLink to="/" className={style.Icon + ' ' + style.Messages}></NavLink>
+          <NavLink to="/" className={style.Icon + ' ' + style.Notifications}></NavLink>
+          <NavLink to="/logout" className={style.Icon + ' ' + style.Logout}></NavLink>
         </nav>
       </div>
     )

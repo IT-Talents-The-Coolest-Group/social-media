@@ -10,7 +10,7 @@ class Logout extends Component {
         return (
             <div className={styles.LoginContainer}>
             <h1 className={logoutStyle.H1}>Thanks For Visiting!</h1>
-            <img className={logoutStyle.Image} src={img} width="1000" alt="Thanks for visited us!"/>
+            <img className={logoutStyle.Image} src={img} alt="Thanks for visited us!"/>
             <Link to="/" className={logoutStyle.GoBack}>Go Back to Facebook</Link>
             </div>
         )

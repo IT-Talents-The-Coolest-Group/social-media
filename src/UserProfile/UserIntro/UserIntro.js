@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import homeUserStyle from './UserProfileHome.module.css';
+import homeUserStyle from './UserIntro.module.css';
 import { Link } from 'react-router-dom';
 
-class UserProfileHome extends Component {
+class UserIntro extends Component {
     render() {
         // const { classes } = this.props;
         return (
@@ -42,4 +42,4 @@ class UserProfileHome extends Component {
     }
 }
 
-export default UserProfileHome;
+export default UserIntro;
