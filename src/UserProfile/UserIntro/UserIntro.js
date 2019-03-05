@@ -16,24 +16,24 @@ class UserIntro extends Component {
                     <div className={homeUserStyle.Active}>
                     <div className={homeUserStyle.ContainerBox}>
                         <div className={homeUserStyle.Icon + ' ' + homeUserStyle.CurrentCity}> </div>
-                        <Link className={homeUserStyle.Links} to="a">Current City</Link>
+                        <Link className={homeUserStyle.Links} to="/profile-home/account-details">Current City</Link>
                     </div>
                     <div className={homeUserStyle.ContainerBox}>
                         <div className={homeUserStyle.Icon + ' ' + homeUserStyle.Workplace}> </div>
-                        <Link className={homeUserStyle.Links} to="a">Workplace</Link>
+                        <Link className={homeUserStyle.Links} to="/profile-home/account-details">Workplace</Link>
                     </div> 
                     <div className={homeUserStyle.ContainerBox}>
                         <div className={homeUserStyle.Icon + ' ' + homeUserStyle.School}> </div>
-                        <Link className={homeUserStyle.Links} to="a">School</Link>
+                        <Link className={homeUserStyle.Links} to="/profile-home/account-details">School</Link>
                     </div>
-                    <div className={homeUserStyle.ContainerBox}>
+                    {/* <div className={homeUserStyle.ContainerBox}>
                         <div className={homeUserStyle.Icon + ' ' + homeUserStyle.Hometown}> </div>
-                        <Link className={homeUserStyle.Links} to="a">Hometown</Link>
+                        <Link className={homeUserStyle.Links} to="/profile-home/account-details">Hometown</Link>
                     </div>
                     <div className={homeUserStyle.ContainerBox}>
                         <div className={homeUserStyle.Icon + ' ' + homeUserStyle.RelationshipStatus}> </div>
-                        <Link className={homeUserStyle.Links} to="a">Relationship Status</Link>
-                    </div>
+                        <Link className={homeUserStyle.Links} to="/profile-home/account-details">Relationship Status</Link>
+                    </div> */}
                     </div>
                 </div>
                 

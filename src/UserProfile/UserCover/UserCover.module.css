@@ -7,6 +7,17 @@
     background-repeat: no-repeat;
 }
 
+.Nickname{
+    text-decoration: none;
+    position: absolute;
+    top:35%;
+    left:30%;
+    z-index: 3;
+    background-color: transparent;
+    font-size: 1.5em;
+    color:white;
+}
+
 .ToolbarProfile{
     width:100%;
     display:flex;

@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-// import App from '../App/App.css';
-// import styles from '../Header/Header.module.css';
 import style from './HomeHeader.module.css';
 import img from '../assets/images/girl.jpg';
 import Avatar from '@material-ui/core/Avatar';
@@ -10,6 +8,7 @@ import { fade } from '@material-ui/core/styles/colorManipulator';
 import { withStyles } from '@material-ui/core/styles';
 import SearchIcon from '@material-ui/icons/Search';
 import { NavLink } from 'react-router-dom';
+import Badge from '@material-ui/core/Badge';
 
 const themeStyles = theme => ({
   root: {
@@ -58,21 +57,32 @@ const themeStyles = theme => ({
         width: 200,
       },
     },
+  },
+  Bmargin: {
+    marginTop: '1.1vh',
+    position: 'relative',
+    left: '7vh',
+    zIndex: 3,
   }
 });
 
 
 class HomeHeader extends Component {
+  state = {
+    invisible: false,
+    badgeContent: '0'
+  };
+
   render() {
     const { classes } = this.props;
+    const { invisible } = this.state;
+    const { badgeContent } = this.state;
 
     return (
       <div className={style.HeadContainer}>
 
         <div className={style.FirstElem}>
           <NavLink to="/home" className={style.LogoBox} />
-          {/* <InputBase className= {style.SearchInput} type="text" placeholder="Search"/> */}
-
           <div className={classes.root}>
             <Toolbar>
               <div className={classes.grow} />
@@ -95,16 +105,20 @@ class HomeHeader extends Component {
           <NavLink to="/profile-home" className={style.Icon + ' ' + style.Profile}>
             <Avatar alt="Profile Photo" src={img} />
           </NavLink>
-          <div className={style.Icon }>
-            <NavLink className={style.HeaderProf} to="/profile-home">UserName</NavLink></div>
+          <div className={style.Icon}>
+            <NavLink className={style.HeaderProf} to="/profile-home">UserName</NavLink>
+          </div>
 
           <div className={style.Icon}>
             <NavLink className={style.HomePage} to="/home">Home</NavLink>
           </div>
-          <NavLink to="/" className={style.Icon + ' ' + style.FriendsRequests}></NavLink>
-          <NavLink to="/" className={style.Icon + ' ' + style.Messages}></NavLink>
-          <NavLink to="/" className={style.Icon + ' ' + style.Notifications}></NavLink>
-          <NavLink to="/logout" className={style.Icon + ' ' + style.Logout}></NavLink>
+          <Badge color="secondary" badgeContent={badgeContent} invisible={invisible} className={classes.Bmargin} />
+          <NavLink to="/" className={style.Icon + ' ' + style.FriendsRequests} />
+          <Badge color="secondary" badgeContent={badgeContent} invisible={invisible} className={classes.Bmargin} />
+          <NavLink to="/" className={style.Icon + ' ' + style.Messages} />
+          <Badge color="secondary" badgeContent={badgeContent} invisible={invisible} className={classes.Bmargin} />
+          <NavLink to="/" className={style.Icon + ' ' + style.Notifications} />
+          <NavLink to="/logout" className={style.Icon + ' ' + style.Logout} />
         </nav>
       </div>
     )
