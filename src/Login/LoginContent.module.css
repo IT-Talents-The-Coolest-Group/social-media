@@ -26,3 +26,7 @@
     width: calc(40% - 20px);
     margin-top: 10px;
 }
+
+.LoginError {
+    color: red;
+}

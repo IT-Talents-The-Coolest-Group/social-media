@@ -5,17 +5,11 @@ import LoginForm from './LoginForm';
 
 class LoginContent extends Component {
     state = {
-        email: "",
-        password: "",
-    };
-
-    componentDidMount() {
-        this.onChange.bind(this);
+        error: ''
     }
 
-    onChange(e) {
-        // this.setState({email: e.target.value});
-        // console.log(e.target.value, e.target.name);
+    setError = () => {
+        this.setState({...this.state, error: 'Invalid data!'});
     }
 
     render() {
@@ -24,7 +18,8 @@ class LoginContent extends Component {
         return (
             <div className={styles.LoginContent}>
                 <h2>Log into Facebook</h2>
-                <LoginForm onChange={this.onChange} />
+                {this.state.error !== '' && <div className={styles.LoginError}>{this.state.error}</div>}
+                <LoginForm onError={this.setError} onChange={this.onChange} />
                 <span>or</span>
                 <Link className="GreenLink" to="/register">Create New Account</Link>
             </div>

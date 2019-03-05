@@ -44,7 +44,7 @@ class RegisterContent extends Component {
 
         let years = [];
         let currentYear = new Date().getFullYear();
-        const MAX_AGE = 150;
+        const MAX_AGE = 120;
 
         for (let year = currentYear; year >= currentYear - MAX_AGE; year--) {
             years.push(<option key={`year${year}`} value={year}>{year}</option>);
@@ -122,10 +122,8 @@ class RegisterContent extends Component {
                 lastName: this.state.lastName,
                 email: this.state.email,
                 password: this.state.password,
-                confirmPassword: this.state.confirmPassword,
-                year: this.state.year,
-                month: this.state.month,
-                day: this.state.day,
+                passwordConfirmation : this.state.confirmPassword,
+                birthday: `${this.state.year}-${this.state.month}-${this.state.day}`,
                 gender: this.state.gender,
             };
             
