@@ -8,11 +8,7 @@ class LoginForm extends Component {
         password: "",
     };
 
-    componentDidMount() {
-        this.onChange.bind(this);
-    }
-
-    onChange(e) {
+    onChange = (e) => {
         this.setState({ ...this.state, [e.target.name]: e.target.value });
     }
 
@@ -44,7 +40,7 @@ class LoginForm extends Component {
 
     render() {
         return (
-            <form>
+            <form method="POST">
                 <Input type="text" id="email" name="email" placeholder="Email" onChange={this.onChange} />
                 <Input type="password" id="password" name="password" placeholder="Password" onChange={this.onChange} />
                 <Button className="BlueBtn" onClick={this.onSubmit}>Log in</Button>

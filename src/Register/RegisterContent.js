@@ -181,7 +181,7 @@ class RegisterContent extends Component {
 
         return (
             <div className={styles.RegisterContent}>
-                <form>
+                <form method="POST">
                     <h2>Create a New Account</h2>
                     <div className={styles.namesContainer}>
                         <div className={classes.firstName.join(' ')}>
