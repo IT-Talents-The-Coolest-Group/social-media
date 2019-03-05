@@ -18,18 +18,19 @@ const themeStyle = {
 
 class PostCreator extends Component {
     state = {
-        content: '',
+        content: ''
     }
 
-    onChange = (e) => {
-        this.setState({...this.state.content,[e.target.name]: e.target.value})
+    handleChange = (event) => {
+        this.setState({ [event.target.name]: event.target.value })
+        console.log(this.state.content);
     };
 
     onSubmit = (e) => {
         e.preventDefault();
         let url = 'http://bacefookapi.herokuapp.com:8090/posts';
         const data = {
-            content:this.state.content
+            content: this.state.content
         }
         console.log(data);
 
@@ -59,7 +60,8 @@ class PostCreator extends Component {
                     <br />
                     <div className={postStyle.BoxCont}>
                         <Avatar alt="Profile Photo" src={img} className={classes.bigAvatar} />
-                        <input placeholder="What's on your mind?" name="textContent" value={this.state.content} onChange={this.onChange} type="text" maxLength="100" className={postStyle.Textarea} />
+                        <input placeholder="What's on your mind?" name="content" value={this.state.content}
+                            onChange={this.handleChange} type="text" maxLength="100" className={postStyle.Textarea} />
                     </div>
 
                     <br />
@@ -69,7 +71,12 @@ class PostCreator extends Component {
                         <button className={postStyle.Upload}>Photo/Video</button>
                         <button className={postStyle.Upload + ' ' + postStyle.Add} onClick={this.onSubmit}>Add Post</button>
                     </div>
-                    <p value={this.state.content} />
+
+                </div>
+                <div className={postStyle.Container + ' ' + postStyle.Hide}>
+                    <div className={postStyle.BoxCont}>
+                        <p>{this.state.content}</p>
+                    </div>
                 </div>
             </>
         )
