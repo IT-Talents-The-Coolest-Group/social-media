@@ -9,7 +9,7 @@ class LoginForm extends Component {
     };
 
     componentDidMount() {
-        this.onChange.bind(this);
+        this.onChange;
     }
 
     onChange(e) {

@@ -54,7 +54,8 @@ class RegisterContent extends Component {
     }
 
     onChange = (e) => {
-        this.setState({ ...this.state, [e.target.name]: e.target.value });
+      console.log(this.setState({ ...this.state, [e.target.name]: e.target.value })) 
+
     };
 
     validate = () => {
@@ -126,6 +127,7 @@ class RegisterContent extends Component {
                 birthday: `${this.state.year}-${this.state.month}-${this.state.day}`,
                 gender: this.state.gender,
             };
+            console.log(data);
             
             fetch(url, {
                 method: "POST",

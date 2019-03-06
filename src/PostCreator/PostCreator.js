@@ -18,7 +18,8 @@ const themeStyle = {
 
 class PostCreator extends Component {
     state = {
-        content: ''
+        content: '',
+        // buttonClicked:false
     }
 
     handleChange = (event) => {
@@ -30,7 +31,8 @@ class PostCreator extends Component {
         e.preventDefault();
         let url = 'http://bacefookapi.herokuapp.com:8090/posts';
         const data = {
-            content: this.state.content
+            content: this.state.content,
+            buttonClicked:true
         }
         console.log(data);
 
@@ -73,11 +75,12 @@ class PostCreator extends Component {
                     </div>
 
                 </div>
-                <div className={postStyle.Container + ' ' + postStyle.Hide}>
+                
+                <div className={postStyle.Container}>
                     <div className={postStyle.BoxCont}>
                         <p>{this.state.content}</p>
                     </div>
-                </div>
+                </div> 
             </>
         )
     }
