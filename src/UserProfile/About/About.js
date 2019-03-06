@@ -5,6 +5,7 @@ import HomeHeader from '../../HomeHeader/HomeHeader';
 import homeStyle from '../UserProfile.module.css';
 // import Input from '../../UI/Input/Input';
 import Input from '@material-ui/core/Input';
+import ChangePassword from "./ChangePassword";
 
 class About extends Component {
     render() {
@@ -21,13 +22,9 @@ class About extends Component {
                             <Input placeholder=" Enter your Nickname..."></Input>
                             <p className={aboutStyle.Edit}>Edit Nickname</p>
                         </div>
-                        <div className={aboutStyle.DetailContainer}>
-                            <span className={aboutStyle.Span}>Change Password</span>
-                            <Input placeholder=" Your Old Password..."></Input>
-                            <Input placeholder=" Your New Password..."></Input>
-                            <Input placeholder="Confirm New Password"></Input>
-                            <p className={aboutStyle.Edit}>Change Password</p>
-                        </div>
+
+                        <ChangePassword />
+
                         <div className={aboutStyle.DetailContainer}>
                             <span className={aboutStyle.Span}>Current City</span>
                             <Input placeholder="  Enter Current City..."></Input>
