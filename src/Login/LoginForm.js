@@ -30,6 +30,9 @@ class LoginForm extends Component {
         })
             .then(response => response.json())
             .then(res => {
+                sessionStorage.setItem('loggedUserId', res);
+                this.props.history.push("/profile-home");
+
                 if (res.error) {
                     this.props.onError();
                 }

@@ -141,7 +141,8 @@ class RegisterContent extends Component {
             })
                 .then(response => response.json())
                 .then(res => {
-                    console.log(res);
+                    sessionStorage.setItem('loggedUserId', res);
+                    this.props.history.push("/profile-home");
                 })
                 .catch(error => console.error(error));
         }
