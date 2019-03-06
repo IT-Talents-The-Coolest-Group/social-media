@@ -39,6 +39,7 @@ class UserCover extends Component {
                 {/* <button onClick={this.fileUploadHandler}>Upload</button> */}
                 <Avatar alt="Profile Photo" src={img} className={classes.bigAvatar} />
                 <Link to="/profile-home" className={coverStyle.Nickname}>Nickname</Link>
+                <Link className={coverStyle.Edit} to=""></Link>
                 <div className={coverStyle.ToolbarProfile}>
                     <Link to="/profile-home/account-details" className={coverStyle.TollbarInfo}>About</Link>
                     <Link to="a" className={coverStyle.TollbarInfo}>Friends</Link>
