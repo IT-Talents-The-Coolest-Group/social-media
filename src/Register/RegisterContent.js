@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import styles from './RegisterContent.module.css';
 import Button from '../UI/Button/Button';
 import Input from '../UI/Input/Input';
+import { withRouter } from 'react-router-dom';
 
 class RegisterContent extends Component {
 
@@ -142,7 +143,7 @@ class RegisterContent extends Component {
                 .then(response => response.json())
                 .then(res => {
                     sessionStorage.setItem('loggedUserId', res);
-                    this.props.history.push("/profile-home");
+                    this.props.history.push("/home");
                 })
                 .catch(error => console.error(error));
         }
@@ -247,5 +248,5 @@ class RegisterContent extends Component {
     }
 }
 
-export default RegisterContent;
+export default withRouter(RegisterContent);
 

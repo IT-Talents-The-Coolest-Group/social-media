@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Button from '../UI/Button/Button';
 import Input from '../UI/Input/Input';
+import { withRouter } from 'react-router-dom';
 
 class LoginForm extends Component {
     state = {
@@ -31,7 +32,7 @@ class LoginForm extends Component {
             .then(response => response.json())
             .then(res => {
                 sessionStorage.setItem('loggedUserId', res);
-                this.props.history.push("/profile-home");
+                this.props.history.push("/home");
 
                 if (res.error) {
                     this.props.onError();
@@ -52,4 +53,4 @@ class LoginForm extends Component {
     }
 }
 
-export default LoginForm;
+export default withRouter(LoginForm);
