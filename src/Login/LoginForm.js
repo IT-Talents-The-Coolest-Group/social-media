@@ -36,7 +36,6 @@ class LoginForm extends Component {
                 if (res.error) {
                     this.props.onError();
                 }
-                console.log(res);
             })
             .catch(error => console.error(error));
     }

@@ -40,10 +40,7 @@ class RegisterContent extends Component {
         let months = [];
 
         for (let month = 0; month < allMonths.length; month++) {
-            if (month <= 9) {
-                months.push(<option key={`month-${month}`} value={"0" + (month + 1)}>{allMonths[month]}</option>);
-            } else
-                months.push(<option key={`month-${month}`} value={month+1}>{allMonths[month]}</option>);
+            months.push(<option key={`month-${month}`} value={month + 1}>{allMonths[month]}</option>);
         }
 
         let years = [];
@@ -121,13 +118,15 @@ class RegisterContent extends Component {
         const hasErrors = this.validate();
         let url = 'https://bacefookapi.herokuapp.com/signup';
         if (!hasErrors) {
+            const day = +this.state.day <= 9 ? `0${this.state.day}` : this.state.day;
+            const month = +this.state.month <= 9 ? `0${this.state.month}` : this.state.month;
             const data = {
                 firstName: this.state.firstName,
                 lastName: this.state.lastName,
                 email: this.state.email,
                 password: this.state.password,
                 passwordConfirmation: this.state.confirmPassword,
-                birthday: `${this.state.year}-${this.state.month}-${this.state.day}`,
+                birthday: `${this.state.year}-${month}-${day}`,
                 gender: this.state.gender,
             };
 
@@ -141,7 +140,6 @@ class RegisterContent extends Component {
                 body: JSON.stringify(data),
             })
                 .then(res => {
-                    console.log('Success login');
                     sessionStorage.setItem('loggedUserId', res);
                     this.props.history.push("/home");
                 })
@@ -215,11 +213,11 @@ class RegisterContent extends Component {
                         <label className={styles.birthday}>Birthday</label>
                         <select name="month" onChange={this.onChange}>
                             <option defaultValue value="">Month</option>
-                            {Number(this.state.months) < 10 ? `0${this.state.months}` : this.state.months}
+                            {this.state.months}
                         </select>
                         <select name="day" onChange={this.onChange}>
                             <option defaultValue value="">Day</option>
-                            {Number(this.state.days) < 10 ? `0${this.state.days}` : this.state.days}
+                            {this.state.days}
                         </select>
                         <select name="year" onChange={this.onChange} className={classes.year.join(' ')} >
                             <option defaultValue value="">Year</option>
