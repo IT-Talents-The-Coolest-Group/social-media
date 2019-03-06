@@ -32,14 +32,22 @@ class RegisterContent extends Component {
         let days = [];
 
         for (let day = 1; day <= 31; day++) {
-            days.push(<option key={`day-${day}`} value={day}>{day}</option>);
+            if (day <= 9) {
+                days.push(<option key={`day-${day}`} value={"0" + day}>{day}</option>);
+            } else {
+                days.push(<option key={`day-${day}`} value={day}>{day}</option>);
+            }
+
         }
 
         const allMonths = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
         let months = [];
 
         for (let month = 0; month < allMonths.length; month++) {
-            months.push(<option key={`month-${month}`} value={month + 1}>{allMonths[month]}</option>);
+            if (month <= 9) {
+                months.push(<option key={`month-${month}`} value={"0" + (month + 1)}>{allMonths[month]}</option>);
+            } else
+                months.push(<option key={`month-${month}`} value={month+1}>{allMonths[month]}</option>);
         }
 
         let years = [];
@@ -54,7 +62,7 @@ class RegisterContent extends Component {
     }
 
     onChange = (e) => {
-      console.log(this.setState({ ...this.state, [e.target.name]: e.target.value })) 
+        console.log(this.setState({ ...this.state, [e.target.name]: e.target.value }))
 
     };
 
@@ -123,12 +131,12 @@ class RegisterContent extends Component {
                 lastName: this.state.lastName,
                 email: this.state.email,
                 password: this.state.password,
-                passwordConfirmation : this.state.confirmPassword,
+                passwordConfirmation: this.state.confirmPassword,
                 birthday: `${this.state.year}-${this.state.month}-${this.state.day}`,
                 gender: this.state.gender,
             };
             console.log(data);
-            
+
             fetch(url, {
                 method: "POST",
                 headers: {
@@ -136,13 +144,13 @@ class RegisterContent extends Component {
                 },
                 redirect: "follow",
                 // referrer: "no-referrer", 
-                body: JSON.stringify(data), 
+                body: JSON.stringify(data),
             })
-            .then(response => response.json())
-            .then(res => {
-                console.log(res);
-            })
-            .catch(error => console.error(error));
+                .then(response => response.json())
+                .then(res => {
+                    console.log(res);
+                })
+                .catch(error => console.error(error));
         }
     }
 
