@@ -26,6 +26,7 @@ class LoginForm extends Component {
             headers: {
                 "Content-Type": "application/json",
             },
+            redirect: "follow",
             body: JSON.stringify(data),
         })
             .then(response => response.json())

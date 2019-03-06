@@ -132,7 +132,7 @@ class RegisterContent extends Component {
                 headers: {
                     "Content-Type": "application/json",
                 },
-                // redirect: "follow",
+                redirect: "follow",
                 // referrer: "no-referrer", 
                 body: JSON.stringify(data), 
             })
@@ -210,11 +210,11 @@ class RegisterContent extends Component {
                         <label className={styles.birthday}>Birthday</label>
                         <select name="month" onChange={this.onChange}>
                             <option defaultValue value="">Month</option>
-                            {this.state.months}
+                            {this.state.months < 10 ? `0${this.state.months}` : this.state.months}
                         </select>
                         <select name="day" onChange={this.onChange}>
                             <option defaultValue value="">Day</option>
-                            {this.state.days}
+                            {this.state.days < 10 ? `0${this.state.days}` : this.state.days}
                         </select>
                         <select name="year" onChange={this.onChange} className={classes.year.join(' ')} >
                             <option defaultValue value="">Year</option>
