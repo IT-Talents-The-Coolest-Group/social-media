@@ -116,7 +116,7 @@ class RegisterContent extends Component {
     onSubmit = (e) => {
         e.preventDefault();
         const hasErrors = this.validate();
-        let url = 'http://bacefookapi.herokuapp.com:8090/signup';
+        let url = 'http://bacefookapi.herokuapp.com/signup';
         if (!hasErrors) {
             const data = {
                 firstName: this.state.firstName,

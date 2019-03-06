@@ -29,7 +29,7 @@ class PostCreator extends Component {
 
     onSubmit = (e) => {
         e.preventDefault();
-        let url = 'http://bacefookapi.herokuapp.com:8090/posts';
+        let url = 'http://bacefookapi.herokuapp.com/posts';
         const data = {
             content: this.state.content,
             buttonClicked:true
@@ -76,11 +76,11 @@ class PostCreator extends Component {
 
                 </div>
                 
-                <div className={postStyle.Container}>
+                {/* <div className={postStyle.Container}>
                     <div className={postStyle.BoxCont}>
                         <p>{this.state.content}</p>
                     </div>
-                </div> 
+                </div>  */}
             </>
         )
     }
