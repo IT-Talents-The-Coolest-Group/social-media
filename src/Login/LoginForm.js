@@ -29,7 +29,6 @@ class LoginForm extends Component {
             redirect: "follow",
             body: JSON.stringify(data),
         })
-            .then(response => response.json())
             .then(res => {
                 sessionStorage.setItem('loggedUserId', res);
                 this.props.history.push("/home");

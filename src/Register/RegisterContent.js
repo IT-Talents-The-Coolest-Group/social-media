@@ -140,12 +140,12 @@ class RegisterContent extends Component {
                 // referrer: "no-referrer", 
                 body: JSON.stringify(data),
             })
-                .then(response => response.json())
                 .then(res => {
+                    console.log('Success login');
                     sessionStorage.setItem('loggedUserId', res);
                     this.props.history.push("/home");
                 })
-                .catch(error => console.error(error));
+                .catch(error => console.log(error));
         }
     }
 
