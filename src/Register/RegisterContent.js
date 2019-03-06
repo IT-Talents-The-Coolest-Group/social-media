@@ -32,12 +32,7 @@ class RegisterContent extends Component {
         let days = [];
 
         for (let day = 1; day <= 31; day++) {
-            if (day <= 9) {
-                days.push(<option key={`day-${day}`} value={"0" + day}>{day}</option>);
-            } else {
-                days.push(<option key={`day-${day}`} value={day}>{day}</option>);
-            }
-
+            days.push(<option key={`day-${day}`} value={day}>{day}</option>);
         }
 
         const allMonths = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
@@ -220,11 +215,11 @@ class RegisterContent extends Component {
                         <label className={styles.birthday}>Birthday</label>
                         <select name="month" onChange={this.onChange}>
                             <option defaultValue value="">Month</option>
-                            {this.state.months < 10 ? `0${this.state.months}` : this.state.months}
+                            {Number(this.state.months) < 10 ? `0${this.state.months}` : this.state.months}
                         </select>
                         <select name="day" onChange={this.onChange}>
                             <option defaultValue value="">Day</option>
-                            {this.state.days < 10 ? `0${this.state.days}` : this.state.days}
+                            {Number(this.state.days) < 10 ? `0${this.state.days}` : this.state.days}
                         </select>
                         <select name="year" onChange={this.onChange} className={classes.year.join(' ')} >
                             <option defaultValue value="">Year</option>
