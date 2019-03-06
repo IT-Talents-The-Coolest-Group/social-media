@@ -119,7 +119,7 @@ class RegisterContent extends Component {
     onSubmit = (e) => {
         e.preventDefault();
         const hasErrors = this.validate();
-        let url = 'http://bacefookapi.herokuapp.com/signup';
+        let url = 'https://bacefookapi.herokuapp.com/signup';
         if (!hasErrors) {
             const data = {
                 firstName: this.state.firstName,
@@ -130,7 +130,6 @@ class RegisterContent extends Component {
                 birthday: `${this.state.year}-${this.state.month}-${this.state.day}`,
                 gender: this.state.gender,
             };
-            console.log(data);
 
             fetch(url, {
                 method: "POST",
