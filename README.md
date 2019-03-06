@@ -2,7 +2,7 @@
 
 This is the final assignment from [IT Talents](https://ittalents.bg/home), to recreate the front end of [Facebook](https://facebook.com).
 
-Hosted at [bacefook.herokuapp.com](httpс://bacefook.herokuapp.com).
+Hosted at [bacefook.herokuapp.com](https://bacefook.herokuapp.com).
 
 Bacefook was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
