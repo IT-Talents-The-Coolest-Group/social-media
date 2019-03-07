@@ -25,7 +25,8 @@ class RegisterContent extends Component {
             password: '',
             confirmPassword: '',
             year: ''
-        }
+        },
+        id:''
     };
 
     componentDidMount() {
@@ -46,8 +47,9 @@ class RegisterContent extends Component {
         for (let month = 0; month < allMonths.length; month++) {
             if (month <= 9) {
                 months.push(<option key={`month-${month}`} value={"0" + (month + 1)}>{allMonths[month]}</option>);
-            } else
-                months.push(<option key={`month-${month}`} value={month+1}>{allMonths[month]}</option>);
+            } else {
+                months.push(<option key={`month-${month}`} value={month + 1}>{allMonths[month]}</option>);
+            }
         }
 
         let years = [];
@@ -62,7 +64,7 @@ class RegisterContent extends Component {
     }
 
     onChange = (e) => {
-        console.log(this.setState({ ...this.state, [e.target.name]: e.target.value }))
+        this.setState({ ...this.state, [e.target.name]: e.target.value });
 
     };
 
@@ -124,7 +126,8 @@ class RegisterContent extends Component {
     onSubmit = (e) => {
         e.preventDefault();
         const hasErrors = this.validate();
-        let url = 'http://bacefookapi.herokuapp.com/signup';
+        let url = 'https://bacefookapi.herokuapp.com/signup';
+        // let url = 'http://192.168.6.189:8090/singup';
         if (!hasErrors) {
             const data = {
                 firstName: this.state.firstName,
@@ -135,22 +138,40 @@ class RegisterContent extends Component {
                 birthday: `${this.state.year}-${this.state.month}-${this.state.day}`,
                 gender: this.state.gender,
             };
-            console.log(data);
+            // console.log(data);
 
             fetch(url, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
                 },
-                redirect: "follow",
+                // redirect: "follow",
                 // referrer: "no-referrer", 
                 body: JSON.stringify(data),
             })
                 .then(response => response.json())
-                .then(res => {
-                    console.log(res);
+                    // if(response.ok) {
+                        // return response.json();
+                    // }
+                    // else {
+                        // throw response;
+                    // }
+                // })
+                .then(json => {
+                   console.log(json)
+                    //handle success, json is response body json
                 })
-                .catch(error => console.error(error));
+                // .catch(error => { 
+                //     error.text().then(text=> {
+                //         console.log(text)
+                //         //Handle error, text is response body text
+                //     })
+                // }
+
+                .catch((error) => {
+                    alert(error.text())
+                  }
+                );
         }
     }
 

@@ -1,0 +1,62 @@
+.BoxCont{
+    display:flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+    -webkit-font-smoothing: antialiased;
+    margin:2%;
+}
+
+.Upload{
+    width:20%;
+    padding:1.8%;
+    text-align: center;
+    font-size:0.8em;
+    background-image: url('../assets/images/photo2.png');
+    background-size: 25%;
+    background-position: bottom left;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    border-radius: 18px;
+    margin:1% 0;
+    color:black;
+    box-shadow:0 2px 3px 0px rgba(0,0,0,0.25);
+    transition:.2s all; 
+    border:0;
+    outline: none;
+    
+}
+
+.BoxCont:hover .Upload{
+    /* filter:blur(1px); */
+    /* opacity:.5; */
+    transform: scale(.98);
+    box-shadow:none;
+}
+
+ .Upload:hover{
+    background-color: rgb(247, 156, 191);
+    transform:scale(1.9);
+    filter:blur(0.2px);
+    opacity:1;
+    box-sizing: border-box;
+    box-shadow:0 2px 3px 0px rgba(0,0,0,0.425);
+}
+.Add{
+    background-image: url('../assets/images/add.png');
+}
+
+.Flex{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    margin:1vh;
+    color:rgb(66, 103, 178);
+}
+
+.Input{
+    width:80%;
+    height:8vh;
+    outline:none;
+    font-size:1em;
+}

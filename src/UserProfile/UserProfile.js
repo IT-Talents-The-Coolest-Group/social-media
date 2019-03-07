@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 // import cover from '../assets/images/default_cover.jpg';
 import UserIntro from './UserIntro/UserIntro';
-import PostCreator from '../PostCreator/PostCreator';
+import Post from '../Post/Post';
 import UserCover from './UserCover/UserCover';
 import homeStyle from './UserProfile.module.css';
 
@@ -15,7 +15,7 @@ class UserProfile extends Component {
                 <div className={homeStyle.Main}>
                     <UserCover />
                     <UserIntro />
-                    <PostCreator />
+                    <Post />
                 </div>
             </React.Fragment>
         )

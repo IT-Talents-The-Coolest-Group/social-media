@@ -1,0 +1,31 @@
+.Container{
+    width:67%;
+    float:right;
+    margin-top: 2%;
+    border-radius: 5px;
+    background-color: rgb(217, 227, 247);
+    background-image: url('../assets/images/7.jpg'); 
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.Box{
+    margin-top:2.5vh auto;
+    width: 100%;
+    background-image: url('../assets/images/lamp.png');
+    background-repeat: no-repeat;
+    background-position: top left;
+    background-size: 5%;
+    margin-right:1%;
+    box-sizing: border-box;
+    /* height: 7%; */
+    color:rgb(66, 103, 178);
+}
+
+.Image{
+    border-radius: 50%;
+    /* width:150px; */
+    height: 150px;
+    position: relative;
+}
