@@ -112,11 +112,11 @@ class HomeHeader extends Component {
           <div className={style.Icon}>
             <NavLink className={style.HomePage} to="/home">Home</NavLink>
           </div>
-          <Badge color="secondary" badgeContent={badgeContent} invisible={invisible} className={classes.Bmargin} />
+          <Badge color="secondary" badgeContent={badgeContent} invisible={invisible} className={classes.Bmargin}><></></Badge>
           <NavLink to="/" className={style.Icon + ' ' + style.FriendsRequests} />
-          <Badge color="secondary" badgeContent={badgeContent} invisible={invisible} className={classes.Bmargin} />
+          <Badge color="secondary" badgeContent={badgeContent} invisible={invisible} className={classes.Bmargin}><></></Badge>
           <NavLink to="/" className={style.Icon + ' ' + style.Messages} />
-          <Badge color="secondary" badgeContent={badgeContent} invisible={invisible} className={classes.Bmargin} />
+          <Badge color="secondary" badgeContent={badgeContent} invisible={invisible} className={classes.Bmargin}><></></Badge>
           <NavLink to="/" className={style.Icon + ' ' + style.Notifications} />
           <NavLink to="/logout" className={style.Icon + ' ' + style.Logout} />
         </nav>

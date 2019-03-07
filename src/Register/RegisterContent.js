@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import styles from './RegisterContent.module.css';
 import Button from '../UI/Button/Button';
 import Input from '../UI/Input/Input';
+import { withRouter } from 'react-router-dom';
 
 class RegisterContent extends Component {
 
@@ -33,23 +34,14 @@ class RegisterContent extends Component {
         let days = [];
 
         for (let day = 1; day <= 31; day++) {
-            if (day <= 9) {
-                days.push(<option key={`day-${day}`} value={"0" + day}>{day}</option>);
-            } else {
-                days.push(<option key={`day-${day}`} value={day}>{day}</option>);
-            }
-
+            days.push(<option key={`day-${day}`} value={day}>{day}</option>);
         }
 
         const allMonths = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
         let months = [];
 
         for (let month = 0; month < allMonths.length; month++) {
-            if (month <= 9) {
-                months.push(<option key={`month-${month}`} value={"0" + (month + 1)}>{allMonths[month]}</option>);
-            } else {
-                months.push(<option key={`month-${month}`} value={month + 1}>{allMonths[month]}</option>);
-            }
+            months.push(<option key={`month-${month}`} value={month + 1}>{allMonths[month]}</option>);
         }
 
         let years = [];
@@ -65,7 +57,6 @@ class RegisterContent extends Component {
 
     onChange = (e) => {
         this.setState({ ...this.state, [e.target.name]: e.target.value });
-
     };
 
     validate = () => {
@@ -127,51 +118,32 @@ class RegisterContent extends Component {
         e.preventDefault();
         const hasErrors = this.validate();
         let url = 'https://bacefookapi.herokuapp.com/signup';
-        // let url = 'http://192.168.6.189:8090/singup';
         if (!hasErrors) {
+            const day = +this.state.day <= 9 ? `0${this.state.day}` : this.state.day;
+            const month = +this.state.month <= 9 ? `0${this.state.month}` : this.state.month;
             const data = {
                 firstName: this.state.firstName,
                 lastName: this.state.lastName,
                 email: this.state.email,
                 password: this.state.password,
                 passwordConfirmation: this.state.confirmPassword,
-                birthday: `${this.state.year}-${this.state.month}-${this.state.day}`,
+                birthday: `${this.state.year}-${month}-${day}`,
                 gender: this.state.gender,
             };
-            // console.log(data);
 
             fetch(url, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
                 },
-                // redirect: "follow",
-                // referrer: "no-referrer", 
+                redirect: "follow",
                 body: JSON.stringify(data),
             })
-                .then(response => response.json())
-                    // if(response.ok) {
-                        // return response.json();
-                    // }
-                    // else {
-                        // throw response;
-                    // }
-                // })
-                .then(json => {
-                   console.log(json)
-                    //handle success, json is response body json
+                .then(res => {
+                    sessionStorage.setItem('loggedUserId', res);
+                    this.props.history.push("/home");
                 })
-                // .catch(error => { 
-                //     error.text().then(text=> {
-                //         console.log(text)
-                //         //Handle error, text is response body text
-                //     })
-                // }
-
-                .catch((error) => {
-                    alert(error.text())
-                  }
-                );
+                .catch(error => console.log(error));
         }
     }
 
@@ -241,11 +213,11 @@ class RegisterContent extends Component {
                         <label className={styles.birthday}>Birthday</label>
                         <select name="month" onChange={this.onChange}>
                             <option defaultValue value="">Month</option>
-                            {this.state.months < 10 ? `0${this.state.months}` : this.state.months}
+                            {this.state.months}
                         </select>
                         <select name="day" onChange={this.onChange}>
                             <option defaultValue value="">Day</option>
-                            {this.state.days < 10 ? `0${this.state.days}` : this.state.days}
+                            {this.state.days}
                         </select>
                         <select name="year" onChange={this.onChange} className={classes.year.join(' ')} >
                             <option defaultValue value="">Year</option>
@@ -274,5 +246,5 @@ class RegisterContent extends Component {
     }
 }
 
-export default RegisterContent;
+export default withRouter(RegisterContent);
 
