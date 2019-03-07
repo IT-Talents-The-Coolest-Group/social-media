@@ -61,9 +61,10 @@ import  {BASE_URL} from '../utils/Constants';
         let url = BASE_URL + '/posts';
         fetch(url, {
             method: "POST",
+            // credentials: 'include',
             headers: {
                 "Content-Type": "application/json",
-                "token":"az sym gabi"
+                // "token":"az sym gabi"
             },
             body: JSON.stringify(data),
         })
@@ -82,6 +83,7 @@ import  {BASE_URL} from '../utils/Constants';
                     this.setState({
                         loading: false,
                         post: { ...data, content: "" }
+
                     });
                     console.log('========')
                     console.log(data)
@@ -110,7 +112,7 @@ import  {BASE_URL} from '../utils/Constants';
 
     componentDidMount() {
         this.setState({ loading: true });
-        let url = BASE_URL + '/posterId=17';
+        let url = BASE_URL + '/posterId=44';
         fetch(url,{
             method:"GET",
              headers: {
@@ -123,6 +125,7 @@ import  {BASE_URL} from '../utils/Constants';
                     posts: res,
                     loading: false
                 });
+                console.log(res)
             })
             .catch(err => {
                 this.setState({ loading: false });

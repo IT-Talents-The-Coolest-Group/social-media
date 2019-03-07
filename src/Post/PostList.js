@@ -1,7 +1,7 @@
 import React from "react";
 import Post from "./Post";
 import comForm from './PostForm.module.css';
-import Input from './input';
+// import Input from './input';
 
 export default function postList(props) {
   return (
@@ -18,7 +18,7 @@ export default function postList(props) {
       ) : null}
 
       {props.posts.map((post, index) => (
-        <Input key={index} post={post} />
+        <Post key={index} post={post} />
       ))}
 
     </>

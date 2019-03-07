@@ -14,7 +14,7 @@ class Post extends Component {
         this.addPost = this.addPost.bind(this);
     }
 
-    addPost(post) {
+    addPost = (post) => {
         this.setState({
             loading: false,
             posts: [post, ...this.state.posts]
@@ -22,7 +22,7 @@ class Post extends Component {
     }
 
     render() {
-        const { classes } = this.props;
+        // const { classes } = this.props;
         return (
             <React.Fragment>
                 <div className={p.Container}>

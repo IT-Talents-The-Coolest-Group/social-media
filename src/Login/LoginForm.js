@@ -16,7 +16,6 @@ class LoginForm extends Component {
 
     onSubmit = (e) => {
         e.preventDefault();
-        // let url = 'https://bacefookapi.herokuapp.com/login';
         let url = BASE_URL + '/login';
         const data = {
             email: this.state.email,
@@ -25,6 +24,7 @@ class LoginForm extends Component {
 
         fetch(url, {
             method: "POST",
+            credentials: 'include',
             headers: {
                 "Content-Type": "application/json",
             },

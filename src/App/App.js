@@ -9,6 +9,7 @@ import RegisterContainer from  '../Register/RegisterContainer';
 import Logout from '../Logout/Logout';
 import HomePage from '../HomePage/HomePage';
 import About from '../UserProfile/About/About';
+import { connect } from 'react-redux';
 
 class App extends Component {
   render() {
@@ -33,5 +34,11 @@ class App extends Component {
     );
   }
 }
+const mapStateToProps = state => {
+  return {
+      users: state.users
+  }
+}
 
-export default App;
+export default connect(mapStateToProps, null)(App);
+// export default App;
