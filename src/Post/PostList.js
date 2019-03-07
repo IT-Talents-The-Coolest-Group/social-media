@@ -2,6 +2,8 @@ import React from "react";
 import Post from "./Post";
 import comForm from './PostForm.module.css';
 // import Input from './input';
+// import { createPost } from '../Actions/CreatePost';
+// import { connect } from 'react-redux';
 
 export default function postList(props) {
   return (

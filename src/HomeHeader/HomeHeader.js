@@ -74,6 +74,7 @@ const themeStyles = theme => ({
 
 
 class HomeHeader extends Component {
+  
   state = {
     invisible: false,
     badgeContent: '0'
@@ -82,7 +83,7 @@ class HomeHeader extends Component {
   render() {
     const { classes } = this.props;
     const { invisible, badgeContent } = this.state;
-
+console.log(this.props.firstName)
     return (
       <div className={style.HeadContainer}>
 
@@ -111,7 +112,7 @@ class HomeHeader extends Component {
             <Avatar alt="Profile Photo" src={img}  className={classes.avatar}/>
           </NavLink>
           <div className={style.Icon}>
-            <NavLink className={style.HeaderProf} to="/profile-home">UserName</NavLink>
+            <NavLink className={style.HeaderProf} to="/profile-home">{this.props.firstName}</NavLink>
           </div>
 
           <div className={style.Icon}>
@@ -133,5 +134,6 @@ class HomeHeader extends Component {
   HomeHeader.propTypes = {
    classes: PropTypes.object.isRequired,
  };
+
 
 export default withStyles(themeStyles)(HomeHeader);
