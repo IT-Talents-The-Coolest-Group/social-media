@@ -15,7 +15,8 @@ class LoginForm extends Component {
 
     onSubmit = (e) => {
         e.preventDefault();
-        let url = 'https://bacefookapi.herokuapp.com/login';
+        // let url = 'https://bacefookapi.herokuapp.com/login';
+        let url = 'http://192.168.6.189:8090/login';
         const data = {
             email: this.state.email,
             password: this.state.password
