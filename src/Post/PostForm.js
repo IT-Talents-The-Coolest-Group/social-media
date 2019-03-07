@@ -57,7 +57,7 @@ import comForm from './PostForm.module.css';
         console.log('xaxa')
         console.log(data)
 
-        let url = 'https://bacefookapi.herokuapp.com/posts';
+        let url = 'http://bacefookapi.herokuapp.com/posts';
 
         fetch(url, {
             method: "POST",
@@ -110,7 +110,12 @@ import comForm from './PostForm.module.css';
     componentDidMount() {
         this.setState({ loading: true });
 
-        fetch("https://bacefookapi.herokuapp.com/posts?posterId=17")
+        fetch("https://bacefookapi.herokuapp.com/posts?posterId=17",{
+            method:"GET",
+             headers: {
+                "Content-Type": "application/json",
+            },
+        })
             .then(res => res.json())
             .then(res => {
                 this.setState({
@@ -121,6 +126,8 @@ import comForm from './PostForm.module.css';
             .catch(err => {
                 this.setState({ loading: false });
             });
+
+            console.log(6666)
     }
 
     render() {

@@ -7,7 +7,7 @@ export default function postList(props) {
       <>
       <h5 className={comForm.Flex}>
         <span >{props.posts.length}</span>{" "}
-        Post {props.posts.length > 0 ? "s" : ""} maded
+        Post {props.posts.length > 0 ? "s" : ""} made
       </h5>
 
       {props.posts.length === 0 && !props.loading ? (
