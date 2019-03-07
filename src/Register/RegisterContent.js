@@ -289,8 +289,12 @@ function isEmailValid(email) {
 
 function emailExists(email) {
     let users = JSON.parse(localStorage.getItem('userList'));
-    let index = users.findIndex(u => u.email === email);
 
+    if (typeof users === "undefined" || users === null) {
+        return false;
+    }
+
+    let index = users.findIndex(u => u.email === email);
     return index !== -1;
 }
 
