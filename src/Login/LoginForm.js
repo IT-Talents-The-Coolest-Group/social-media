@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Button from '../UI/Button/Button';
 import Input from '../UI/Input/Input';
 import { withRouter } from 'react-router-dom';
+import { BASE_URL } from '../utils/Constants';
 
 class LoginForm extends Component {
     state = {
@@ -16,7 +17,7 @@ class LoginForm extends Component {
     onSubmit = (e) => {
         e.preventDefault();
         // let url = 'https://bacefookapi.herokuapp.com/login';
-        let url = 'http://192.168.6.189:8090/login';
+        let url = BASE_URL + '/login';
         const data = {
             email: this.state.email,
             password: this.state.password

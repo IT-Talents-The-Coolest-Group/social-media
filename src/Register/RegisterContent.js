@@ -3,6 +3,7 @@ import styles from './RegisterContent.module.css';
 import Button from '../UI/Button/Button';
 import Input from '../UI/Input/Input';
 import { withRouter } from 'react-router-dom';
+import { BASE_URL } from '../utils/Constants';
 
 class RegisterContent extends Component {
 
@@ -117,7 +118,7 @@ class RegisterContent extends Component {
     onSubmit = (e) => {
         e.preventDefault();
         const hasErrors = this.validate();
-        let url = 'https://bacefookapi.herokuapp.com/signup';
+        let url = BASE_URL + '/signup';
         if (!hasErrors) {
             const day = +this.state.day <= 9 ? `0${this.state.day}` : this.state.day;
             const month = +this.state.month <= 9 ? `0${this.state.month}` : this.state.month;

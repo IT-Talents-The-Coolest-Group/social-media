@@ -1,26 +1,8 @@
 import React, { Component } from 'react';
-// import img from '../assets/images/lamp.png';
 import PostList from './PostList';
 import PostForm from './PostForm';
 import p from './Post.module.css';
-import image from '../assets/images/girl.jpg';
-import Avatar from '@material-ui/core/Avatar';
-import { withStyles } from '@material-ui/core/styles';
 import comForm from './PostForm.module.css';
-
-
-const themeStyle = {
-    bigAvatar: {
-        width: '60px',
-        position: 'fixed',
-        left:'24%',
-        top:'20%',
-        height: '60px',
-        zIndex: 3,
-        border: '0.3vh solid white',
-        
-    },
-};
 
 class Post extends Component {
     constructor(props) {
@@ -51,12 +33,7 @@ class Post extends Component {
                     </h1>
                     <hr />
                     </div> 
-                    <div className={comForm.BoxCont}>
-                    <Avatar alt="Profile Photo" src={image} className={classes.bigAvatar} />
-                   </div>
-                        <div >
                             <PostForm addPost={this.addPost} />
-                        </div>
                         <div >
                             <PostList
                                 loading={this.state.loading}
@@ -70,4 +47,4 @@ class Post extends Component {
     }
 }
 
-export default withStyles(themeStyle)(Post);
+export default Post;

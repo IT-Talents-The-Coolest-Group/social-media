@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import comForm from './PostForm.module.css';
+import  {BASE_URL} from '../utils/Constants';
 // import TextField from '@material-ui/core/TextField';
 // import { withStyles } from '@material-ui/core/styles';
 
@@ -57,12 +58,12 @@ import comForm from './PostForm.module.css';
         console.log('xaxa')
         console.log(data)
 
-        let url = 'http://bacefookapi.herokuapp.com/posts';
-
+        let url = BASE_URL + '/posts';
         fetch(url, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
+                "token":"az sym gabi"
             },
             body: JSON.stringify(data),
         })
@@ -73,7 +74,7 @@ import comForm from './PostForm.module.css';
                 } else {
 
                     data.time = res.time;
-                    this.props.addComment(data);
+                    this.props.addPost(data);
 
                     console.log('==**************');
                     console.log(data)
@@ -109,8 +110,8 @@ import comForm from './PostForm.module.css';
 
     componentDidMount() {
         this.setState({ loading: true });
-
-        fetch("https://bacefookapi.herokuapp.com/posts?posterId=17",{
+        let url = BASE_URL + '/posterId=17';
+        fetch(url,{
             method:"GET",
              headers: {
                 "Content-Type": "application/json",

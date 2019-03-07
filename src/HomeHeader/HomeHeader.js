@@ -64,6 +64,11 @@ const themeStyles = theme => ({
     position: 'relative',
     left: '7vh',
     zIndex: 3,
+  },
+  avatar:{
+    height:'6vh',
+    width:'6vh',
+    border: '1px solid white'
   }
 });
 
@@ -103,7 +108,7 @@ class HomeHeader extends Component {
         </div>
         <nav className={style.SecondElem}>
           <NavLink to="/profile-home" className={style.Icon + ' ' + style.Profile}>
-            <Avatar alt="Profile Photo" src={img} />
+            <Avatar alt="Profile Photo" src={img}  className={classes.avatar}/>
           </NavLink>
           <div className={style.Icon}>
             <NavLink className={style.HeaderProf} to="/profile-home">UserName</NavLink>
