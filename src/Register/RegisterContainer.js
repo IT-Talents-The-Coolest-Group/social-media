@@ -12,14 +12,14 @@ class RegisterContainer extends Component {
     };
 
     setError = () => {
-        this.props.history.push('/');
+        this.props.route.history.push('/');
         return;
     }
 
     render() {
         return (<div className={styles.RegisterContainer}>
             <Header className={styles.RegisterHeadContainer}> <LoginForm route={this.props.route} onError={this.setError} /></Header>
-            <RegisterContent />
+            <RegisterContent route={this.props.route} />
         </div>);
     }
 }
