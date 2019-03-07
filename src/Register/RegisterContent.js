@@ -26,9 +26,10 @@ class RegisterContent extends Component {
             email: '',
             password: '',
             confirmPassword: '',
-            year: ''
+            year: '',
+            register: ''
         },
-        id:''
+        id: ''
     };
 
     componentDidMount() {
@@ -141,8 +142,16 @@ class RegisterContent extends Component {
                 body: JSON.stringify(data),
             })
                 .then(res => {
-                    sessionStorage.setItem('loggedUserId', res);
-                    this.props.history.push("/home");
+                    if (res.status === 200) {
+                        sessionStorage.setItem('loggedUserId', res);
+                        this.props.history.push("/home");
+                    }
+
+                    if (res.status === 422) {
+                        let errors = { ...this.state.errors };
+                        errors.register = 'This email is already taken!';
+                        this.setState({ errors });
+                    }
                 })
                 .catch(error => console.log(error));
         }
@@ -239,6 +248,9 @@ class RegisterContent extends Component {
                             <Input type="radio" id="unspecified" value="unspecified" name="gender" onChange={this.onChange} />
                             <label htmlFor="unspecified">Unspecified</label>
                         </div>
+                    </div>
+                    <div className={styles.error}>
+                        {this.state.errors.register}
                     </div>
                     <Button className="GreenBtn" onClick={this.onSubmit}>Sign up</Button>
                 </form>
