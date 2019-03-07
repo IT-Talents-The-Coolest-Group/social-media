@@ -2,8 +2,10 @@ import React, { Component } from 'react';
 import styles from './RegisterContent.module.css';
 import Button from '../UI/Button/Button';
 import Input from '../UI/Input/Input';
-import { withRouter } from 'react-router-dom';
-import { BASE_URL } from '../utils/Constants';
+// import { withRouter } from 'react-router-dom';
+// import { BASE_URL } from '../utils/Constants';
+import { connect } from 'react-redux';
+import { userRegister } from "../Actions/users";
 
 class RegisterContent extends Component {
 
@@ -83,11 +85,14 @@ class RegisterContent extends Component {
             errors.lastName = 'Your lastname must be more than 3 symbols length!';
         }
 
-        const emailRegex = new RegExp("^[(a-zA-Z-0-9-\\_\\+\\.)]+@[(a-z-A-z)]+\\.[(a-zA-z)]{2,5}$");
-
-        if (!emailRegex.test(this.state.email)) {
+        if (!isEmailValid(this.state.email)) {
             hasErrors = true;
             errors.email = 'Invalid email!';
+        } 
+
+        if (emailExists(this.state.email)) {
+            hasErrors = true;
+            errors.email = 'The email is already taken!';
         }
 
         const passRegex = new RegExp("^[a-zA-Z0-9]{8,30}$");
@@ -119,7 +124,7 @@ class RegisterContent extends Component {
     onSubmit = (e) => {
         e.preventDefault();
         const hasErrors = this.validate();
-        let url = BASE_URL + '/signup';
+        // let url = BASE_URL + '/signup';
         if (!hasErrors) {
             const day = +this.state.day <= 9 ? `0${this.state.day}` : this.state.day;
             const month = +this.state.month <= 9 ? `0${this.state.month}` : this.state.month;
@@ -133,27 +138,31 @@ class RegisterContent extends Component {
                 gender: this.state.gender,
             };
 
-            fetch(url, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                redirect: "follow",
-                body: JSON.stringify(data),
-            })
-                .then(res => {
-                    if (res.status === 200) {
-                        sessionStorage.setItem('loggedUserId', res);
-                        this.props.history.push("/home");
-                    }
+            this.props.userRegister(data);
 
-                    if (res.status === 422) {
-                        let errors = { ...this.state.errors };
-                        errors.register = 'This email is already taken!';
-                        this.setState({ errors });
-                    }
-                })
-                .catch(error => console.log(error));
+            this.props.route.history.push("/home");
+
+            // fetch(url, {
+            //     method: "POST",
+            //     headers: {
+            //         "Content-Type": "application/json",
+            //     },
+            //     redirect: "follow",
+            //     body: JSON.stringify(data),
+            // })
+            //     .then(res => {
+            //         if (res.status === 200) {
+            //             sessionStorage.setItem('loggedUserId', res);
+            //             this.props.history.push("/home");
+            //         }
+
+            //         if (res.status === 422) {
+            //             let errors = { ...this.state.errors };
+            //             errors.register = 'This email is already taken!';
+            //             this.setState({ errors });
+            //         }
+            //     })
+            //     .catch(error => console.log(error));
         }
     }
 
@@ -259,5 +268,32 @@ class RegisterContent extends Component {
     }
 }
 
-export default withRouter(RegisterContent);
+
+const mapDispatchToProps = dispatch => {
+    return {
+        userRegister: (user) => dispatch(userRegister(user)),
+    }
+}
+
+const mapStateToProps = state => {
+    return {
+        users: state.users,
+        currentUser: state.currentUser,
+    };
+};
+
+function isEmailValid(email) {
+    const regex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return regex.test(String(email).toLowerCase());
+}
+
+function emailExists(email) {
+    let users = JSON.parse(localStorage.getItem('userList'));
+    let index = users.findIndex(u => u.email === email);
+
+    return index !== -1;
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(RegisterContent);
+// export default withRouter(RegisterContent);
 

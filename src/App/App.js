@@ -17,12 +17,12 @@ class App extends Component {
       <BrowserRouter>
         <div className="App">
           <Switch>
-            <Route exact path="/profile-home" render={() => { return (<><HomeHeader /> <UserProfile/></>) }} />
-            <Route exact path="/logout" render={() => { return ( <Logout />) }} />
-            <Route exact path="/register" render={() => { return (<RegisterContainer />) }} />
-            <Route exact path="/" render={() => { return (<LoginContainer />) }} />
-            <Route exact path="/home" render={() => { return (<HomePage/>) }} />
-            <Route exact path="/profile-home/account-details" render={() => { return (<About/>) }} />
+            <Route exact path="/profile-home" render={route => { return (<><HomeHeader /> <UserProfile route={route} /></>) }} />
+            <Route exact path="/logout" render={route => { return ( <Logout route={route} />) }} />
+            <Route exact path="/register" render={route => { return (<RegisterContainer route={route} />) }} />
+            <Route exact path="/" render={route => { return (<LoginContainer route={route} />) }} />
+            <Route exact path="/home" render={route => { return (<HomePage route={route} />) }} />
+            <Route exact path="/profile-home/account-details" render={route => { return (<About route={route} />) }} />
 
             {/* NOT FOUND page */}
             <Route render={

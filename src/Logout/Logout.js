@@ -3,8 +3,20 @@ import { Link } from 'react-router-dom';
 import img from '../assets/images/hands.gif';
 import styles from '../Login/LoginContainer.module.css';
 import logoutStyle from './Logout.module.css';
+import { connect } from 'react-redux';
 
 class Logout extends Component {
+    componentDidMount() {
+        if (this.props.currentUser.isLogged === false) {
+            this.props.route.history.push('/');
+        }
+    }
+
+    componentDidUpdate() {
+        if (this.props.currentUser.isLogged === false) {
+            this.props.route.history.push('/');
+        }
+    }
 
     render() {
         return (
@@ -17,4 +29,10 @@ class Logout extends Component {
     }
 }
 
-export default Logout;
+const mapStateToProps = state => {
+    return {
+        currentUser: state.currentUser,
+    };
+};
+
+export default connect(mapStateToProps, null)(Logout);

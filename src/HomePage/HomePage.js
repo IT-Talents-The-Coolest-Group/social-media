@@ -6,7 +6,7 @@ import Post from '../Post/Post';
 import image from '../assets/images/girl.jpg';
 import Avatar from '@material-ui/core/Avatar';
 import { withStyles } from '@material-ui/core/styles';
-
+import { connect } from 'react-redux';
 
 const themeStyle = {
     bigAvatar: {
@@ -21,6 +21,18 @@ const themeStyle = {
     },
 };
 class HomePage extends Component {
+    componentDidMount() {
+        if (this.props.currentUser.isLogged === false) {
+            this.props.route.history.push('/');
+        }
+    }
+
+    componentDidUpdate() {
+        if (this.props.currentUser.isLogged === false) {
+            this.props.route.history.push('/');
+        }
+    }
+
     render() {
         const { classes } = this.props;
         return (
@@ -35,4 +47,10 @@ class HomePage extends Component {
     }
 }
 
-export default withStyles(themeStyle)(HomePage);
+const mapStateToProps = state => {
+    return {
+        currentUser: state.currentUser,
+    };
+};
+
+export default connect(mapStateToProps, null)(withStyles(themeStyle)(HomePage));

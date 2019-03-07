@@ -19,7 +19,7 @@ class LoginContent extends Component {
             <div className={styles.LoginContent}>
                 <h2>Log into Facebook</h2>
                 {this.state.error !== '' && <div className={styles.LoginError}>{this.state.error}</div>}
-                <LoginForm onError={this.setError} onChange={this.onChange} />
+                <LoginForm route={this.props.route} onError={this.setError} />
                 <span>or</span>
                 <Link className="GreenLink" to="/register">Create New Account</Link>
             </div>
@@ -28,4 +28,3 @@ class LoginContent extends Component {
 }
 
 export default LoginContent;
-

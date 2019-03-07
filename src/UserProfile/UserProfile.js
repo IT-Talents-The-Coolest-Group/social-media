@@ -7,8 +7,7 @@ import homeStyle from './UserProfile.module.css';
 import { withStyles } from '@material-ui/core/styles';
 import image from '../assets/images/girl.jpg';
 import Avatar from '@material-ui/core/Avatar';
-
-
+import { connect } from 'react-redux';
 
 const themeStyle = {
     bigAvatar: {
@@ -24,6 +23,18 @@ const themeStyle = {
 };
 
 class UserProfile extends Component {
+    componentDidMount() {
+        if (this.props.currentUser.isLogged === false) {
+            this.props.route.history.push('/');
+        }
+    }
+
+    componentDidUpdate() {
+        if (this.props.currentUser.isLogged === false) {
+            this.props.route.history.push('/');
+        }
+    }
+
     render() {
 const {classes} = this.props;
         return (
@@ -39,6 +50,10 @@ const {classes} = this.props;
     }
 }
 
+const mapStateToProps = state => {
+    return {
+        currentUser: state.currentUser,
+    };
+};
 
-
-export default withStyles(themeStyle)(UserProfile);
+export default connect(mapStateToProps, null)(withStyles(themeStyle)(UserProfile));
