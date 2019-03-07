@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import comForm from './PostForm.module.css';
-import  {BASE_URL} from '../utils/Constants';
+// import  {BASE_URL} from '../utils/Constants';
 // import TextField from '@material-ui/core/TextField';
 // import { withStyles } from '@material-ui/core/styles';
 
@@ -58,45 +58,45 @@ import  {BASE_URL} from '../utils/Constants';
         console.log('xaxa')
         console.log(data)
 
-        let url = BASE_URL + '/posts';
-        fetch(url, {
-            method: "POST",
-            // credentials: 'include',
-            headers: {
-                "Content-Type": "application/json",
-                // "token":"az sym gabi"
-            },
-            body: JSON.stringify(data),
-        })
-            .then(res => res.json())
-            .then(res => {
-                if (res.error) {
-                    this.setState({ loading: false, error: res.error });
-                } else {
+        // let url = BASE_URL + '/posts';
+        // fetch(url, {
+        //     method: "POST",
+        //     // credentials: 'include',
+        //     headers: {
+        //         "Content-Type": "application/json",
+        //         // "token":"az sym gabi"
+        //     },
+        //     body: JSON.stringify(data),
+        // })
+        //     .then(res => res.json())
+        //     .then(res => {
+        //         if (res.error) {
+        //             this.setState({ loading: false, error: res.error });
+        //         } else {
 
-                    data.time = res.time;
-                    this.props.addPost(data);
+        //             data.time = res.time;
+        //             this.props.addPost(data);
 
-                    console.log('==**************');
-                    console.log(data)
+        //             console.log('==**************');
+        //             console.log(data)
 
-                    this.setState({
-                        loading: false,
-                        post: { ...data, content: "" }
+        //             this.setState({
+        //                 loading: false,
+        //                 post: { ...data, content: "" }
 
-                    });
-                    console.log('========')
-                    console.log(data)
-                }
-            })
-            .catch(err => {
-                this.setState({
-                    error: "Something went wrong while submitting form.",
-                    // error: err.text,
-                    loading: false
-                })
-                alert(err)
-            });
+        //             });
+        //             console.log('========')
+        //             console.log(data)
+        //         }
+        //     })
+        //     .catch(err => {
+        //         this.setState({
+        //             error: "Something went wrong while submitting form.",
+        //             // error: err.text,
+        //             loading: false
+        //         })
+        //         alert(err)
+        //     });
     }
 
     isFormValid() {
@@ -111,25 +111,25 @@ import  {BASE_URL} from '../utils/Constants';
     }
 
     componentDidMount() {
-        this.setState({ loading: true });
-        let url = BASE_URL + '/posterId=44';
-        fetch(url,{
-            method:"GET",
-             headers: {
-                "Content-Type": "application/json",
-            },
-        })
-            .then(res => res.json())
-            .then(res => {
-                this.setState({
-                    posts: res,
-                    loading: false
-                });
-                console.log(res)
-            })
-            .catch(err => {
-                this.setState({ loading: false });
-            });
+        // this.setState({ loading: true });
+        // let url = BASE_URL + '/posterId=44';
+        // fetch(url,{
+        //     method:"GET",
+        //      headers: {
+        //         "Content-Type": "application/json",
+        //     },
+        // })
+        //     .then(res => res.json())
+        //     .then(res => {
+        //         this.setState({
+        //             posts: res,
+        //             loading: false
+        //         });
+        //         console.log(res)
+        //     })
+        //     .catch(err => {
+        //         this.setState({ loading: false });
+        //     });
 
             console.log(6666)
     }
