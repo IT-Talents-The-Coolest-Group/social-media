@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import Button from '../UI/Button/Button';
 import Input from '../UI/Input/Input';
-import { withRouter } from 'react-router-dom';
+// import { withRouter } from 'react-router-dom';
 // import { BASE_URL } from '../utils/Constants';
+import { connect } from 'react-redux';
+import { userLogin } from '../Actions/users';
 
 class LoginForm extends Component {
     state = {
@@ -10,12 +12,31 @@ class LoginForm extends Component {
         password: "",
     };
 
+    componentDidMount() {
+        if (this.props.currentUser.isLogged === true) {
+            this.props.route.history.push("/home");
+        }
+    }
+
+    componentDidUpdate() {
+        if (this.props.currentUser.isLogged === true) {
+            this.props.route.history.push("/home");
+        } else {
+            if (this.props.loginErr === true) {
+                this.props.onError();
+            }
+        }
+    }
+
     onChange = (e) => {
         this.setState({ ...this.state, [e.target.name]: e.target.value });
     }
 
     onSubmit = (e) => {
         e.preventDefault();
+        this.props.userLogin(this.state.email, this.state.password);
+
+
         // let url = BASE_URL + '/login';
         // const data = {
         //     email: this.state.email,
@@ -53,4 +74,19 @@ class LoginForm extends Component {
     }
 }
 
-export default withRouter(LoginForm);
+const mapDispatchToProps = dispatch => {
+    return {
+        userLogin: (email, password) => dispatch(userLogin(email, password))
+    };
+}
+
+const mapStateToProps = state => {
+    return {
+        users: state.users,
+        currentUser: state.currentUser,
+        loginErr: state.loginErr,
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(LoginForm);
+// export default withRouter(LoginForm);

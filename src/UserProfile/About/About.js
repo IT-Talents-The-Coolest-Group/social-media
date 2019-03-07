@@ -6,8 +6,21 @@ import homeStyle from '../UserProfile.module.css';
 // import Input from '../../UI/Input/Input';
 import Input from '@material-ui/core/Input';
 import ChangePassword from "./ChangePassword";
+import { connect } from 'react-redux';
+
 
 class About extends Component {
+    componentDidMount() {
+        if (this.props.currentUser.isLogged === false) {
+            this.props.route.history.push('/');
+        }
+    }
+
+    componentDidUpdate() {
+        if (this.props.currentUser.isLogged === false) {
+            this.props.route.history.push('/');
+        }
+    }
     render() {
         return (
             <>
@@ -47,4 +60,10 @@ class About extends Component {
     }
 }
 
-export default About;
+const mapStateToProps = state => {
+    return {
+        currentUser: state.currentUser,
+    };
+};
+
+export default connect(mapStateToProps, null)(About);
