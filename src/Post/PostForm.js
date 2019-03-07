@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import comForm from './PostForm.module.css';
-import TextField from '@material-ui/core/TextField';
+// import TextField from '@material-ui/core/TextField';
 // import { withStyles } from '@material-ui/core/styles';
 
 // const themeStyle = () => ({
@@ -66,7 +66,7 @@ import TextField from '@material-ui/core/TextField';
             },
             body: JSON.stringify(data),
         })
-            .then(res => console.log(res.json()))
+            .then(res => res.json())
             .then(res => {
                 if (res.error) {
                     this.setState({ loading: false, error: res.error });
@@ -144,7 +144,8 @@ import TextField from '@material-ui/core/TextField';
                             value={this.state.post.content}
                             className={comForm.Input}
                             placeholder="What's on your mind?😎"
-                            name="content"      
+                            name="content"  
+                            autoComplete="off"    
                         />
                     </div>
 

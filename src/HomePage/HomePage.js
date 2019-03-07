@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import HomeHeader from '../HomeHeader/HomeHeader';
-import PostCreator from '../PostCreator/PostCreator';
+// import PostCreator from '../PostCreator/PostCreator';
 import homeStyle from './HomePage.module.css';
 import Post from '../Post/Post';
 

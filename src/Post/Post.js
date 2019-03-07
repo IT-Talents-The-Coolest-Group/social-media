@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import img from '../assets/images/lamp.png';
+// import img from '../assets/images/lamp.png';
 import PostList from './PostList';
 import PostForm from './PostForm';
 import p from './Post.module.css';
@@ -47,7 +47,7 @@ class Post extends Component {
                 <div className={p.Box}>
                     <h1 className={comForm.Flex}>
                         Create a Post
-          <span aria-label="Chat"> 💬</span>
+          <span role="img" aria-label="chat"> 💬</span>
                     </h1>
                     <hr />
                     </div> 
