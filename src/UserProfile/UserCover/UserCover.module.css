@@ -67,3 +67,38 @@
     background-color: rgb(247, 156, 191);
     opacity: 0.5;
 }
+
+.Upload{
+    color:transparent;
+    position:absolute;
+    top:10%;
+    left:11%;
+    /* display: none; */
+    z-index: -1;
+}
+
+.Label{
+    position:absolute;
+    top:10%;
+    left:11%;
+    color:rgb(66, 103, 178);
+    font-weight:bold;
+    cursor: pointer;
+    background-color: rgb(217, 227, 247);
+    border-radius: 5px;
+    font-size:0.8em;
+    padding: 1.5px;
+    transition:.1s all; 
+    /* width:2vh; */
+}
+
+.ProfilePhoto{
+    top:47.2%;
+}
+
+.Label:hover{
+    transform:scale(1.01);
+    box-sizing: border-box;
+    background-color: pink;
+    box-shadow:0 2px 3px 0px rgba(0,0,0,0.425);
+}

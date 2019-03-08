@@ -10,3 +10,27 @@
         flex-wrap: wrap;
 }
 
+.avatar{
+        position:fixed;
+        top:18.5%;
+        left:23.8%;
+        object-fit: cover;
+        width:69px;
+        height:61px;
+        border:1px solid white;
+        border-radius: 50%;
+}
+
+@media screen and (max-width: 1025px) {
+        .avatar{
+                top:14%;
+                left:24.8%;
+        } 
+}
+
+@media screen and (max-width: 1366px) {
+        .avatar{
+                top:15%;
+                left:23.8%;
+        } 
+}

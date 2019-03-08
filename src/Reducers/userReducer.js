@@ -1,7 +1,7 @@
-import { ADD_POST, USER_LOGIN, USER_REGISTER, USER_LOGOUT, CHANGE_PASSWORD } from '../Actions/actionTypes';
+import { USER_LOGIN, USER_REGISTER, USER_LOGOUT} from '../Actions/actionTypes';
 
 const initialState = {
-    users: (localStorage.getItem('userList') ? JSON.parse(localStorage.getItem('userList')) :  []),
+    users: (localStorage.getItem('userList') ? JSON.parse(localStorage.getItem('userList')) : []),
     // users: [{
     //     id:1,
     //     firstName: '',
@@ -32,8 +32,8 @@ const initialState = {
     //     }],
     // }],
     currentUser: {
-        user : (JSON.parse(sessionStorage.getItem('loggedUser'))) ? JSON.parse(sessionStorage.getItem('loggedUser'))
-        : null,
+        user: (JSON.parse(sessionStorage.getItem('loggedUser'))) ? JSON.parse(sessionStorage.getItem('loggedUser'))
+            : null,
         isLogged: JSON.parse(sessionStorage.getItem('loggedUser')) ? true : false
     },
     logginErr: false,
@@ -41,12 +41,6 @@ const initialState = {
 
 const reducer = (state = initialState, action) => {
     switch (action.type) {
-        case ADD_POST: {
-            const newStateOfUsers = [...state.users];
-            return { ...state }
-
-        }
-
         case USER_LOGIN: {
             let user = state.users.filter(u => {
                 if (u.password === action.password && u.email === action.email) {
@@ -57,12 +51,14 @@ const reducer = (state = initialState, action) => {
 
             if (user !== null && user.length === 1) {
                 sessionStorage.setItem('loggedUser', JSON.stringify(user[0]));
-                return {...state, currentUser: {
-                    user: user[0],
-                    isLogged: true,
-                }, loginErr: false};
+                return {
+                    ...state, currentUser: {
+                        user: user[0],
+                        isLogged: true,
+                    }, loginErr: false
+                };
             }
-            return {...state, loginErr: true};
+            return { ...state, loginErr: true };
         }
 
         case USER_REGISTER: {
@@ -77,20 +73,43 @@ const reducer = (state = initialState, action) => {
 
             localStorage.setItem('userList', JSON.stringify([...state.users, user]));
             sessionStorage.setItem('loggedUser', JSON.stringify(user));
-            return {...state, users: [...state.users, user], currentUser: {
-                user: user,
-                isLogged: true,
-            }};
+            return {
+                ...state, users: [...state.users, user], currentUser: {
+                    user: user,
+                    isLogged: true,
+                }
+            };
         }
 
         case USER_LOGOUT: {
             sessionStorage.setItem('loggedUser', null);
-            return {...state, currentUser: {
-                user : null,
-                isLogged: false
-            }};
+            return {
+                ...state, currentUser: {
+                    user: null,
+                    isLogged: false
+                }
+            };
         }
 
+        // case UPLOAD_PHOTO: {
+        //     let user = action.user;
+        //     user.selectefFileCover = '';
+        //     user.selectefFileAvatar = '';
+        //     let selectefFileCover = state.users.selectefFileCover;
+        //     let selectefFileAvatar = state.users.selectefFileAvatar;
+
+        //     user.selectefFileCover = selectefFileCover;
+        //     user.selectefFileAvatar = selectefFileAvatar;
+
+        //     localStorage.setItem('userList', JSON.stringify([...state.users, user]));
+        //     sessionStorage.setItem('loggedUser', JSON.stringify(user));
+        //     return {
+        //         ...state, users: [...state.users, user], currentUser: {
+        //             user: user,
+        //         }
+        //     };
+        // }
+      
         default: return state;
     };
 }

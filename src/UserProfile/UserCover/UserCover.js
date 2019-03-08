@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import coverStyle from './UserCover.module.css';
 import { withStyles } from '@material-ui/core/styles';
 import Avatar from '@material-ui/core/Avatar';
-import img from '../../assets/images/girl.jpg';
 import { Link } from 'react-router-dom';
-import coverImg from '../../assets/images/12.jpg';
 import { connect } from 'react-redux';
+import { uploadPhoto } from '../../Actions/users';
+import { EventEmitter } from 'events';
 
 const themeStyles = {
     bigAvatar: {
@@ -20,24 +20,44 @@ const themeStyles = {
 };
 
 class UserCover extends Component {
-    // state={
-    //     selectedFile:null
-    // }
-    // fileSelectedHandler=event=>{
-    //     this.setState({selectedFile:event.target.files[0]})
-    // }
 
-    // fileUploadHandler=()=>{
+    state={
+        selectedFileCover:{
+            src:'12.jpg'
+        },
+        selectedFileAvatar:{
+            src:'girl.jpg'
+        }
+    }
+   
+    fileSelectedHandler=event=>{
+        event.preventDefault();
+        let selectedFileCover = this.state.selectedFileCover
+        selectedFileCover.src = event.target.files[0].name;
+        this.setState({selectedFileCover})
+        
+    }
 
-    // }
+    fileSelectedHandler2=event=>{
+        event.preventDefault();
+        let selectedFileAvatar = this.state.selectedFileAvatar
+        selectedFileAvatar.src = event.target.files[0].name;
+        this.setState({selectedFileAvatar})
+        
+    }
+
     render() {
         const { classes } = this.props;
+        
         return (
             <React.Fragment>
-                <img src={coverImg} alt="Cover" className={coverStyle.Cover} />
-                {/* <input className={coverStyle.Upload} type="file" onChange={this.fileSelectedHandler}/> */}
-                {/* <button onClick={this.fileUploadHandler}>Upload</button> */}
-                <Avatar alt="Profile Photo" src={img} className={classes.bigAvatar} />
+                
+                <input id="myuniqueid" className={coverStyle.Upload} type="file" className={coverStyle.Upload} onChange={this.fileSelectedHandler}/>
+                <label className = {coverStyle.Label} htmlFor="myuniqueid">Change Your Cover</label>
+                <img src={require('../../assets/images/'+ this.state.selectedFileCover.src)} alt="Cover" className={coverStyle.Cover} />
+                <Avatar alt="Profile Photo" src={require('../../assets/images/'+ this.state.selectedFileAvatar.src)} className={classes.bigAvatar} />
+                <input id="myuniqueid2" className={coverStyle.Upload} type="file" className={coverStyle.Upload} onChange={this.fileSelectedHandler2}/>
+                <label className = {coverStyle.Label+' '+ coverStyle.ProfilePhoto} htmlFor="myuniqueid2">Change Profile Photo</label>
                 <Link to="/profile-home" className={coverStyle.Nickname}>{this.props.currentUser.user.firstName} {this.props.currentUser.user.lastName}</Link>
                 <Link className={coverStyle.Edit} to="/profile-home/account-details-Edit"></Link>
                 <div className={coverStyle.ToolbarProfile}>
@@ -56,5 +76,13 @@ const mapStateToProps = state => {
         currentUser: state.currentUser,
     };
   };
-  export default connect(mapStateToProps, null)(withStyles(themeStyles)(UserCover));
+
+  const mapDispatchToProps = dispatch => {
+    return {
+        fileSelectedHandler: (selectedFileCover,selectedFileAvatar) => 
+        dispatch(uploadPhoto(selectedFileCover,selectedFileAvatar))
+    }
+}
+   
+  export default connect(mapStateToProps, mapDispatchToProps)(withStyles(themeStyles)(UserCover));
 // export default withStyles(themeStyle)(UserCover);

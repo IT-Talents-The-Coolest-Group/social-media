@@ -4,8 +4,6 @@ import UserCover from '../UserCover/UserCover';
 import HomeHeader from '../../HomeHeader/HomeHeader';
 import homeStyle from '../UserProfile.module.css';
 // import Input from '../../UI/Input/Input';
-import Input from '@material-ui/core/Input';
-import ChangePassword from "./ChangePassword";
 import { connect } from 'react-redux';
 
 
@@ -41,7 +39,7 @@ class About extends Component {
                         <hr className={aboutStyle.Hr} />
                         <div className={aboutStyle.DetailContainer}>
                             <span className={aboutStyle.Span}>Nickname</span>
-                            <p>{this.state.nickname.nickname}</p>
+                            <p>{this.props.currentUser.user.firstName}</p>
                         </div>
 
                         <div className={aboutStyle.DetailContainer}>
