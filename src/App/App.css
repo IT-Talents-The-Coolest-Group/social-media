@@ -1,6 +1,7 @@
 .App {
   min-height: 100vh;
   height: auto;
+  
 }
 
 .App-logo {
@@ -20,12 +21,4 @@
   to {
     transform: rotate(360deg);
   }
-}
-
-::-webkit-scrollbar {
-  width: 12px;
-}
-
-::-webkit-scrollbar-track {
-  display: none;
-}
+} 

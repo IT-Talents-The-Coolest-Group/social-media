@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import coverStyle from './UserCover.module.css';
-// import cover from '../assets/images/default_cover.jpg';
 import { withStyles } from '@material-ui/core/styles';
 import Avatar from '@material-ui/core/Avatar';
 import img from '../../assets/images/girl.jpg';
@@ -9,12 +8,12 @@ import coverImg from '../../assets/images/12.jpg';
 
 const themeStyle = {
     bigAvatar: {
-        marginTop: '-25vh',
-        marginLeft: 20,
         width: '28vh',
+        top:'17%',
+        left:'11%',
         position: 'absolute',
         height: '28vh',
-        zIndex: 3,
+        // zIndex: 3,
         border: '1vh solid white'
     },
 };
@@ -39,7 +38,7 @@ class UserCover extends Component {
                 {/* <button onClick={this.fileUploadHandler}>Upload</button> */}
                 <Avatar alt="Profile Photo" src={img} className={classes.bigAvatar} />
                 <Link to="/profile-home" className={coverStyle.Nickname}>Nickname</Link>
-                <Link className={coverStyle.Edit} to="/profile-home/account-details"></Link>
+                <Link className={coverStyle.Edit} to="/profile-home/account-details-Edit"></Link>
                 <div className={coverStyle.ToolbarProfile}>
                     <Link to="/profile-home/account-details" className={coverStyle.TollbarInfo}>About</Link>
                     <Link to="a" className={coverStyle.TollbarInfo}>Friends</Link>
@@ -49,9 +48,5 @@ class UserCover extends Component {
         )
     }
 }
-
-// UserProfile.propTypes = {
-//     classes: PropTypes.object.isRequired,
-//   };
 
 export default withStyles(themeStyle)(UserCover);

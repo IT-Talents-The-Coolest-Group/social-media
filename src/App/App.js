@@ -9,6 +9,7 @@ import RegisterContainer from  '../Register/RegisterContainer';
 import Logout from '../Logout/Logout';
 import HomePage from '../HomePage/HomePage';
 import About from '../UserProfile/About/About';
+import AboutEdit from '../UserProfile/About/AboutEdit';
 import { connect } from 'react-redux';
 
 class App extends Component {
@@ -23,7 +24,7 @@ class App extends Component {
             <Route exact path="/" render={route => { return (<LoginContainer route={route} />) }} />
             <Route exact path="/home" render={route => { return (<HomePage route={route} />) }} />
             <Route exact path="/profile-home/account-details" render={route => { return (<About route={route} />) }} />
-
+            <Route exact path="/profile-home/account-details-Edit" render={route => { return (<AboutEdit route={route} />) }} />
             {/* NOT FOUND page */}
             <Route render={
               () => <><h1>404 Page not found!</h1><Link to="/" component={HomePage}>Home</Link></>

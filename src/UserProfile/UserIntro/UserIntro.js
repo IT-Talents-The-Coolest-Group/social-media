@@ -26,14 +26,14 @@ class UserIntro extends Component {
                         <div className={homeUserStyle.Icon + ' ' + homeUserStyle.School}> </div>
                         <Link className={homeUserStyle.Links} to="/profile-home/account-details">School</Link>
                     </div>
-                    {/* <div className={homeUserStyle.ContainerBox}>
+                    <div className={homeUserStyle.ContainerBox}>
                         <div className={homeUserStyle.Icon + ' ' + homeUserStyle.Hometown}> </div>
                         <Link className={homeUserStyle.Links} to="/profile-home/account-details">Hometown</Link>
                     </div>
                     <div className={homeUserStyle.ContainerBox}>
                         <div className={homeUserStyle.Icon + ' ' + homeUserStyle.RelationshipStatus}> </div>
                         <Link className={homeUserStyle.Links} to="/profile-home/account-details">Relationship Status</Link>
-                    </div> */}
+                    </div>
                     </div>
                 </div>
                 

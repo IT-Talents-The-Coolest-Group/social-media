@@ -27,10 +27,10 @@ class Post extends Component {
             <React.Fragment>
                 <div className={p.Container}>
                 <div className={p.Box}>
-                    <h1 className={comForm.Flex}>
+                    <p className={comForm.Flex + ' ' + p.Size}>
                         Create a Post
           <span role="img" aria-label="chat"> 💬</span>
-                    </h1>
+                    </p>
                     <hr />
                     </div> 
                             <PostForm addPost={this.addPost} />

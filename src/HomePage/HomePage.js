@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
 import HomeHeader from '../HomeHeader/HomeHeader';
-// import PostCreator from '../PostCreator/PostCreator';
-import homeStyle from './HomePage.module.css';
 import Post from '../Post/Post';
+import homeStyle from './HomePage.module.css';
 import image from '../assets/images/girl.jpg';
 import Avatar from '@material-ui/core/Avatar';
 import { withStyles } from '@material-ui/core/styles';
 import { connect } from 'react-redux';
-import postList from '../Post/PostList';
+// import postList from '../Post/PostList';
 
 const themeStyle = {
     bigAvatar: {
@@ -41,7 +40,8 @@ class HomePage extends Component {
                 <HomeHeader />
                 <div className={homeStyle.Container}>
                 <Avatar alt="Profile Photo" src={image} className={classes.bigAvatar} />
-                <postList/>
+                <Post/>
+                {/* <postList/> */}
                 </div>
             </React.Fragment>
         )

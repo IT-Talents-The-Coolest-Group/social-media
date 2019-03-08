@@ -9,7 +9,7 @@ import ChangePassword from "./ChangePassword";
 import { connect } from 'react-redux';
 
 
-class About extends Component {
+class AboutEdit extends Component {
     componentDidMount() {
         if (this.props.currentUser.isLogged === false) {
             this.props.route.history.push('/');
@@ -33,20 +33,25 @@ class About extends Component {
                         <div className={aboutStyle.DetailContainer}>
                             <span className={aboutStyle.Span}>Nickname</span>
                             <Input placeholder=" Enter your Nickname..."></Input>
-
+                            <p className={aboutStyle.Edit}>Edit Nickname</p>
                         </div>
+
+                        <ChangePassword />
 
                         <div className={aboutStyle.DetailContainer}>
                             <span className={aboutStyle.Span}>Current City</span>
                             <Input placeholder="  Enter Current City..."></Input>
+                            <p className={aboutStyle.Edit}>Edit Current City</p>
                         </div>
                         <div className={aboutStyle.DetailContainer}>
                             <span className={aboutStyle.Span}>Workplace</span>
                             <Input placeholder="Enter Your Workplace..."></Input>
+                            <p className={aboutStyle.Edit}>Edit Workplace</p>
                         </div>
                         <div className={aboutStyle.DetailContainer}>
                             <span className={aboutStyle.Span}>School</span>
                             <Input placeholder="  Enter Your School..."></Input>
+                            <p className={aboutStyle.Edit}>Edit School</p>
                         </div>
                     </div>
                 </div>
@@ -61,4 +66,4 @@ const mapStateToProps = state => {
     };
 };
 
-export default connect(mapStateToProps, null)(About);
+export default connect(mapStateToProps, null)(AboutEdit);

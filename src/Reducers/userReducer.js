@@ -2,35 +2,35 @@ import { ADD_POST, USER_LOGIN, USER_REGISTER, USER_LOGOUT } from '../Actions/act
 
 const initialState = {
     users: (localStorage.getItem('userList') ? JSON.parse(localStorage.getItem('userList')) :  []),
-    users: [{
-        id:1,
-        firstName: '',
-        lastName:'',
-        email:'',
-        gender:'',
-        birthday:'',
-        friends:[],
-        password:'',
-        circleImgWidth: 30,
-        coverPhoto:'',
-        avatar: '',
-        isFriend:false,
-        createdPosts:[
-            {
-                content:'',
-                likes:'',
-                comments: [],
-                isItLiked:false
+    // users: [{
+    //     id:1,
+    //     firstName: '',
+    //     lastName:'',
+    //     email:'',
+    //     gender:'',
+    //     birthday:'',
+    //     friends:[],
+    //     password:'',
+    //     circleImgWidth: 30,
+    //     coverPhoto:'',
+    //     avatar: '',
+    //     isFriend:false,
+    //     createdPosts:[
+    //         {
+    //             content:'',
+    //             likes:'',
+    //             comments: [],
+    //             isItLiked:false
 
-            }
-        ],
-        uploadedPhotos:[{
-            imageSrc:'',
-            title:'',
-            comments:[],
-            isItLiked:false
-        }],
-    }],
+    //         }
+    //     ],
+    //     uploadedPhotos:[{
+    //         imageSrc:'',
+    //         title:'',
+    //         comments:[],
+    //         isItLiked:false
+    //     }],
+    // }],
     currentUser: {
         user : (JSON.parse(sessionStorage.getItem('loggedUser'))) ? JSON.parse(sessionStorage.getItem('loggedUser'))
         : null,

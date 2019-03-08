@@ -1,7 +1,8 @@
 .Container{
     width:67%;
+    height:60%;
     float:right;
-    margin-top: 2%;
+    margin:3vh auto;
     border-radius: 5px;
     background-color: rgb(217, 227, 247);
     background-image: url('../assets/images/7.jpg'); 
@@ -19,13 +20,11 @@
     background-size: 5%;
     margin-right:1%;
     box-sizing: border-box;
-    /* height: 7%; */
     color:rgb(66, 103, 178);
 }
+ 
 
-.Image{
-    border-radius: 50%;
-    /* width:150px; */
-    height: 150px;
-    position: relative;
+.Size{
+    font-size:1.7em;
+    font-weight:bold;
 }

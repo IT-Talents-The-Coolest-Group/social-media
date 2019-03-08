@@ -5,7 +5,7 @@
     position:fixed;
     justify-content: center;
     padding: 10px;
-    z-index: 5;
+    z-index: 9;
     width:100%;
     height:5%;
 }
@@ -92,6 +92,4 @@
 
 }
 
-.HomePage{
-    margin-left:3vh;
-}
+

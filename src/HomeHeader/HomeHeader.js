@@ -12,7 +12,6 @@ import Badge from '@material-ui/core/Badge';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-let name = JSON.parse(sessionStorage.getItem('firstName'))
 const themeStyles = theme => ({
   root: {
     width: '100%',
@@ -85,7 +84,6 @@ class HomeHeader extends Component {
   render() {
     const { classes } = this.props;
     const { invisible, badgeContent } = this.state;
-console.log(this.props.firstName)
     return (
       <div className={style.HeadContainer}>
 
