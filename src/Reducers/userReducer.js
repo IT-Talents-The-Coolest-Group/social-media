@@ -66,10 +66,19 @@ const reducer = (state = initialState, action) => {
         }
 
         case USER_REGISTER: {
-            localStorage.setItem('userList', JSON.stringify([...state.users, action.user]));
-            sessionStorage.setItem('loggedUser', JSON.stringify(action.user));
-            return {...state, users: [...state.users, action.user], currentUser: {
-                user: action.user,
+            let user = action.user;
+
+            if (state.users.length < 1) {
+                user.id = 1;
+            } else {
+                const lastId = state.users[state.users.length - 1].id;
+                user.id = lastId + 1;
+            }
+
+            localStorage.setItem('userList', JSON.stringify([...state.users, user]));
+            sessionStorage.setItem('loggedUser', JSON.stringify(user));
+            return {...state, users: [...state.users, user], currentUser: {
+                user: user,
                 isLogged: true,
             }};
         }

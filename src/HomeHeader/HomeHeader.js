@@ -66,16 +66,16 @@ const themeStyles = theme => ({
     left: '7vh',
     zIndex: 3,
   },
-  avatar:{
-    height:'6vh',
-    width:'6vh',
+  avatar: {
+    height: '6vh',
+    width: '6vh',
     border: '1px solid white'
   }
 });
 
 
 class HomeHeader extends Component {
-  
+
   state = {
     invisible: false,
     badgeContent: '0'
@@ -84,6 +84,7 @@ class HomeHeader extends Component {
   render() {
     const { classes } = this.props;
     const { invisible, badgeContent } = this.state;
+
     return (
       <div className={style.HeadContainer}>
 
@@ -109,7 +110,7 @@ class HomeHeader extends Component {
         </div>
         <nav className={style.SecondElem}>
           <NavLink to="/profile-home" className={style.Icon + ' ' + style.Profile}>
-            <Avatar alt="Profile Photo" src={img}  className={classes.avatar}/>
+            <Avatar alt="Profile Photo" src={img} className={classes.avatar} />
           </NavLink>
           <div className={style.Icon}>
             <NavLink className={style.HeaderProf} to="/profile-home">{this.props.currentUser.user.firstName}</NavLink>
@@ -131,14 +132,14 @@ class HomeHeader extends Component {
   }
 }
 
-  HomeHeader.propTypes = {
-   classes: PropTypes.object.isRequired,
- };
+HomeHeader.propTypes = {
+  classes: PropTypes.object.isRequired,
+};
 
- const mapStateToProps = state => {
+const mapStateToProps = state => {
   return {
-      users: state.users,
-      currentUser: state.currentUser,
+    users: state.users,
+    currentUser: state.currentUser,
   };
 };
 export default connect(mapStateToProps, null)(withStyles(themeStyles)(HomeHeader));
