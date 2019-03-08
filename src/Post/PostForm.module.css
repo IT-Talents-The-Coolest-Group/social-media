@@ -28,8 +28,6 @@
 }
 
 .BoxCont:hover .Upload{
-    /* filter:blur(1px); */
-    /* opacity:.5; */
     transform: scale(.98);
     box-shadow:none;
 }
@@ -39,6 +37,7 @@
     transform:scale(1.9);
     filter:blur(0.2px);
     opacity:1;
+    cursor: pointer;
     box-sizing: border-box;
     box-shadow:0 2px 3px 0px rgba(0,0,0,0.425);
 }
@@ -59,4 +58,22 @@
     height:8vh;
     outline:none;
     font-size:1em;
+}
+
+
+@media screen and (max-width: 1025px) {
+    .Input{
+        width:60%;
+        height:5vh;
+    }
+
+}
+
+@media screen and (max-width: 1366px) {
+    .Input{
+        width:75%;
+        height:5vh;
+
+    }
+
 }

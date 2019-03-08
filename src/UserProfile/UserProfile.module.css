@@ -5,3 +5,18 @@
     margin:7.6vh auto 0 auto;
     box-sizing: border-box;
 }
+
+
+
+.avatar{
+    position:fixed;
+    top:64%;
+    left:37%;
+    object-fit: cover;
+    width:69px;
+    height:60px;
+    border:1px solid white;
+    border-radius: 50%;
+}
+
+/* @media screen and (max-width: 1025px) {} */

@@ -1,9 +1,9 @@
-import { USER_LOGIN, USER_REGISTER, USER_LOGOUT, USER_SEARCH } from "./actionTypes";
+import { USER_LOGIN, USER_REGISTER, USER_LOGOUT, USER_SEARCH, UPLOAD_PHOTO ,ADD_POST } from "./actionTypes";
 
 export const userLogin = (email, password) => {
     return {
         type: USER_LOGIN,
-        email, 
+        email,
         password
     }
 };
@@ -15,7 +15,7 @@ export const userRegister = user => {
     }
 };
 
-export const userLogout = ()  => {
+export const userLogout = () => {
     return {
         type: USER_LOGOUT
     }
@@ -34,3 +34,19 @@ export const userSearch = query => {
         query
     }
 }
+
+export const uploadPhoto = (selectefFileCover,selectefFileAvatar) => {
+    return {
+        type: UPLOAD_PHOTO,
+        selectefFileCover,
+        selectefFileAvatar
+    }
+};
+
+export const addPost= post => {
+    return {
+        type: ADD_POST,
+        post
+    }
+} 
+

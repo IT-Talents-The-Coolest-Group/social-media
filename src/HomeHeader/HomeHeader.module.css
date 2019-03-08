@@ -17,9 +17,10 @@
 }
 
 .LogoBox{
-    width:4vh;
+    width:6vh;
     background-image: url('../assets/images/fbLogo.png');
-    height:4vh;
+    height:6vh;
+    margin-top:2vh;
     background-repeat: no-repeat;
     background-size: contain;
     background-color:transparent;
@@ -57,8 +58,6 @@
 
 .Icon:hover{
     opacity: 0.5;
- /* transition: 2s all; */
- transform:scale(1);
 }
 
 .FriendsRequests{
@@ -91,5 +90,43 @@
     font-size:0.8em;
 
 }
+
+
+@media screen and (max-width: 1025px) {
+    .HeadContainer{
+        width:100%;
+        height:6%;
+    }
+
+    .FirstElem{
+        /* width:1%; */
+        margin-right:2px;
+    }
+    .LogoBox{  
+        margin-left:-2vh;
+        margin-left:-4vh;
+        z-index: 2;
+        width:6vh;
+        height:6vh;
+    }
+    .SecondElem{
+        justify-content: space-evenly;
+        width:80%;
+    }
+    .Icon{
+        width:3vh;
+        background-size: 3vh;
+    }
+   
+  }
+
+  @media screen and (max-width: 1366px) {
+
+    .LogoBox{  
+        background-image: url('../assets/images/fbLogo.png');
+        margin-top:1vh;
+        width:6vh;
+    }
+  }
 
 

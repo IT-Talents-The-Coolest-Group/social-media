@@ -1,25 +1,12 @@
 import React, { Component } from 'react';
 import HomeHeader from '../HomeHeader/HomeHeader';
-import Post from '../Post/Post';
+// import Post from '../Post/Post';
 import homeStyle from './HomePage.module.css';
 import image from '../assets/images/girl.jpg';
-import Avatar from '@material-ui/core/Avatar';
-import { withStyles } from '@material-ui/core/styles';
 import { connect } from 'react-redux';
 import PostList from '../Post/PostList';
+import Post from '../Post/Post';
 
-const themeStyle = {
-    bigAvatar: {
-        width: '8vh',
-        position: 'fixed',
-        left:'24%',
-        top:'18.8%',
-        height: '8vh',
-        zIndex: 3,
-        border: '0.3vh solid white',
-        
-    },
-};
 class HomePage extends Component {
     componentDidMount() {
         if (this.props.currentUser.isLogged === false) {
@@ -34,14 +21,16 @@ class HomePage extends Component {
     }
 
     render() {
-        const { classes } = this.props;
         return (
             <React.Fragment>
                 <HomeHeader />
                 <div className={homeStyle.Container}>
-                <Avatar alt="Profile Photo" src={image} className={classes.bigAvatar} />
+                <img alt="Profile" src={image} className={homeStyle.avatar} />
                 <Post/>
                 <PostList/>
+                {/* <PostForm2 /> */}
+                {/* <AllPost /> */}
+
                 </div>
             </React.Fragment>
         )
@@ -54,4 +43,4 @@ const mapStateToProps = state => {
     };
 };
 
-export default connect(mapStateToProps, null)(withStyles(themeStyle)(HomePage));
+export default connect(mapStateToProps, null)(HomePage);

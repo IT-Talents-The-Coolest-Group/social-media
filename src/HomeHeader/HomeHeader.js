@@ -67,11 +67,11 @@ const themeStyles = theme => ({
     left: '7vh',
     zIndex: 3,
   },
-  avatar: {
-    height: '6vh',
-    width: '6vh',
-    border: '1px solid white'
-  }
+  // avatar: {
+  //   height: '6vh',
+  //   width: '6vh',
+  //   border: '1px solid white'
+  // }
 });
 
 
@@ -156,5 +156,5 @@ const mapStateToProps = state => {
     currentUser: state.currentUser,
   };
 };
+
 export default connect(mapStateToProps, mapDispatchToProps)(withStyles(themeStyles)(HomeHeader));
-// export default withStyles(themeStyles)(HomeHeader);

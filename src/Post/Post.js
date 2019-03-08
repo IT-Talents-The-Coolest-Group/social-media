@@ -40,7 +40,7 @@ class Post extends Component {
                                 posts={this.state.posts}
                             />
                         </div>
-                   
+
                 </div>
             </React.Fragment>
         );
