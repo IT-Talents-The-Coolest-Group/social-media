@@ -40,6 +40,7 @@ class HomePage extends Component {
                 <HomeHeader />
                 <div className={homeStyle.Container}>
                 <Avatar alt="Profile Photo" src={image} className={classes.bigAvatar} />
+                <Post/>
                 <PostList/>
                 </div>
             </React.Fragment>

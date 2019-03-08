@@ -10,9 +10,18 @@ import { connect } from 'react-redux';
 
 
 class About extends Component {
-    componentDidMount() {
-        if (this.props.currentUser.isLogged === false) {
-            this.props.route.history.push('/');
+    state = {
+        nickname: {
+            nickname: 'Simona'
+        },
+        currentCity: {
+            city: 'Sofia'
+        },
+        workplace: {
+            work: 'Programmer'
+        },
+        school: {
+            school: 'НПМГ "Акад. Л. Чакалов" '
         }
     }
 
@@ -32,21 +41,20 @@ class About extends Component {
                         <hr className={aboutStyle.Hr} />
                         <div className={aboutStyle.DetailContainer}>
                             <span className={aboutStyle.Span}>Nickname</span>
-                            <Input placeholder=" Enter your Nickname..."></Input>
-
+                            <p>{this.state.nickname.nickname}</p>
                         </div>
 
                         <div className={aboutStyle.DetailContainer}>
                             <span className={aboutStyle.Span}>Current City</span>
-                            <Input placeholder="  Enter Current City..."></Input>
+                            <p>{this.state.currentCity.city}</p>
                         </div>
                         <div className={aboutStyle.DetailContainer}>
                             <span className={aboutStyle.Span}>Workplace</span>
-                            <Input placeholder="Enter Your Workplace..."></Input>
+                            <p>{this.state.workplace.work}</p>
                         </div>
                         <div className={aboutStyle.DetailContainer}>
                             <span className={aboutStyle.Span}>School</span>
-                            <Input placeholder="  Enter Your School..."></Input>
+                            <p>{this.state.school.school}</p>
                         </div>
                     </div>
                 </div>

@@ -1,4 +1,4 @@
-import { ADD_POST, USER_LOGIN, USER_REGISTER, USER_LOGOUT } from '../Actions/actionTypes';
+import { ADD_POST, USER_LOGIN, USER_REGISTER, USER_LOGOUT, CHANGE_PASSWORD } from '../Actions/actionTypes';
 
 const initialState = {
     users: (localStorage.getItem('userList') ? JSON.parse(localStorage.getItem('userList')) :  []),

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Post from "./Post";
-import comForm from './PostForm.module.css';
+// import comForm from './PostForm.module.css';
 import { connect } from 'react-redux';
 
 class PostList extends Component {

@@ -16,29 +16,29 @@ export default class ChangePassword extends Component {
 
     onSubmit = (event) => {
         event.preventDefault();
+    }
+    //     let url = `https://bacefookapi.herokuapp.com/users/tbd----123/changepassword`;
+    //     const data = {
+    //         oldPassword: this.state.oldPassword,
+    //         newPassword: this.state.newPassword,
+    //         confirmPassword: this.state.newPasswordConfirm,
+    //     };
 
-        let url = `https://bacefookapi.herokuapp.com/users/tbd----123/changepassword`;
-        const data = {
-            oldPassword: this.state.oldPassword,
-            newPassword: this.state.newPassword,
-            confirmPassword: this.state.newPasswordConfirm,
-        };
-
-        fetch(url, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            // redirect: "follow",
-            // referrer: "no-referrer", 
-            body: JSON.stringify(data),
-        })
-            .then(response => response.json())
-            .then(res => {
-                console.log(res);
-            })
-            .catch(error => console.log(error));
-    };
+    //     fetch(url, {
+    //         method: "POST",
+    //         headers: {
+    //             "Content-Type": "application/json",
+    //         },
+    //         // redirect: "follow",
+    //         // referrer: "no-referrer", 
+    //         body: JSON.stringify(data),
+    //     })
+    //         .then(response => response.json())
+    //         .then(res => {
+    //             console.log(res);
+    //         })
+    //         .catch(error => console.log(error));
+    // };
 
     render() {
         return (

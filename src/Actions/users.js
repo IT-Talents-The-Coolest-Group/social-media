@@ -20,3 +20,10 @@ export const userLogout = ()  => {
         type: USER_LOGOUT
     }
 };
+
+// export const changePassword = password => {
+//     return {
+//         type: CHANGE_PASSWORD,
+//         password
+//     }
+// };
