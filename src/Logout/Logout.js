@@ -4,18 +4,11 @@ import img from '../assets/images/hands.gif';
 import styles from '../Login/LoginContainer.module.css';
 import logoutStyle from './Logout.module.css';
 import { connect } from 'react-redux';
+import { userLogout } from "../Actions/users";
 
 class Logout extends Component {
     componentDidMount() {
-        if (this.props.currentUser.isLogged === false) {
-            this.props.route.history.push('/');
-        }
-    }
-
-    componentDidUpdate() {
-        if (this.props.currentUser.isLogged === false) {
-            this.props.route.history.push('/');
-        }
+        this.props.userLogout();
     }
 
     render() {
@@ -29,10 +22,16 @@ class Logout extends Component {
     }
 }
 
+const mapDispatchToProps = dispatch => {
+    return {
+        userLogout: () => dispatch(userLogout()),
+    }
+}
+
 const mapStateToProps = state => {
     return {
         currentUser: state.currentUser,
     };
 };
 
-export default connect(mapStateToProps, null)(Logout);
+export default connect(mapStateToProps, mapDispatchToProps)(Logout);

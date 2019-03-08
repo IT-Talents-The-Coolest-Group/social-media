@@ -1,4 +1,4 @@
-import { ADD_POST, USER_LOGIN, USER_REGISTER } from '../Actions/actionTypes';
+import { ADD_POST, USER_LOGIN, USER_REGISTER, USER_LOGOUT } from '../Actions/actionTypes';
 
 const initialState = {
     users: (localStorage.getItem('userList') ? JSON.parse(localStorage.getItem('userList')) :  []),
@@ -71,6 +71,14 @@ const reducer = (state = initialState, action) => {
             return {...state, users: [...state.users, action.user], currentUser: {
                 user: action.user,
                 isLogged: true,
+            }};
+        }
+
+        case USER_LOGOUT: {
+            sessionStorage.setItem('loggedUser', null);
+            return {...state, currentUser: {
+                user : null,
+                isLogged: false
             }};
         }
 
