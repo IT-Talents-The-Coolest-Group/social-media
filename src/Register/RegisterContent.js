@@ -30,8 +30,7 @@ class RegisterContent extends Component {
             confirmPassword: '',
             year: '',
             register: ''
-        },
-        id: ''
+        }
     };
 
     componentDidMount() {
