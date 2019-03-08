@@ -1,4 +1,4 @@
-import { ADD_POST, USER_LOGIN, USER_REGISTER, USER_LOGOUT, CHANGE_PASSWORD } from '../Actions/actionTypes';
+import { ADD_POST, USER_LOGIN, USER_REGISTER, USER_LOGOUT, CHANGE_PASSWORD, USER_SEARCH } from '../Actions/actionTypes';
 
 const initialState = {
     users: (localStorage.getItem('userList') ? JSON.parse(localStorage.getItem('userList')) :  []),
@@ -37,6 +37,7 @@ const initialState = {
         isLogged: JSON.parse(sessionStorage.getItem('loggedUser')) ? true : false
     },
     logginErr: false,
+    searchedUsers: []
 }
 
 const reducer = (state = initialState, action) => {
@@ -89,6 +90,12 @@ const reducer = (state = initialState, action) => {
                 user : null,
                 isLogged: false
             }};
+        }
+
+        case USER_SEARCH: {
+            const users = state.users;
+            let searchedUsers = users.filter(u => u.firstName.indexOf(action.query) === 0 || u.lastName.indexOf(action.query) === 0 || u.email.indexOf(action.query) === 0);
+            return {...state, searchedUsers};
         }
 
         default: return state;

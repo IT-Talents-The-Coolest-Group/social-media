@@ -1,4 +1,4 @@
-import { USER_LOGIN, USER_REGISTER, USER_LOGOUT } from "./actionTypes";
+import { USER_LOGIN, USER_REGISTER, USER_LOGOUT, USER_SEARCH } from "./actionTypes";
 
 export const userLogin = (email, password) => {
     return {
@@ -27,3 +27,10 @@ export const userLogout = ()  => {
 //         password
 //     }
 // };
+
+export const userSearch = query => {
+    return {
+        type: USER_SEARCH,
+        query
+    }
+}
