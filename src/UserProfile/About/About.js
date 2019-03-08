@@ -23,6 +23,12 @@ class About extends Component {
         }
     }
 
+    componentDidMount() {
+        if (this.props.currentUser.isLogged === false) {
+            this.props.route.history.push('/');
+        }
+    }
+
     componentDidUpdate() {
         if (this.props.currentUser.isLogged === false) {
             this.props.route.history.push('/');
