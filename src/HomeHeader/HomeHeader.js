@@ -10,7 +10,9 @@ import SearchIcon from '@material-ui/icons/Search';
 import { NavLink } from 'react-router-dom';
 import Badge from '@material-ui/core/Badge';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
+let name = JSON.parse(sessionStorage.getItem('firstName'))
 const themeStyles = theme => ({
   root: {
     width: '100%',
@@ -112,7 +114,7 @@ console.log(this.props.firstName)
             <Avatar alt="Profile Photo" src={img}  className={classes.avatar}/>
           </NavLink>
           <div className={style.Icon}>
-            <NavLink className={style.HeaderProf} to="/profile-home">{this.props.firstName}</NavLink>
+            <NavLink className={style.HeaderProf} to="/profile-home">{this.props.currentUser.user.firstName}</NavLink>
           </div>
 
           <div className={style.Icon}>
@@ -135,5 +137,11 @@ console.log(this.props.firstName)
    classes: PropTypes.object.isRequired,
  };
 
-
-export default withStyles(themeStyles)(HomeHeader);
+ const mapStateToProps = state => {
+  return {
+      users: state.users,
+      currentUser: state.currentUser,
+  };
+};
+export default connect(mapStateToProps, null)(withStyles(themeStyles)(HomeHeader));
+// export default withStyles(themeStyles)(HomeHeader);
