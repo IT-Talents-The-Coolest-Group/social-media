@@ -6,7 +6,7 @@ import image from '../assets/images/girl.jpg';
 import Avatar from '@material-ui/core/Avatar';
 import { withStyles } from '@material-ui/core/styles';
 import { connect } from 'react-redux';
-// import postList from '../Post/PostList';
+import PostList from '../Post/PostList';
 
 const themeStyle = {
     bigAvatar: {
@@ -40,8 +40,7 @@ class HomePage extends Component {
                 <HomeHeader />
                 <div className={homeStyle.Container}>
                 <Avatar alt="Profile Photo" src={image} className={classes.bigAvatar} />
-                <Post/>
-                {/* <postList/> */}
+                <PostList/>
                 </div>
             </React.Fragment>
         )
