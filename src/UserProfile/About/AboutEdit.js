@@ -26,7 +26,7 @@ class AboutEdit extends Component {
             <>
                 <HomeHeader route={this.props.route} />
                 <div className={homeStyle.Main}>
-                    <UserCover />
+                    <UserCover userToShow={this.props.currentUser} route={this.props.route} />
                     <div className={aboutStyle.Container}>
                         <h2>About</h2>
                         <hr className={aboutStyle.Hr} />

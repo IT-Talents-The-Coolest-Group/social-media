@@ -18,13 +18,13 @@ class App extends Component {
       <BrowserRouter>
         <div className="App">
           <Switch>
-            <Route exact path="/profile-home/:userId/" render={route => { return (<><HomeHeader route={route} /> <UserProfile route={route} /></>) }} />
             <Route exact path="/logout" render={route => { return ( <Logout route={route} />) }} />
             <Route exact path="/register" render={route => { return (<RegisterContainer route={route} />) }} />
             <Route exact path="/" render={route => { return (<LoginContainer route={route} />) }} />
             <Route exact path="/home" render={route => { return (<HomePage route={route} />) }} />
-            <Route exact path="/profile-home/account-details/" render={route => { return (<About route={route} />) }} />
-            <Route exact path="/profile-home/account-details-Edit" render={route => { return (<AboutEdit route={route} />) }} />
+            <Route exact path="/profile-home/account-details/:userId?/" render={route => { return (<About route={route} />) }} />
+            <Route exact path="/profile-home/account-details-Edit/" render={route => { return (<AboutEdit route={route} />) }} />
+            <Route exact path="/profile-home/:userId?/" render={route => { return (<><HomeHeader route={route} /> <UserProfile route={route} /></>) }} />
             {/* NOT FOUND page */}
             <Route render={
               () => <><h1>404 Page not found!</h1><Link to="/" component={HomePage}>Home</Link></>
