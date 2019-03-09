@@ -1,5 +1,4 @@
-
-import { USER_LOGIN, USER_REGISTER, USER_LOGOUT, USER_SEARCH ,  UPLOAD_PHOTO} from '../Actions/actionTypes';
+import { USER_LOGIN, USER_REGISTER, USER_LOGOUT, USER_SEARCH, UPLOAD_PHOTO, ADD_FRIEND, MANAGE_FRIEND_REQUEST } from '../Actions/actionTypes';
 
 const initialState = {
     users: (localStorage.getItem('userList') ? JSON.parse(localStorage.getItem('userList')) : []),
@@ -95,7 +94,7 @@ const reducer = (state = initialState, action) => {
 
         case USER_SEARCH: {
             const users = state.users;
-            let searchedUsers = users.filter(u => u.firstName.indexOf(action.query) === 0 || u.lastName.indexOf(action.query) === 0 || u.email.indexOf(action.query) === 0);
+            let searchedUsers = users.filter(u => u.firstName.toLowerCase().indexOf(action.query) === 0 || u.lastName.toLowerCase().indexOf(action.query) === 0 || u.email.toLowerCase().indexOf(action.query) === 0);
 
             return {...state, searchedUsers};
         }
@@ -107,9 +106,81 @@ const reducer = (state = initialState, action) => {
                 console.log(v)
                 return {
                     ...state,currentUser: [...state.currentUser, action.selectedFileCover]
-        };
-    }
-      
+            };
+        }
+        case ADD_FRIEND: {
+            let users = [...state.users];
+            let currentUser = {...state.currentUser};
+            let me = users[users.findIndex((u) => u.id === currentUser.user.id)];
+            let friend = users[users.findIndex((u) => u.id === action.friendId)];
+
+            // Init friends lists if needed
+            if (typeof currentUser.user.pendingFriends === "undefined") {
+                currentUser.user.pendingFriends = {};
+            }
+            if (typeof me.pendingFriends === "undefined") {
+                me.pendingFriends = {};
+            }
+            if (typeof friend.pendingFriends === "undefined") {
+                friend.pendingFriends = {};
+            }
+            if (typeof friend.friends === "undefined") {
+                friend.friends = [];
+            }
+
+            // Friendship was already establised before or it is me
+            if (
+                friend.friends.findIndex(u => u.id === currentUser.user.id) !== -1 || friend.id === currentUser.user.id || typeof friend.pendingFriends[currentUser.user.id] !== "undefined" 
+            ) {
+                return state;
+            }
+
+            // Establish friendship
+            friend.pendingFriends[currentUser.user.id] = 'pending';
+            currentUser.user.pendingFriends[friend.id] = 'sent';
+            me.pendingFriends[friend.id] = 'sent';
+
+            localStorage.setItem('userList', JSON.stringify(users));
+            sessionStorage.setItem('loggedUser', JSON.stringify(currentUser.user));
+
+            return {...state, users, currentUser};
+        }
+
+        case MANAGE_FRIEND_REQUEST: {
+            if (state.currentUser.user.id !== action.userId && state.currentUser.user.pendingFriends[action.userId] && state.currentUser.user.pendingFriends[action.userId] === 'pending') {
+                let users = [...state.users];
+                let currentUser = {...state.currentUser};
+                let me = users[users.findIndex((u) => u.id === currentUser.user.id)];
+                let friend = users[users.findIndex((u) => u.id === action.userId)];
+
+                // Init friends lists if needed
+                if (typeof currentUser.user.friends === "undefined") {
+                    currentUser.user.friends = [];
+                }
+                if (typeof me.friends === "undefined") {
+                    me.friends = [];
+                }
+                if (typeof friend.friends === "undefined") {
+                    friend.friends = [];
+                }
+
+                if (action.status === "accept") {
+                    currentUser.user.friends.push(action.userId);
+                    me.friends.push(action.userId);
+                    friend.friends.push(currentUser.user.id);
+                }
+
+                delete currentUser.user.pendingFriends[action.userId];
+                delete me.pendingFriends[action.userId];
+                delete friend.pendingFriends[currentUser.user.id];
+
+                localStorage.setItem('userList', JSON.stringify(users));
+                sessionStorage.setItem('loggedUser', JSON.stringify(currentUser.user));
+                
+                return {...state, users, currentUser};
+            }
+        }
+
         default: return state;
     };
 }
