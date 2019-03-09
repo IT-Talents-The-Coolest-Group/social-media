@@ -7,8 +7,6 @@
     max-width: 1170px;
 }
 
-
-
 /* .avatar{
     position:absolute;
     top:64%;
@@ -30,7 +28,6 @@
 
 @media screen and (max-width: 1366px) and (orientation:landscape) {
     .avatar{
-        /* position:absolute; */
         top:48%;
         left:37.2%;
         object-fit: cover;
@@ -56,7 +53,6 @@
 
 @media screen and (max-width: 375px) and (orientation:portrait) {
     .avatar{
-        /* position:absolute; */
         top:52%;
         left:35.2%;
         object-fit: cover;

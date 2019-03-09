@@ -48,6 +48,7 @@ class UserCover extends Component {
         }
         return (
             <React.Fragment>
+
                 <input id="myuniqueid" className={coverStyle.Upload} type="file" onChange={this.fileSelectedHandler}/>
 
                 {this.props.userToShow.id === this.props.currentUser.user.id && 

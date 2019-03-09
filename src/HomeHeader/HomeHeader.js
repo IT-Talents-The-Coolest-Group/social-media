@@ -42,7 +42,7 @@ const themeStyles = theme => ({
     alignItems: 'center',
     justifyContent: 'center',
   },
-<<<<<<< HEAD
+
   inputRoot: {
     color: '#bbdefb',
     width: '100%',
@@ -61,8 +61,7 @@ const themeStyles = theme => ({
       },
     },
   },
-=======
->>>>>>> 8f80dcb7726ec6d5034a8756fc51407cac9660db
+
   Bmargin: {
     marginTop: '1.1vh',
     position: 'relative',
