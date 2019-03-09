@@ -11,6 +11,7 @@ import { NavLink } from 'react-router-dom';
 import Badge from '@material-ui/core/Badge';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { userSearch } from '../Actions/users';
 
 const themeStyles = theme => ({
   root: {
@@ -78,8 +79,13 @@ class HomeHeader extends Component {
 
   state = {
     invisible: false,
-    badgeContent: '0'
+    badgeContent: '0',
+    search: ''
   };
+
+  onChange = (e) => {
+    this.props.userSearch(e.target.value);
+  }
 
   render() {
     const { classes } = this.props;
@@ -97,14 +103,16 @@ class HomeHeader extends Component {
               <div className={classes.search}> 
                  <div className={classes.searchIcon}>
                   <SearchIcon />
-                </div> 
-                <InputBase
-                  placeholder="Search"
-                  classes={{
-                    root: classes.inputRoot,
-                    input: classes.inputInput,
-                  }}
-                />
+                </div>
+                  <InputBase
+                    name="search"
+                    onChange={this.onChange}
+                    placeholder="Search"
+                    classes={{
+                      root: classes.inputRoot,
+                      input: classes.inputInput,
+                    }}
+                  />
               </div>
             </Toolbar>
           </div>
@@ -138,6 +146,12 @@ HomeHeader.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
+const mapDispatchToProps = dispatch => {
+  return {
+    userSearch: (query) => dispatch(userSearch(query))
+  }
+}
+
 const mapStateToProps = state => {
   return {
     users: state.users,
@@ -145,6 +159,4 @@ const mapStateToProps = state => {
   };
 };
 
-
-export default connect(mapStateToProps, null)(withStyles(themeStyles)(HomeHeader));
-// export default withStyles(themeStyles)(HomeHeader);
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(themeStyles)(HomeHeader));
