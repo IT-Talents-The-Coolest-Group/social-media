@@ -19,3 +19,8 @@
     border-color:#31559c;
     color: #fff;
 }
+
+.LinkBtn {
+    background: transparent;
+    border: none;
+}

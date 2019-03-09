@@ -1,4 +1,4 @@
-import { USER_LOGIN, USER_REGISTER, USER_LOGOUT, USER_SEARCH, UPLOAD_PHOTO ,ADD_POST } from "./actionTypes";
+import { USER_LOGIN, USER_REGISTER, USER_LOGOUT, USER_SEARCH, UPLOAD_PHOTO ,ADD_POST, ADD_FRIEND, MANAGE_FRIEND_REQUEST } from "./actionTypes";
 
 export const userLogin = (email, password) => {
     return {
@@ -28,6 +28,21 @@ export const userSearch = query => {
     }
 }
 
+export const addFriend = friendId => {
+    return {
+        type: ADD_FRIEND,
+        friendId
+    };
+};
+
+export const manageFriendRequest = (userId, status) => {
+    return {
+        type: MANAGE_FRIEND_REQUEST,
+        userId,
+        status
+    };
+};
+
 export const uploadPhoto = (selectefFileCover) => {
     return {
         type: UPLOAD_PHOTO,
@@ -42,4 +57,3 @@ export const addPost= post => {
         post
     }
 } 
-

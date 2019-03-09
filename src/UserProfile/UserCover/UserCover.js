@@ -3,9 +3,8 @@ import coverStyle from './UserCover.module.css';
 // import Avatar from '@material-ui/core/Avatar';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { uploadPhoto } from '../../Actions/users';
+import { uploadPhoto, addFriend } from '../../Actions/users';
 // import { EventEmitter } from 'events';
-
 
 class UserCover extends Component {
 
@@ -40,12 +39,33 @@ class UserCover extends Component {
         
     }
 
+    addFriend = (e) => {
+        e.preventDefault();
+        this.props.addFriend(this.props.userToShow.id);
+    }
+
     render() {
 
         let userIdSuffix = '';
         if (typeof this.props.route.match.params.userId !== "undefined") {
           userIdSuffix = `/${this.props.route.match.params.userId}/`;
         }
+
+        let myProfile = false;
+        if (typeof this.props.route.match.params.userId === "undefined" || this.props.currentUser.user.id === Number(this.props.route.match.params.userId)) {
+            myProfile = true;
+        }
+
+        let friendStatus = 'none';
+
+        if (typeof this.props.currentUser.user.pendingFriends !== "undefined" && typeof this.props.currentUser.user.pendingFriends[this.props.userToShow.id] !== "undefined") {
+            friendStatus = this.props.currentUser.user.pendingFriends[this.props.userToShow.id];
+        }
+
+        if (typeof this.props.currentUser.user.friends !== "undefined" && typeof this.props.currentUser.user.friends[this.props.userToShow.id] !== "undefined") {
+            friendStatus = 'friends';
+        }
+
         return (
             <React.Fragment>
                 <input id="myuniqueid" className={coverStyle.Upload} type="file" onChange={this.fileSelectedHandler}/>
@@ -70,6 +90,15 @@ class UserCover extends Component {
                     <Link to={`/profile-home/account-details${userIdSuffix}`} className={coverStyle.TollbarInfo}>About</Link>
                     <Link to="a" className={coverStyle.TollbarInfo}>Friends</Link>
                     <Link to="a" className={coverStyle.TollbarInfo}>Photos</Link>
+                    
+                    {!myProfile && friendStatus === 'none' &&
+                    <Link to="#" className={coverStyle.TollbarInfo} onClick={this.addFriend}>Add friend</Link>}
+                    
+                    {!myProfile && friendStatus === 'sent' &&
+                    <Link to="#" className={coverStyle.TollbarInfo}>Request sent</Link>}
+                    
+                    {!myProfile && friendStatus === 'friends' &&
+                    <Link to="#" className={coverStyle.TollbarInfo}>Friends</Link>}
                 </div>
             </React.Fragment>
         )
@@ -83,11 +112,12 @@ const mapStateToProps = state => {
     };
   };
 
-//   const mapDispatchToProps = dispatch => {
-//     return {
-//         fileSelectedHandler: (selectedFileCover) => dispatch(uploadPhoto(selectedFileCover))
-//     }
-// }
+  const mapDispatchToProps = dispatch => {
+    return {
+        // fileSelectedHandler: (selectedFileCover) => dispatch(uploadPhoto(selectedFileCover))
+        addFriend: (friendId) => dispatch(addFriend(friendId))
+    }
+}
    
-  export default connect(mapStateToProps, null)(UserCover);
+  export default connect(mapStateToProps, mapDispatchToProps)(UserCover);
 // export default (UserCover);
