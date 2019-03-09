@@ -9,6 +9,10 @@ import { connect } from 'react-redux';
 
 
 class UserProfile extends Component {
+    state = {
+        userToShow: this.props.currentUser.user,
+    };
+
     componentDidMount() {
         if (this.props.currentUser.isLogged === false) {
             this.props.route.history.push('/');
@@ -19,6 +23,16 @@ class UserProfile extends Component {
         if (this.props.currentUser.isLogged === false) {
             this.props.route.history.push('/');
         }
+
+        if (typeof this.props.route.match.params.userId !== 'undefined' && Number(this.props.route.match.params.userId) !== this.state.userToShow.id) {
+            const userToShow = this.props.users.filter(u => u.id === Number(this.props.route.match.params.userId));
+            if (userToShow && userToShow.length > 0) {
+                this.setState({
+                    ...this.state, 
+                    userToShow: userToShow[0]}
+                );
+            }
+        }
     }
 
     render() {
@@ -26,7 +40,7 @@ class UserProfile extends Component {
         return (
             <React.Fragment>
                 <div className={homeStyle.Main}>
-                    <UserCover />
+                    <UserCover userToShow={this.state.userToShow} />
                     <UserIntro />
                     <img alt="Profile" src={image} className={homeStyle.avatar} />
                     <Post />
@@ -38,6 +52,7 @@ class UserProfile extends Component {
 
 const mapStateToProps = state => {
     return {
+        users: state.users,
         currentUser: state.currentUser,
     };
 };

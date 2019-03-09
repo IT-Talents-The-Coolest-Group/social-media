@@ -49,7 +49,7 @@ class UserCover extends Component {
                 <img alt="Avatar" src={require('../../assets/images/'+ this.state.selectedFileAvatar.src)} className={coverStyle.bigAvatar} />
                 <input id="myuniqueid2" className={coverStyle.Upload} type="file"  onChange={this.fileSelectedHandler2}/>
                 <label className = {coverStyle.Label+' '+ coverStyle.ProfilePhoto} htmlFor="myuniqueid2">Change Profile Photo</label>
-                <Link to="/profile-home" className={coverStyle.Nickname}>{this.props.currentUser.user.firstName} {this.props.currentUser.user.lastName}</Link>
+                <Link to="/profile-home" className={coverStyle.Nickname}>{this.props.userToShow.firstName} {this.props.userToShow.lastName}</Link>
                 <Link className={coverStyle.Edit} to="/profile-home/account-details-Edit"></Link>
                 <div className={coverStyle.ToolbarProfile}>
                     <Link to="/profile-home/account-details" className={coverStyle.TollbarInfo}>About</Link>
@@ -64,7 +64,6 @@ class UserCover extends Component {
 const mapStateToProps = state => {
     return {
         users: state.users,
-        currentUser: state.currentUser,
     };
   };
 

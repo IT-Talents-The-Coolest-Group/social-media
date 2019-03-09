@@ -24,7 +24,7 @@ class AboutEdit extends Component {
     render() {
         return (
             <>
-                <HomeHeader />
+                <HomeHeader route={this.props.route} />
                 <div className={homeStyle.Main}>
                     <UserCover />
                     <div className={aboutStyle.Container}>

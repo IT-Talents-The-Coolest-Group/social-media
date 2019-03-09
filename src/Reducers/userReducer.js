@@ -96,6 +96,7 @@ const reducer = (state = initialState, action) => {
         case USER_SEARCH: {
             const users = state.users;
             let searchedUsers = users.filter(u => u.firstName.indexOf(action.query) === 0 || u.lastName.indexOf(action.query) === 0 || u.email.indexOf(action.query) === 0);
+
             return {...state, searchedUsers};
         }
 
