@@ -3,15 +3,14 @@ import style from './HomeHeader.module.css';
 import img from '../assets/images/girl.jpg';
 import Avatar from '@material-ui/core/Avatar';
 import Toolbar from '@material-ui/core/Toolbar';
-import InputBase from '@material-ui/core/InputBase';
 import { fade } from '@material-ui/core/styles/colorManipulator';
 import { withStyles } from '@material-ui/core/styles';
-import SearchIcon from '@material-ui/icons/Search';
 import { NavLink } from 'react-router-dom';
 import Badge from '@material-ui/core/Badge';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { userSearch } from '../Actions/users';
+import HeaderAutocomplete from './HeaderAutocomplete';
 
 const themeStyles = theme => ({
   root: {
@@ -43,6 +42,7 @@ const themeStyles = theme => ({
     alignItems: 'center',
     justifyContent: 'center',
   },
+<<<<<<< HEAD
   inputRoot: {
     color: '#bbdefb',
     width: '100%',
@@ -61,6 +61,8 @@ const themeStyles = theme => ({
       },
     },
   },
+=======
+>>>>>>> 8f80dcb7726ec6d5034a8756fc51407cac9660db
   Bmargin: {
     marginTop: '1.1vh',
     position: 'relative',
@@ -95,19 +97,9 @@ class HomeHeader extends Component {
           <div className={classes.root}>
              <Toolbar>
               <div className={classes.grow} />
-              <div className={classes.search}> 
-                 <div className={classes.searchIcon}>
-                  <SearchIcon />
-                </div>
-                  <InputBase
-                    name="search"
-                    onChange={this.onChange}
-                    placeholder="Search"
-                    classes={{
-                      root: classes.inputRoot,
-                      input: classes.inputInput,
-                    }}
-                  />
+
+              <div className={classes.search}>
+                <HeaderAutocomplete route={this.props.route} />
               </div>
             </Toolbar>
           </div>

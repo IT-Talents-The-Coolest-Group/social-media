@@ -23,7 +23,7 @@ class HomePage extends Component {
     render() {
         return (
             <React.Fragment>
-                <HomeHeader />
+                <HomeHeader route={this.props.route} />
                 <div className={homeStyle.Container}>
                 {/* <img alt="Profile" draggable="false" src={image} className={homeStyle.avatar} /> */}
                 <Post/>
