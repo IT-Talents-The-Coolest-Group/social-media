@@ -1,4 +1,4 @@
-import { USER_LOGIN, USER_REGISTER, USER_LOGOUT} from '../Actions/actionTypes';
+import { USER_LOGIN, USER_REGISTER, USER_LOGOUT, UPLOAD_PHOTO } from '../Actions/actionTypes';
 
 const initialState = {
     users: (localStorage.getItem('userList') ? JSON.parse(localStorage.getItem('userList')) : []),
@@ -92,23 +92,12 @@ const reducer = (state = initialState, action) => {
         }
 
         // case UPLOAD_PHOTO: {
-        //     let user = action.user;
-        //     user.selectefFileCover = '';
-        //     user.selectefFileAvatar = '';
-        //     let selectefFileCover = state.users.selectefFileCover;
-        //     let selectefFileAvatar = state.users.selectefFileAvatar;
-
-        //     user.selectefFileCover = selectefFileCover;
-        //     user.selectefFileAvatar = selectefFileAvatar;
-
-        //     localStorage.setItem('userList', JSON.stringify([...state.users, user]));
-        //     sessionStorage.setItem('loggedUser', JSON.stringify(user));
-        //     return {
-        //         ...state, users: [...state.users, user], currentUser: {
-        //             user: user,
-        //         }
-        //     };
-        // }
+        //     // let user = action.user
+        //         let v=JSON.parse(sessionStorage.getItem('cover'));
+        //         return {
+        //             ...state,currentUser: [...state.currentUser, action.selectedFileCover]
+        // };
+    // }
       
         default: return state;
     };

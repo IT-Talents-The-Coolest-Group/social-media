@@ -86,17 +86,18 @@ class HomeHeader extends Component {
     const { invisible, badgeContent } = this.state;
 
     return (
+      <>
       <div className={style.HeadContainer}>
 
         <div className={style.FirstElem}>
           <NavLink to="/home" className={style.LogoBox} />
           <div className={classes.root}>
-            <Toolbar>
+             <Toolbar>
               <div className={classes.grow} />
-              <div className={classes.search}>
-                <div className={classes.searchIcon}>
+              <div className={classes.search}> 
+                 <div className={classes.searchIcon}>
                   <SearchIcon />
-                </div>
+                </div> 
                 <InputBase
                   placeholder="Search"
                   classes={{
@@ -128,6 +129,7 @@ class HomeHeader extends Component {
           <NavLink to="/logout" className={style.Icon + ' ' + style.Logout} />
         </nav>
       </div>
+      </>
     )
   }
 }

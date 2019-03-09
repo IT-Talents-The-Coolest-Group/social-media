@@ -17,9 +17,9 @@
 }
 
 .LogoBox{
-    width:6vh;
+    width:4vh;
     background-image: url('../assets/images/fbLogo.png');
-    height:6vh;
+    height:4vh;
     margin-top:2vh;
     background-repeat: no-repeat;
     background-size: contain;

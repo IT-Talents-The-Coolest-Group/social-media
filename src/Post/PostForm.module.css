@@ -63,8 +63,13 @@
 
 @media screen and (max-width: 1025px) {
     .Input{
+        margin-top:15px;
+        margin-left:15px;
         width:60%;
         height:5vh;
+    }
+    .Add{
+        width:140px;
     }
 
 }
@@ -74,6 +79,128 @@
         width:75%;
         height:5vh;
 
+    }
+
+}
+
+@media screen and (max-width: 375px) and (orientation:portrait){
+    .Input{
+        margin-top:15px;
+        margin-left:15px;
+        width:60%;
+        height:5vh;
+        font-size:0.8em;
+    }
+    .Upload{
+        width:26%;
+        padding:1.8%;
+        text-align: center;
+        font-size:0.8em;
+        background-image: url('../assets/images/photo2.png');
+        background-size: 25%;
+        background-position: bottom left;
+        background-repeat: no-repeat;
+        background-color: transparent;
+        border-radius: 18px;
+        margin:1% 0;
+        color:black;
+        box-shadow:0 2px 3px 0px rgba(0,0,0,0.25);
+        transition:.2s all; 
+        border:0;
+        outline: none;
+        
+    }
+    .Add{
+        width:35%;
+    }
+}
+
+@media screen and (max-width: 667px) and (orientation:landscape){
+    .Input{
+        margin-top:15px;
+        margin-left:15px;
+        width:60%;
+        height:7vh;
+        font-size:0.7em;
+    }
+    .Upload{
+        width:24%;
+        padding:1.8%;
+        text-align: center;
+        font-size:0.8em;
+        background-size: 25%;
+        background-position: bottom left;
+        border-radius: 18px;
+        margin:1% 0;
+        transition:.2s all; 
+        border:0;
+        outline: none;
+        
+    }
+   
+}
+
+@media screen and (max-width: 375px) and (orientation:portrait) {
+    .Input{
+        margin-left:15px;
+        width:50%;
+        height:6vh;
+        font-size:0.1em;
+    }
+
+    .Upload{
+        width:28%;
+        padding:1.8%;
+        text-align: center;
+        font-size:0.8em;
+        background-image: url('../assets/images/photo2.png');
+        background-size: 25%;
+        background-position: bottom left;
+        background-repeat: no-repeat;
+        background-color: transparent;
+        border-radius: 18px;
+        margin:1% 0;
+        color:black;
+        box-shadow:0 2px 3px 0px rgba(0,0,0,0.25);
+        transition:.2s all; 
+        border:0;
+        outline: none;
+        font-size:0.1em;
+        
+    }
+
+    .Add{
+        width:35%;
+    }
+}
+
+@media screen and (max-width: 667px) and (orientation:landscape){
+    .Input{
+        margin-left:15px;
+        width:50%;
+        height:6vh;
+        font-size:0.1em;
+    }
+
+    .Upload{
+        width:27%;
+        padding:1.8%;
+        text-align: center;
+        font-size:0.8em;
+        background-image: url('../assets/images/photo2.png');
+        background-size: 25%;
+        background-position: bottom left;
+        background-repeat: no-repeat;
+        background-color: transparent;
+        border-radius: 18px;
+        margin:1% 0;
+        color:black;
+        box-shadow:0 2px 3px 0px rgba(0,0,0,0.25);
+        transition:.2s all; 
+        border:0;
+        outline: none;
+        font-size:0.1em;
+        
     }
 
 }

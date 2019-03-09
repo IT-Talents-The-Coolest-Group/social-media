@@ -203,7 +203,7 @@ class RegisterContent extends Component {
         return (
             <div className={styles.RegisterContent}>
                 <form method="POST">
-                    <h2>Create a New Account</h2>
+                    <h2 className={styles.H2} >Create a New Account</h2>
                     <div className={styles.namesContainer}>
                         <div className={classes.firstName.join(' ')}>
                             <Input type="text" id="first-name" name="firstName" placeholder="First Name" onChange={this.onChange} />

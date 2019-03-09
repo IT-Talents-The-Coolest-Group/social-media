@@ -21,11 +21,11 @@ export const userLogout = () => {
     }
 };
 
-export const uploadPhoto = (selectefFileCover,selectefFileAvatar) => {
+export const uploadPhoto = (selectefFileCover) => {
     return {
         type: UPLOAD_PHOTO,
         selectefFileCover,
-        selectefFileAvatar
+       
     }
 };
 
