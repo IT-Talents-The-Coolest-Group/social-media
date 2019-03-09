@@ -1,31 +1,41 @@
 .Container{
         background-color: white;
-        width:80%;
+        /* width:80%; */
         height: 100%;
-        margin:4.8vh auto;
+        min-width: 820px;
+        max-width: 1170px;
+        margin:33px auto;
         box-sizing: border-box;
         display: flex;
+        flex-direction: column;
         justify-content: center;
         align-items: center;
         flex-wrap: wrap;
 }
 
 .avatar{
-        position:absolute;
-        top:17.5%;
-        left:23.8%;
+        position: relative;
+        z-index: 5;
+        /* top:18%;
+        left:23%; */
         object-fit: cover;
         width:69px;
         height:61px;
         border:1px solid white;
         border-radius: 50%;
 }
+@media all and (max-width: 790px) {
+        .avatar{
+            /* margin-left: 0px; */
+            left: 20px;
+        }
+    }
 
 @media screen and (max-width: 1366px) {
         .avatar{
                 position:absolute;
-                top:15%;
-                left:24.6%;
+                top:13%;
+                left:27.6%;
                 object-fit: cover;
                 width:60px;
                 height:61px;

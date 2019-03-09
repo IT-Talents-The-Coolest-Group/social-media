@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import HomeHeader from '../HomeHeader/HomeHeader';
 // import Post from '../Post/Post';
 import homeStyle from './HomePage.module.css';
-import image from '../assets/images/girl.jpg';
+// import image from '../assets/images/girl.jpg';
 import { connect } from 'react-redux';
 import PostList from '../Post/PostList';
 import Post from '../Post/Post';
@@ -25,7 +25,7 @@ class HomePage extends Component {
             <React.Fragment>
                 <HomeHeader />
                 <div className={homeStyle.Container}>
-                <img alt="Profile" src={image} className={homeStyle.avatar} />
+                {/* <img alt="Profile" draggable="false" src={image} className={homeStyle.avatar} /> */}
                 <Post/>
                 <PostList/>
                 {/* <PostForm2 /> */}

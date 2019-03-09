@@ -1,5 +1,5 @@
 
-import { USER_LOGIN, USER_REGISTER, USER_LOGOUT, USER_SEARCH } from '../Actions/actionTypes';
+import { USER_LOGIN, USER_REGISTER, USER_LOGOUT, USER_SEARCH ,  UPLOAD_PHOTO} from '../Actions/actionTypes';
 
 const initialState = {
     users: (localStorage.getItem('userList') ? JSON.parse(localStorage.getItem('userList')) : []),
@@ -99,13 +99,15 @@ const reducer = (state = initialState, action) => {
             return {...state, searchedUsers};
         }
 
-        // case UPLOAD_PHOTO: {
-        //     // let user = action.user
-        //         let v=JSON.parse(sessionStorage.getItem('cover'));
-        //         return {
-        //             ...state,currentUser: [...state.currentUser, action.selectedFileCover]
-        // };
-    // }
+        case UPLOAD_PHOTO: {
+            sessionStorage.setItem('loggedUser', 'cover');
+            // let user = action.user
+                let v=JSON.parse(sessionStorage.getItem('cover'));
+                console.log(v)
+                return {
+                    ...state,currentUser: [...state.currentUser, action.selectedFileCover]
+        };
+    }
       
         default: return state;
     };

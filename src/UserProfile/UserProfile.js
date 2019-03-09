@@ -4,7 +4,7 @@ import UserIntro from './UserIntro/UserIntro';
 import Post from '../Post/Post';
 import UserCover from './UserCover/UserCover';
 import homeStyle from './UserProfile.module.css';
-import image from '../assets/images/girl.jpg';
+// import image from '../assets/images/girl.jpg';
 import { connect } from 'react-redux';
 
 
@@ -28,7 +28,7 @@ class UserProfile extends Component {
                 <div className={homeStyle.Main}>
                     <UserCover />
                     <UserIntro />
-                    <img alt="Profile" src={image} className={homeStyle.avatar} />
+                    {/* <img alt="Profile" src={image} className={homeStyle.avatar} /> */}
                     <Post />
                 </div>
             </React.Fragment>

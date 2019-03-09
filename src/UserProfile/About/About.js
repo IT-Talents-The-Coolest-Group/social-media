@@ -9,18 +9,10 @@ import { connect } from 'react-redux';
 
 class About extends Component {
     state = {
-        nickname: {
-            nickname: 'Simona'
-        },
-        currentCity: {
-            city: 'Sofia'
-        },
-        workplace: {
-            work: 'Programmer'
-        },
-        school: {
-            school: 'НПМГ "Акад. Л. Чакалов" '
-        }
+        nickname:'',
+        currentCity:'Sofia',
+        workplace: 'Programmer',
+        school: 'НПМГ "Акад. Л. Чакалов" '
     }
 
     componentDidMount() {
@@ -50,15 +42,15 @@ class About extends Component {
 
                         <div className={aboutStyle.DetailContainer}>
                             <span className={aboutStyle.Span}>Current City</span>
-                            <p>{this.state.currentCity.city}</p>
+                            <p>{this.state.currentCity}</p>
                         </div>
                         <div className={aboutStyle.DetailContainer}>
                             <span className={aboutStyle.Span}>Workplace</span>
-                            <p>{this.state.workplace.work}</p>
+                            <p>{this.state.workplace}</p>
                         </div>
                         <div className={aboutStyle.DetailContainer}>
                             <span className={aboutStyle.Span}>School</span>
-                            <p>{this.state.school.school}</p>
+                            <p>{this.state.school}</p>
                         </div>
                     </div>
                 </div>

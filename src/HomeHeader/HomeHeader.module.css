@@ -5,9 +5,10 @@
     position:fixed;
     justify-content: center;
     padding: 10px;
+    min-width: 820px;
     z-index: 9;
     width:100%;
-    height:5%;
+    height:35px;
 }
 .FirstElem{
     display: flex;
@@ -129,4 +130,201 @@
     }
   }
 
+  @media screen and (max-width: 1024px) and (orientation:portrait){
+    .HeadContainer{
+        margin-top: 0;
+        background-color: rgb(66, 103, 178);
+        display: flex;
+        position:fixed;
+        justify-content: space-between;
+        padding: 10px;
+        z-index: 9;
+        width:100%;
+        height:5%;
+    }
+    .FirstElem{
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        margin-left:4vh;
+        width:15%;
+    }
+    .LogoBox{
+        width:8vh;
+        background-image: url('../assets/images/fbLogo.png');
+        height:8vh;
+        margin-top:4vh;
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-color:transparent;
+        cursor: pointer;
+    }
+    
+    .SearchInput{
+        border-radius: 5px;
+        outline: none;
+        /* margin-left:1vh; */
+        background-image: url('../assets/images/search.png');
+        background-size: 3vh;
+        background-repeat: no-repeat;
+        background-position: right;
+        border:0.5px solid rgb(99, 94, 94);
+    }
+    
+    .SecondElem{
+        display: flex;
+        justify-content: space-evenly;
+        width:50%;
+    }
+    
+    .Icon{
+        width:5vh;
+        background-size: 3vh;
+        background-repeat: no-repeat;
+        background-position: center; 
+        cursor: pointer;
+        display:flex;
+        align-items: center;
+        align-content: center;
+        text-decoration:none;
+    }
+    
+    .Notifications{
+        background-size: 2.5vh;
+    }
+    
+    .HomePage, .HeaderProf{
+        text-decoration: none;
+        color:white;
+        font-size:1em;
+    
+    }
+    
+  }
 
+  @media screen and (max-width: 1366px) and (orientation:landscape) {
+    .HeadContainer{
+        margin-top: 0;
+        background-color: rgb(66, 103, 178);
+        display: flex;
+        position:fixed;
+        justify-content: space-between;
+        padding: 10px;
+        z-index: 9;
+        width:100%;
+        height:5%;
+    }
+    .FirstElem{
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        width:25%;
+    }
+    .LogoBox{
+        width:4vh;
+        height:4vh;
+        margin-top:0.5vh;
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-color:transparent;
+        cursor: pointer;
+    }
+    
+    .SearchInput{
+        border-radius: 5px;
+        outline: none;
+        background-size: 3vh;
+        background-repeat: no-repeat;
+        background-position: right;
+        border:0.5px solid rgb(99, 94, 94);
+    }
+    
+    .SecondElem{
+        display: flex;
+        justify-content: space-evenly;
+        width:48%;
+    }
+    
+    .Icon{
+        width:5vh;
+        background-size: 3vh;
+        background-repeat: no-repeat;
+        background-position: center; 
+        cursor: pointer;
+        display:flex;
+        align-items: center;
+        align-content: center;
+        text-decoration:none;
+    }
+    
+    .Notifications{
+        background-size: 2.5vh;
+    }
+    
+    .HomePage, .HeaderProf{
+        text-decoration: none;
+        color:white;
+        font-size:1em;
+    
+    }
+  }
+  @media screen and (max-width: 375px) and (orientation:portrait) {
+    .FirstElem{
+        margin-left:-21;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        width:20%;
+    }
+    .LogoBox{
+        width:2vh;
+        height:2vh;
+        margin-top:0.5vh;
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-color:transparent;
+        cursor: pointer;
+    }
+    
+    .SearchInput{
+        z-index: 3;
+        margin-right:5%;
+        border-radius: 5px;
+        outline: none;
+        background-size: 0.3vh;
+        background-repeat: no-repeat;
+        background-position: left;
+        border:0.5px solid rgb(99, 94, 94);
+    }
+    
+    .SecondElem{
+        display: flex;
+        justify-content: space-between;
+        width:70%;
+    }
+    
+    .Icon{
+        width:4vh;
+        background-size: 3vh;
+        background-repeat: no-repeat;
+        background-position: center; 
+        cursor: pointer;
+        display:flex;
+        align-items: center;
+        align-content: center;
+        text-decoration:none;
+    }
+
+    .Notifications{
+        background-size: 2.5vh;
+    }
+    .HeaderProf{
+        width:0%;
+    }
+    .HomePage, .HeaderProf{
+        text-decoration: none;
+        color:white;
+        font-size:0.1em;
+    
+    }
+  }

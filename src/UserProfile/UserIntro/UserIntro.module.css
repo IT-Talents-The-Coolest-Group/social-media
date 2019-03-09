@@ -129,6 +129,35 @@ hr{
     }
 }
 
+@media screen and (max-width: 1024px) and (orientation:portrait){
+    .Container{
+        margin:3vh auto;
+        width:30%;
+   
+    }
+    .ContainerBox{
+        width:100%;
+        height:3vh;
+    }
+
+    .Icon{
+        width:2vh;
+        height:1vh;
+        background-size: 1vh;
+
+    }
+
+    .SpanStyle{
+        padding-top:2vh;
+    }
+
+    .Links{
+        text-decoration: none;
+        color:black;
+        font-weight: normal;
+        font-size: 0.9em;
+    }
+}
 @media screen and (max-width: 667px) and (orientation:landscape){
     .Container{
         margin:3vh auto;

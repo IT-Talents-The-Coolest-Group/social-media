@@ -55,23 +55,18 @@ const themeStyles = theme => ({
     transition: theme.transitions.create('width'),
     width: '100%',
     [theme.breakpoints.up('sm')]: {
-      width: 120,
+      width: 80,
       '&:focus': {
-        width: 200,
+        width: 160,
       },
     },
   },
   Bmargin: {
     marginTop: '1.1vh',
     position: 'relative',
-    left: '7vh',
+    left: '10%',
     zIndex: 3,
   },
-  // avatar: {
-  //   height: '6vh',
-  //   width: '6vh',
-  //   border: '1px solid white'
-  // }
 });
 
 

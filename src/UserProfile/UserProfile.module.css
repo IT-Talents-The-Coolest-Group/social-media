@@ -1,42 +1,37 @@
 .Main{
     background-color: white;
-    width:80%;
     height: 100%;
-    margin:7.6vh auto 0 auto;
+    margin:55px auto 0 auto;
     box-sizing: border-box;
+    min-width: 820px;
+    max-width: 1170px;
 }
 
 
 
-.avatar{
+/* .avatar{
     position:absolute;
     top:64%;
     left:37%;
     object-fit: cover;
-    width:69px;
+   width:69px;
     height:60px;
     border:1px solid white;
     border-radius: 50%;
-}
+} */
 
 @media screen and (max-width: 1024px) and (orientation:portrait){
     .avatar{
         position:absolute;
         top:37%;
         left:37.2%;
-        object-fit: cover;
-        width:60px;
-        height:61px;
-        border:1px solid white;
-        border-radius: 50%;
-        z-index: 20;
-     } 
+    }
 }
 
 @media screen and (max-width: 1366px) and (orientation:landscape) {
     .avatar{
         /* position:absolute; */
-        top:50%;
+        top:48%;
         left:37.2%;
         object-fit: cover;
         width:60px;

@@ -23,6 +23,7 @@ class UserCover extends Component {
         let selectedFileCover = this.state.selectedFileCover
         selectedFileCover.src = event.target.files[0].name;
         this.setState({selectedFileCover})
+        console.log(this.state.selectedFileCover.src)
         console.log(this.props.currentUser.isLogged)
 
 // sessionStorage.setItem('cover',JSON.stringify({cover:selectedFileCover.src}))
@@ -42,7 +43,7 @@ class UserCover extends Component {
     render() {
         return (
             <React.Fragment>
-                
+                {/* <div style={{backgroundImage: `url(require('../../assets/images/'+ ${this.state.selectedFileCover.src}))`}} className={coverStyle.Cover}> */}
                 <input id="myuniqueid" className={coverStyle.Upload} type="file" onChange={this.fileSelectedHandler}/>
                 <label className = {coverStyle.Label} htmlFor="myuniqueid">Change Your Cover</label>
                 <img src={require('../../assets/images/'+ this.state.selectedFileCover.src)} alt="Cover" className={coverStyle.Cover} />
