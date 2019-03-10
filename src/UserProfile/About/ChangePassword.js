@@ -2,8 +2,10 @@ import React, { Component } from 'react';
 import aboutStyle from './About.module.css';
 import Input from '@material-ui/core/Input';
 import Button from '../../UI/Button/Button';
+import { connect } from 'react-redux';
+import { userChangePassword } from '../../Actions/users';
 
-export default class ChangePassword extends Component {
+class ChangePassword extends Component {
     state = {
         oldPassword: '',
         newPassword: '',
@@ -16,29 +18,9 @@ export default class ChangePassword extends Component {
 
     onSubmit = (event) => {
         event.preventDefault();
+        const { newPassword, newPasswordConfirm, oldPassword } = this.state;
+        this.props.userChangePassword(newPassword, newPasswordConfirm, oldPassword);
     }
-    //     let url = `https://bacefookapi.herokuapp.com/users/tbd----123/changepassword`;
-    //     const data = {
-    //         oldPassword: this.state.oldPassword,
-    //         newPassword: this.state.newPassword,
-    //         confirmPassword: this.state.newPasswordConfirm,
-    //     };
-
-    //     fetch(url, {
-    //         method: "POST",
-    //         headers: {
-    //             "Content-Type": "application/json",
-    //         },
-    //         // redirect: "follow",
-    //         // referrer: "no-referrer", 
-    //         body: JSON.stringify(data),
-    //     })
-    //         .then(response => response.json())
-    //         .then(res => {
-    //             console.log(res);
-    //         })
-    //         .catch(error => console.log(error));
-    // };
 
     render() {
         return (
@@ -52,3 +34,17 @@ export default class ChangePassword extends Component {
         );
     }
 }
+
+const mapDispatchToProps = dispatch => {
+    return {
+        userChangePassword: (newPassword, newPasswordConfirm, oldPassword) => dispatch(userChangePassword(newPassword, newPasswordConfirm, oldPassword))
+    }
+  }
+
+const mapStateToProps = state => {
+    return {
+        currentUser: state.currentUser,
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(ChangePassword);

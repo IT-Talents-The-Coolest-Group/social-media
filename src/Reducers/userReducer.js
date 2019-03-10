@@ -2,9 +2,13 @@ import {
     USER_LOGIN, USER_REGISTER, USER_LOGOUT,
     USER_SEARCH, UPLOAD_PHOTO, ADD_FRIEND,
     MANAGE_FRIEND_REQUEST, DELETE_FRIEND,
-    CHANGE_POST, NEW_POST, DELETE_POST, UDPATE_USER_IFNO
+    CHANGE_POST, NEW_POST, DELETE_POST, UDPATE_USER_IFNO, USER_CHANGE_PASSWORD
     // SORT_POST,
 } from '../Actions/actionTypes';
+// import bcrypt from 'bcrypt';
+import bcrypt from 'bcryptjs';
+
+const BCRYPT_SALT_ROUNDS = 10;
 
 const initialState = {
     users: (localStorage.getItem('userList') ? JSON.parse(localStorage.getItem('userList')) : []),
@@ -25,7 +29,7 @@ const reducer = (state = initialState, action) => {
     switch (action.type) {
         case USER_LOGIN: {
             let user = state.users.filter(u => {
-                if (u.password === action.password && u.email === action.email) {
+                if (bcrypt.compareSync(action.password, u.password) && u.email === action.email) {
                     return u;
                 }
                 return null;
@@ -43,6 +47,25 @@ const reducer = (state = initialState, action) => {
             return { ...state, loginErr: true };
         }
 
+        case USER_CHANGE_PASSWORD: {
+            const users = [...state.users];
+            const currentUser = {...state.currentUser};
+            const myIndex = users.findIndex(u => u.id === currentUser.user.id);
+
+            if (state.currentUser.user.password === action.oldPassword && action.newPassword === action.newPasswordConfirm) {
+                const password = bcrypt.hashSync(action.newPassword, BCRYPT_SALT_ROUNDS);
+
+                currentUser.user.password = password;
+                users[myIndex].password = password;
+
+                localStorage.setItem('userList', JSON.stringify(users));
+                sessionStorage.setItem('loggedUser', JSON.stringify(currentUser.user));
+                return {...state, users, currentUser};
+            }
+
+            return state;
+        }
+
         case USER_REGISTER: {
             let user = action.user;
 
@@ -52,6 +75,9 @@ const reducer = (state = initialState, action) => {
                 const lastId = state.users[state.users.length - 1].id;
                 user.id = lastId + 1;
             }
+
+            user.password = bcrypt.hashSync(user.password, BCRYPT_SALT_ROUNDS);
+            delete user.passwordConfirmation;
 
             localStorage.setItem('userList', JSON.stringify([...state.users, user]));
             sessionStorage.setItem('loggedUser', JSON.stringify(user));

@@ -101,7 +101,7 @@ class AboutEdit extends Component {
 
 const mapDispatchToProps = dispatch => {
     return {
-      updateUserInfo: (info) => dispatch(updateUserInfo(info))
+        updateUserInfo: (info) => dispatch(updateUserInfo(info)),
     }
   }
 

@@ -1,4 +1,4 @@
-import { USER_LOGIN, USER_REGISTER, USER_LOGOUT, USER_SEARCH, UPLOAD_PHOTO ,ADD_POST, ADD_FRIEND, MANAGE_FRIEND_REQUEST, DELETE_FRIEND, UDPATE_USER_IFNO } from "./actionTypes";
+import { USER_LOGIN, USER_REGISTER, USER_LOGOUT, USER_SEARCH, UPLOAD_PHOTO ,ADD_POST, ADD_FRIEND, MANAGE_FRIEND_REQUEST, DELETE_FRIEND, UDPATE_USER_IFNO, USER_CHANGE_PASSWORD } from "./actionTypes";
 
 export const userLogin = (email, password) => {
     return {
@@ -6,6 +6,15 @@ export const userLogin = (email, password) => {
         email,
         password
     }
+};
+
+export const userChangePassword = (newPassword, newPasswordConfirm, oldPassword) => {
+    return {
+        type: USER_CHANGE_PASSWORD,
+        newPassword,
+        newPasswordConfirm,
+        oldPassword
+    };
 };
 
 export const userRegister = user => {
