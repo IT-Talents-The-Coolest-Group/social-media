@@ -68,7 +68,6 @@ const postList = props => {
     )
 }
 
-//redux state
 const mapStateToProps = (state) => {
     return {
         posts: state.posts

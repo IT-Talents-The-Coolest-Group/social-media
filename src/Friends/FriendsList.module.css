@@ -2,6 +2,9 @@
     width: 60%;
     display: flex;
     flex-direction: column;
-    padding: 10px 0;
-    margin: 55px auto; /*used only because the header has a fixed position*/
+    padding: 10px;
+    margin: 15px auto; /*used only because the header has a fixed position*/
+    background-image: url('../assets/images/7.jpg');
+    background-size: cover;
+    border-radius: 5px;
 }

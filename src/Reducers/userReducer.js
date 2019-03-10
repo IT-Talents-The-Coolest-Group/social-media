@@ -1,11 +1,10 @@
 import {
     USER_LOGIN, USER_REGISTER, USER_LOGOUT,
-    USER_SEARCH, UPLOAD_PHOTO, ADD_FRIEND,
+    USER_SEARCH, ADD_FRIEND,
     MANAGE_FRIEND_REQUEST, DELETE_FRIEND,
     CHANGE_POST, NEW_POST, DELETE_POST, UDPATE_USER_IFNO, USER_CHANGE_PASSWORD
-    // SORT_POST,
+
 } from '../Actions/actionTypes';
-// import bcrypt from 'bcrypt';
 import bcrypt from 'bcryptjs';
 
 const BCRYPT_SALT_ROUNDS = 10;
@@ -106,13 +105,13 @@ const reducer = (state = initialState, action) => {
             return { ...state, searchedUsers };
         }
 
-        case UPLOAD_PHOTO: 
-            sessionStorage.setItem('loggedUser', 'cover');
-            // let user = action.user
-            let v = JSON.parse(sessionStorage.getItem('cover'));
-            return {
-                ...state, currentUser: [...state.currentUser, action.selectedFileCover]
-            };
+        // case UPLOAD_PHOTO: 
+        //     sessionStorage.setItem('loggedUser', 'cover');
+        //     // let user = action.user
+        //     let v = JSON.parse(sessionStorage.getItem('cover'));
+        //     return {
+        //         ...state, currentUser: [...state.currentUser, action.selectedFileCover]
+        //     };
 
         case ADD_FRIEND: {
             let users = [...state.users];

@@ -206,7 +206,7 @@ class RegisterContent extends Component {
                     <h2 className={styles.H2} >Create a New Account</h2>
                     <div className={styles.namesContainer}>
                         <div className={classes.firstName.join(' ')}>
-                            <Input type="text" id="first-name" name="firstName" placeholder="First Name" onChange={this.onChange} />
+                            <Input type="text" id="first-name" name="firstName" placeholder="First Name" maxLength={10} onChange={this.onChange} />
                             {this.state.errors.firstName !== '' && this.state.errors.firstName}
                         </div>
                         <div className={classes.lastName.join(' ')}>
