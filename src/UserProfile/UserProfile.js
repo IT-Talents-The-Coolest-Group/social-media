@@ -7,6 +7,7 @@ import homeStyle from './UserProfile.module.css';
 // import image from '../assets/images/girl.jpg';
 import { connect } from 'react-redux';
 import HomeHeader from '../HomeHeader/HomeHeader';
+import PostList from "../Post/PostList";
 
 class UserProfile extends Component {
     state = {
@@ -17,6 +18,9 @@ class UserProfile extends Component {
         if (this.props.currentUser.isLogged === false) {
             this.props.route.history.push('/');
         }
+        if (!this.props.route.match.params.userId || this.props.users.findIndex(u => u.id === Number(this.props.route.match.params.userId)) === -1) {
+            this.props.route.history.push(`/home/${this.props.currentUser.user.id}/`);
+        }
         this.loadUserToShow();
     }
 
@@ -24,12 +28,17 @@ class UserProfile extends Component {
         if (this.props.currentUser.isLogged === false) {
             this.props.route.history.push('/');
         }
+
+        if (!this.props.route.match.params.userId || this.props.users.findIndex(u => u.id === Number(this.props.route.match.params.userId)) === -1) {
+            this.props.route.history.push(`/home/${this.props.currentUser.user.id}/`);
+        }
         this.loadUserToShow();
     }
 
     loadUserToShow = () => {
         if (typeof this.props.route.match.params.userId !== 'undefined' && Number(this.props.route.match.params.userId) !== this.state.userToShow.id) {
             const userToShow = this.props.users.filter(u => u.id === Number(this.props.route.match.params.userId));
+
             if (userToShow && userToShow.length > 0) {
                 this.setState({
                     ...this.state, 
@@ -52,8 +61,8 @@ class UserProfile extends Component {
                     <UserCover userToShow={this.state.userToShow} route={this.props.route} />
                     <UserIntro route={this.props.route} />
                     {/* <img alt="Profile" src={image} className={homeStyle.avatar} /> */}
-                    <PostForm/>
-                {/* <PostList/> */}
+                    <PostForm />
+                <PostList/>
                 </div>
             </React.Fragment>
         )

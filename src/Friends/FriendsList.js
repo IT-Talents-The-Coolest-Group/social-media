@@ -19,12 +19,20 @@ class FriendsList extends Component {
             this.props.route.history.push('/');
         }
 
+        if (!this.props.route.match.params.userId || this.props.users.findIndex(u => u.id === Number(this.props.route.match.params.userId)) === -1) {
+            this.props.route.history.push(`/home/${this.props.currentUser.user.id}/`);
+        }
+
         this.loadUserToShow();
     }
 
     componentDidUpdate() {
         if (this.props.currentUser.isLogged === false) {
             this.props.route.history.push('/');
+        }
+
+        if (!this.props.route.match.params.userId || this.props.users.findIndex(u => u.id === Number(this.props.route.match.params.userId)) === -1) {
+            this.props.route.history.push(`/home/${this.props.currentUser.user.id}/`);
         }
 
         this.loadUserToShow();

@@ -91,7 +91,7 @@ class AboutEdit extends Component {
                             <Button onClick={this.onSubmit}>Save</Button>
                         </div>
 
-                        <ChangePassword />
+                        <ChangePassword route={this.props.route} />
                     </div>
                 </div>
             </>

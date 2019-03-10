@@ -3,7 +3,7 @@ import aboutStyle from './About.module.css';
 import Input from '@material-ui/core/Input';
 import Button from '../../UI/Button/Button';
 import { connect } from 'react-redux';
-import { userChangePassword } from '../../Actions/users';
+import { userChangePassword, resetChangedPassword } from '../../Actions/users';
 
 class ChangePassword extends Component {
     state = {
@@ -11,6 +11,13 @@ class ChangePassword extends Component {
         newPassword: '',
         newPasswordConfirm: '',
     };
+
+    componentDidUpdate() {
+        if (this.props.passwordChanged === true) {
+            this.props.resetChangedPassword();
+            this.props.route.history.push(`/profile-home/account-details/${this.props.currentUser.user.id}/`);
+        }
+    }
 
     onChange = (event) => {
         this.setState({ ...this.state, [event.target.name]: event.target.value });
@@ -37,13 +44,15 @@ class ChangePassword extends Component {
 
 const mapDispatchToProps = dispatch => {
     return {
-        userChangePassword: (newPassword, newPasswordConfirm, oldPassword) => dispatch(userChangePassword(newPassword, newPasswordConfirm, oldPassword))
+        userChangePassword: (newPassword, newPasswordConfirm, oldPassword) => dispatch(userChangePassword(newPassword, newPasswordConfirm, oldPassword)),
+        resetChangedPassword: () => dispatch(resetChangedPassword()),
     }
   }
 
 const mapStateToProps = state => {
     return {
         currentUser: state.currentUser,
+        passwordChanged: state.passwordChanged,
     };
 };
 

@@ -22,7 +22,7 @@ class PostList extends React.Component {
     render() {
         return (
             <React.Fragment>
-                <h2>News Feed:</h2>
+                {this.props.title && <h2>{this.props.title}</h2>}
                 {this.props.postList.length > 0 && this.props.postList.map(post => 
                     <Post key={post.id} {...post} />)
                 }

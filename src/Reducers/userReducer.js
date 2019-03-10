@@ -2,7 +2,7 @@ import {
     USER_LOGIN, USER_REGISTER, USER_LOGOUT,
     USER_SEARCH, ADD_FRIEND,
     MANAGE_FRIEND_REQUEST, DELETE_FRIEND,
-    CHANGE_POST, NEW_POST, DELETE_POST, UDPATE_USER_IFNO, USER_CHANGE_PASSWORD, GET_POST_LIST
+    CHANGE_POST, NEW_POST, DELETE_POST, UDPATE_USER_IFNO, USER_CHANGE_PASSWORD, GET_POST_LIST, RESET_CHANGED_PASSWORD
 } from '../Actions/actionTypes';
 import bcrypt from 'bcryptjs';
 import { format } from 'date-fns';
@@ -20,6 +20,7 @@ const initialState = {
         isLogged: JSON.parse(sessionStorage.getItem('loggedUser')) ? true : false
     },
     logginErr: false,
+    passwordChanged: false,
     searchedUsers: []
 }
 
@@ -50,7 +51,7 @@ const reducer = (state = initialState, action) => {
             const currentUser = {...state.currentUser};
             const myIndex = users.findIndex(u => u.id === currentUser.user.id);
 
-            if (state.currentUser.user.password === action.oldPassword && action.newPassword === action.newPasswordConfirm) {
+            if (bcrypt.compareSync(action.oldPassword, state.currentUser.user.password) && action.newPassword === action.newPasswordConfirm) {
                 const password = bcrypt.hashSync(action.newPassword, BCRYPT_SALT_ROUNDS);
 
                 currentUser.user.password = password;
@@ -58,11 +59,14 @@ const reducer = (state = initialState, action) => {
 
                 localStorage.setItem('userList', JSON.stringify(users));
                 sessionStorage.setItem('loggedUser', JSON.stringify(currentUser.user));
-                return {...state, users, currentUser};
+                return {...state, users, currentUser, passwordChanged: true};
             }
 
             return state;
         }
+
+        case RESET_CHANGED_PASSWORD: 
+            return {...state, passwordChanged: false};
 
         case USER_REGISTER: {
             let user = action.user;

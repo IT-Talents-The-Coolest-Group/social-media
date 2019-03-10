@@ -13,7 +13,7 @@ class HomePage extends Component {
             this.props.route.history.push('/');
         }
 
-        if (!this.props.route.match.params.userId) {
+        if (!this.props.route.match.params.userId || this.props.users.findIndex(u => u.id === Number(this.props.route.match.params.userId)) === -1) {
             this.props.route.history.push(`/home/${this.props.currentUser.user.id}/`);
         }
     }
@@ -21,6 +21,10 @@ class HomePage extends Component {
     componentDidUpdate() {
         if (this.props.currentUser.isLogged === false) {
             this.props.route.history.push('/');
+        }
+        
+        if (!this.props.route.match.params.userId || this.props.users.findIndex(u => u.id === Number(this.props.route.match.params.userId)) === -1) {
+            this.props.route.history.push(`/home/${this.props.currentUser.user.id}/`);
         }
     }
 
@@ -31,7 +35,7 @@ class HomePage extends Component {
                 <div className={homeStyle.Container}>
                 {/* <img alt="Profile" draggable="false" src={image} className={homeStyle.avatar} /> */}
                 <PostForm/>
-                <PostList/>
+                <PostList title="News feed"/>
                 </div>
             </React.Fragment>
         )
@@ -40,6 +44,7 @@ class HomePage extends Component {
 
 const mapStateToProps = state => {
     return {
+        users: state.users,
         currentUser: state.currentUser,
     };
 };

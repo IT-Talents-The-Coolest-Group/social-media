@@ -21,6 +21,10 @@ class About extends Component {
             this.props.route.history.push('/');
         }
 
+        if (!this.props.route.match.params.userId || this.props.users.findIndex(u => u.id === Number(this.props.route.match.params.userId)) === -1) {
+            this.props.route.history.push(`/home/${this.props.currentUser.user.id}/`);
+        }
+
         this.loadUserToShow();
     }
 
@@ -29,8 +33,12 @@ class About extends Component {
             this.props.route.history.push('/');
         }
 
-        this.loadUserToShow();
+        if (!this.props.route.match.params.userId || this.props.users.findIndex(u => u.id === Number(this.props.route.match.params.userId)) === -1) {
+            this.props.route.history.push(`/home/${this.props.currentUser.user.id}/`);
         }
+
+        this.loadUserToShow();
+    }
 
         loadUserToShow = () => {
             if (typeof this.props.route.match.params.userId !== 'undefined' && Number(this.props.route.match.params.userId) !== this.state.userToShow.id) {
