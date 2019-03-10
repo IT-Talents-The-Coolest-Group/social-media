@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import style from './HomeHeader.module.css';
-import img from '../assets/images/profile.png';
+import img from '../assets/images/profile1.png';
 import Avatar from '@material-ui/core/Avatar';
 import Toolbar from '@material-ui/core/Toolbar';
 import { fade } from '@material-ui/core/styles/colorManipulator';

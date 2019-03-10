@@ -91,9 +91,9 @@
 }
 
 .ProfilePhoto{
-    top:46.2%;
+    top:47%;
     left:14%;
-    width:4%;
+    /* width:4%; */
     text-align: center;
 }
 
@@ -105,12 +105,12 @@
 }
 
 .bigAvatar{
-/* width:130px; */
-height:25vh;
+width:13vw;
+height:26vh;
 object-fit: cover;
 position: absolute;
 top:18%;
-max-width: 35wh;;
+/* max-width: 35wh;; */
 left:14%;
 border-radius: 50%;
 z-index: 3;
@@ -118,7 +118,8 @@ border:4px solid white;
 }
 
 
-@media screen and (max-width: 1024px) and (orientation:portrait) {
+/* @media screen and (max-width: 1024px) and (orientation:portrait) { */
+    @media screen and (max-width: 1024px) {
     .Cover{
         width:100%;
         height:15vh;
@@ -131,7 +132,7 @@ border:4px solid white;
     top:140px;
     left:27px;
     object-fit: cover;
-    width:150px;
+    /* width:150px; */
     height:130px;
     border:2px solid white;
     }
@@ -181,7 +182,8 @@ border:4px solid white;
     }
 }
 
-@media screen and (max-width: 1366px) and (orientation:landscape){
+/* @media screen and (max-width: 1366px) and (orientation:landscape){ */
+    @media screen and (max-width: 1366px){
     .bigAvatar{
         position:absolute;
         top:18%;
@@ -221,7 +223,8 @@ border:4px solid white;
     }
 }
 
-@media screen and (max-width: 768px) and (orientation:portrait) {
+/* @media screen and (max-width: 768px) and (orientation:portrait) { */
+    @media screen and (max-width: 768px) {
     .Cover{
         width:100%;
         height:15vh;
@@ -261,7 +264,8 @@ border:4px solid white;
 }
 
 
-@media screen and (max-width: 1024px) and (orientation:landscape){
+/* @media screen and (max-width: 1024px) and (orientation:landscape){ */
+    @media screen and (max-width: 1024px) {
     .bigAvatar{
         position:absolute;
         top:16%;
@@ -298,7 +302,8 @@ border:4px solid white;
     }
 }
 
-@media screen and (max-width: 375px) and (orientation:portrait) {
+/* @media screen and (max-width: 375px) and (orientation:portrait) { */
+    @media screen and (max-width: 375px){
     .Cover{
         height:23vh;
     }
@@ -364,39 +369,53 @@ border:4px solid white;
     }
 }
 
-@media screen and (max-width: 667px) and (orientation:landscape){
+/* @media screen and (max-width: 667px) and (orientation:landscape){ */
+    @media screen and (max-width: 667px) {
     .Cover{
-        height:32vh;
+        height:35vh;
     }
     .bigAvatar{
         position:absolute;
-        top:19%;
-        left:4%;
+        top:27%;
+        left:8%;
         object-fit: cover;
-        width:90px;
-        height:80px;
+        width:120px;
+        height:110px;
         border:2px solid white;
     }
+    .ToolbarProfile{
+        width:100%;
+        display:flex;
+        justify-content: center;
+        align-items: center;
+        background-color:rgb(217, 227, 247);
+        height:8vh;
+        z-index: 0;
+        clear:both;
+        font-size: 0.8em;
+        border-bottom:2px solid rgb(66, 103, 178);
+    }
     .TollbarInfo{
-        font-size:0.8em;
+        margin-top:1vh;
+        /* font-size:0.8em; */
     }
     .Label{
         position:absolute;
         top:12%;
         left:2%;
-        font-size:0.1em;
+        font-size:0.8em;
     }
     .ProfilePhoto{
         left:2%;
-        top:42%;
+        top:44%;
         height:35px;
-        font-size:0.1em;
+        font-size:0.8em;
         background-color: transparent;
     }
     .Nickname{
         position: absolute;
-        top:34%;
-        left:25%;
+        top:40%;
+        left:45%;
         z-index: 3;
         font-size: 0.8em;
         font-weight:bold;
@@ -404,9 +423,10 @@ border:4px solid white;
     .Edit {
         width: 15px;
         position: absolute;
-        top: 33.5%;
-        left: 22%;
+        top: 40%;
+        left: 41%;
         display: inline-block;
         height: 15px;
     }
+    
 }

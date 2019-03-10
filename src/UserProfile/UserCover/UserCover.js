@@ -11,7 +11,7 @@ class UserCover extends Component {
             src:'cover4.jpg'
         },
         selectedFileAvatar:{
-            src:'profile.png'
+            src:'profile1.png'
         }
     }
    

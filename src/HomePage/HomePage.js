@@ -33,7 +33,6 @@ class HomePage extends Component {
             <React.Fragment>
                 <HomeHeader route={this.props.route} />
                 <div className={homeStyle.Container}>
-                {/* <img alt="Profile" draggable="false" src={image} className={homeStyle.avatar} /> */}
                 <PostForm/>
                 <PostList title="News feed"/>
                 </div>

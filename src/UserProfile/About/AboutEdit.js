@@ -3,7 +3,6 @@ import aboutStyle from './About.module.css';
 import UserCover from '../UserCover/UserCover';
 import HomeHeader from '../../HomeHeader/HomeHeader';
 import homeStyle from '../UserProfile.module.css';
-// import Input from '../../UI/Input/Input';
 import Input from '@material-ui/core/Input';
 import ChangePassword from "./ChangePassword";
 import { connect } from 'react-redux';
