@@ -5,14 +5,15 @@ import { Link } from 'react-router-dom';
 
 class FriendsItem extends Component {
     render() {
-        const { friend } = this.props;
+        const { friend, deleteFriend, acceptFriend, title } = this.props;
         return (
-            <div key={`friend-${friend.id}`} className={style.FriendRequest}>
-                <Link to={`/profile-home/${friend.id}/`} onClick={this.visitFriend}>{friend.firstName} {friend.lastName}</Link>
+            <div key={`friend-${friend && friend.id}`} className={style.FriendItem}>
+                {title && title}
+                {friend && <Link to={`/profile-home/${friend.id}/`} onClick={this.visitFriend}>{friend.firstName} {friend.lastName}</Link>}
                 <div>
-                    {typeof this.props.acceptFriend !== "undefined" && <Button className="GreenBtn" onClick={(e) => { this.props.acceptFriend(e, friend.id) }}>Accept</Button>}
+                    {acceptFriend && <Button className="GreenBtn" onClick={(e) => { acceptFriend(e, friend.id) }}>Accept</Button>}
 
-                    {typeof this.props.deleteFriend !== "undefined" && <Button className="LinkBtn" onClick={(e) => { this.props.deleteFriend(e, friend.id) }}>Delete</Button>}
+                    {deleteFriend && <Button className="LinkBtn" onClick={(e) => { deleteFriend(e, friend.id) }}>Delete</Button>}
                 </div>
             </div>
         );

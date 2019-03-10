@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import style from './FriendsList.module.css';
 import homeStyle from '../UserProfile/UserProfile.module.css';
 import { connect } from 'react-redux';
-import { deleteFriend } from '../Actions/users';
+import { deleteFriend, manageFriendRequest } from '../Actions/users';
 import HomeHeader from '../HomeHeader/HomeHeader';
 import FriendsItem from './FriendsItem';
 import UserCover from '../UserProfile/UserCover/UserCover';
@@ -31,21 +31,60 @@ class FriendsList extends Component {
     }
 
     loadFriendsHtml = () => {
-        const { users } = this.props;
+        const { users, currentUser } = this.props;
         const { userToShow } = this.state;
 
         if (typeof userToShow.friends === "undefined") {
             return;
         }
+
+        const isCurrentUser = currentUser.user.id === userToShow.id;
+
         const html = [];
-        for (let i = 0; i < userToShow.friends.length; i++) {
-            let friendUserId = userToShow.friends[i];
-            let friend = users.filter(u => u.id === friendUserId);
-            if (friend.length === 1) {
+        html.push(<h1 key="friends-list">Friends</h1>);
+        if (userToShow.friends.length === 0) {
+            html.push(<FriendsItem 
+                key={`friend-item-no-friends`}
+                title="No friends yet"
+            />);
+        } else {
+            for (let i = 0; i < userToShow.friends.length; i++) {
+                let friendUserId = userToShow.friends[i];
+                let friend = users.filter(u => u.id === friendUserId);
+                if (friend.length === 1) {
+                    html.push(<FriendsItem 
+                        key={`friend-item-${friendUserId}`}
+                        friend={friend[0]}
+                        deleteFriend={isCurrentUser && this.deleteFriend}
+                    />);
+                }
+            }
+        }
+
+        if (isCurrentUser && userToShow.pendingFriends) {
+            html.push(<h1 key="pending-requests-list">Pending Requests</h1>);
+
+            let hasPanding = false;
+            Object.entries(userToShow.pendingFriends).forEach(([friendId, requestStatus]) => {
+                if (requestStatus !== 'pending') {
+                    return;
+                }
+                hasPanding = true;
+                let friend = users.filter(u => u.id === Number(friendId));
+                if (friend.length === 1) {
+                    html.push(<FriendsItem 
+                        key={`friend-item-${friendId}`}
+                        friend={friend[0]}
+                        deleteFriend={this.deleteFriendRequest} 
+                        acceptFriend={this.acceptFriendRequest}
+                    />);
+                }
+            });
+
+            if (!hasPanding) {
                 html.push(<FriendsItem 
-                    key={`friend-item-${friendUserId}`}
-                    friend={friend[0]}
-                    deleteFriend={this.deleteFriend}
+                    key={`friend-item-no-pending-friend-requests`}
+                    title="No pending friend requests"
                 />);
             }
         }
@@ -58,6 +97,18 @@ class FriendsList extends Component {
         if (window.confirm("Are you sure you want to delete your friend?")) {
             this.props.deleteFriend(friendId);
         }
+    };
+
+    acceptFriendRequest = (e, friendId) => {
+        e.preventDefault();
+        this.setState({ ...this.state, showFriendRequests: false });
+        this.props.manageFriendRequest(friendId, 'accept');
+    };
+    
+    deleteFriendRequest = (e, friendId) => {
+        e.preventDefault();
+        this.setState({ ...this.state, showFriendRequests: false });
+        this.props.manageFriendRequest(friendId, 'delete');
     };
 
     loadUserToShow = () => {
@@ -86,19 +137,20 @@ class FriendsList extends Component {
         return(<>
             <HomeHeader route={this.props.route} />
             <div className={homeStyle.Main}>
-                    <UserCover userToShow={this.state.userToShow} route={this.props.route} />
-                    <UserIntro route={this.props.route} />
-                    <div className={style.FriendListContainer}>
-                        {friendsComponents}
-                    </div>
+                <UserCover userToShow={this.state.userToShow} route={this.props.route} />
+                <UserIntro route={this.props.route} />
+                <div className={style.FriendListContainer}>
+                    {friendsComponents}
                 </div>
-            </>);
+            </div>
+        </>);
     }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    deleteFriend: (userId) => dispatch(deleteFriend(userId))
+    deleteFriend: (userId) => dispatch(deleteFriend(userId)),
+    manageFriendRequest: (userId, status) => dispatch(manageFriendRequest(userId, status))
   }
 }
 
