@@ -1,6 +1,10 @@
 .Container{
     width:67%;
     height:60%;
+    display:flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    align-items: center;
     float:right;
     margin:3vh auto;
     border-radius: 5px;
@@ -9,6 +13,10 @@
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
+}
+
+.Size{
+    font-size:0.5em;
 }
 
 .Box{
@@ -21,13 +29,27 @@
     margin-right:1%;
     box-sizing: border-box;
     color:rgb(66, 103, 178);
-}
+} 
 
-.Size{
-    font-size:1.7em;
-    font-weight:bold;
+.Upload{
+    width:20%;
+    padding:1.1%;
+    text-align: center;
+    font-size:0.8em;
+    background-size:20%;
+    background-position: bottom left;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    border-radius: 18px;
+    margin:1% 0;
+    cursor: pointer;
+    color:black;
+    box-shadow:0 2px 3px 0px rgba(0,0,0,0.25);
+    transition:.2s all; 
+    border:0;
+    outline: none;
+    
 }
-
 @media screen and (max-width: 375px) and (orientation:portrait){
     .Container{
         width:100%;

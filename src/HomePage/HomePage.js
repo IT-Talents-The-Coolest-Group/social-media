@@ -5,7 +5,7 @@ import homeStyle from './HomePage.module.css';
 // import image from '../assets/images/girl.jpg';
 import { connect } from 'react-redux';
 import PostList from '../Post/PostList';
-import Post from '../Post/Post';
+import PostForm from '../Post/PostForm';
 
 class HomePage extends Component {
     componentDidMount() {
@@ -26,11 +26,8 @@ class HomePage extends Component {
                 <HomeHeader route={this.props.route} />
                 <div className={homeStyle.Container}>
                 {/* <img alt="Profile" draggable="false" src={image} className={homeStyle.avatar} /> */}
-                <Post/>
+                <PostForm/>
                 <PostList/>
-                {/* <PostForm2 /> */}
-                {/* <AllPost /> */}
-
                 </div>
             </React.Fragment>
         )

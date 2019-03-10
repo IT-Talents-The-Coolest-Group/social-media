@@ -80,7 +80,7 @@ class UserCover extends Component {
                 <input id="myuniqueid2" className={coverStyle.Upload} type="file"  onChange={this.fileSelectedHandler2}/>
 
                 {this.props.userToShow.id === this.props.currentUser.user.id && 
-                <label className = {coverStyle.Label+' '+ coverStyle.ProfilePhoto} htmlFor="myuniqueid2">Change Profile Photo</label>}
+                <label className = {coverStyle.Label+' '+ coverStyle.ProfilePhoto} htmlFor="myuniqueid2">Change avatar</label>}
 
                 <Link to={`/profile-home${userIdSuffix}`} className={coverStyle.Nickname}>{this.props.userToShow.firstName} {this.props.userToShow.lastName}</Link>
 

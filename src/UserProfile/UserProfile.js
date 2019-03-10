@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 // import cover from '../assets/images/default_cover.jpg';
 import UserIntro from './UserIntro/UserIntro';
-import Post from '../Post/Post';
+import PostForm from '../Post/PostForm';
 import UserCover from './UserCover/UserCover';
 import homeStyle from './UserProfile.module.css';
 // import image from '../assets/images/girl.jpg';
@@ -50,7 +50,8 @@ class UserProfile extends Component {
                     <UserCover userToShow={this.state.userToShow} route={this.props.route} />
                     <UserIntro />
                     {/* <img alt="Profile" src={image} className={homeStyle.avatar} /> */}
-                    <Post />
+                    <PostForm/>
+                {/* <PostList/> */}
                 </div>
             </React.Fragment>
         )

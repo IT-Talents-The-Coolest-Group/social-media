@@ -1,5 +1,10 @@
 import { USER_LOGIN, USER_REGISTER, USER_LOGOUT, USER_SEARCH, UPLOAD_PHOTO, ADD_FRIEND, MANAGE_FRIEND_REQUEST } from '../Actions/actionTypes';
-
+import {
+    CHANGE_POST,
+    // SORT_POST,
+    NEW_POST,
+    DELETE_POST
+} from '../Actions/actionTypes'
 const initialState = {
     users: (localStorage.getItem('userList') ? JSON.parse(localStorage.getItem('userList')) : []),
     // users: [{
@@ -31,6 +36,10 @@ const initialState = {
     //         isItLiked:false
     //     }],
     // }],
+    posts: [
+        {id: 1, name: 'София Геогиева', info: 'Здравейте!', time: "14:40"},
+        {id: 2, name: 'Марио Стоянов', info: 'Прекрасен ден за представяне на проек! 😉 ', time: '12:18'},
+    ],
     currentUser: {
         user: (JSON.parse(sessionStorage.getItem('loggedUser'))) ? JSON.parse(sessionStorage.getItem('loggedUser'))
             : null,
@@ -181,8 +190,26 @@ const reducer = (state = initialState, action) => {
             }
         }
 
+        case CHANGE_POST: {
+            return {...state, posts: state.posts.map((post, index) => {
+                if (index === action.index) {
+                    return {...state.posts[index], name: action.change };
+                } else {
+                    return {...post};
+                }
+            })}};
+        
+        case NEW_POST: {
+            return {...state, posts: [...state.posts, action.post]};
+        }
+        
+        case DELETE_POST: {
+            return {...state, posts: state.posts.filter(a => a.id !== action.id)}
+        }
+
         default: return state;
     };
 }
 
 export default reducer;
+

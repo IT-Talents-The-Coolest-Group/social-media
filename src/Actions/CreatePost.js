@@ -1,8 +1,36 @@
-import { ADD_POST } from '../ActionTypes/ActionTypes';
+// import { ADD_POST } from '../ActionTypes/ActionTypes';
 
-export const createPost = createdPosts => {
+// export const createPost = createdPosts => {
+//     return {
+//         type: ADD_POST,
+//         createdPosts
+//     }
+// } 
+
+import {
+    CHANGE_POST,
+    NEW_POST,
+    DELETE_POST
+} from './actionTypes';
+
+export const changePost = index => {
     return {
-        type: ADD_POST,
-        createdPosts
+        type: CHANGE_POST,
+        index,
+        change: 'Burbun'
     }
 } 
+
+export const addNewPost = post => {
+    return {
+        type: NEW_POST,
+        post
+    }
+} 
+
+export const deletePost = id => {
+    return {
+        type: DELETE_POST,
+        id
+    }
+}
