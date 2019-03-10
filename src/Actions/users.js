@@ -1,4 +1,4 @@
-import { USER_LOGIN, USER_REGISTER, USER_LOGOUT, USER_SEARCH, UPLOAD_PHOTO ,ADD_POST, ADD_FRIEND, MANAGE_FRIEND_REQUEST, DELETE_FRIEND, UDPATE_USER_IFNO, USER_CHANGE_PASSWORD } from "./actionTypes";
+import { USER_LOGIN, USER_REGISTER, USER_LOGOUT, USER_SEARCH, UPLOAD_PHOTO ,ADD_POST, ADD_FRIEND, MANAGE_FRIEND_REQUEST, DELETE_FRIEND, UDPATE_USER_IFNO, USER_CHANGE_PASSWORD, GET_POST_LIST } from "./actionTypes";
 
 export const userLogin = (email, password) => {
     return {
@@ -81,3 +81,8 @@ export const addPost= post => {
     }
 } 
 
+export const getPostList = () => {
+    return {
+        type: GET_POST_LIST
+    };
+};
