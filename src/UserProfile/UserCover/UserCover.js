@@ -45,11 +45,11 @@ class UserCover extends Component {
     }
 
     render() {
+      if (this.props.currentUser.user === null) {
+        return(<>Loading...</>);
+      }
 
-        let userIdSuffix = '';
-        if (typeof this.props.route.match.params.userId !== "undefined") {
-          userIdSuffix = `/${this.props.route.match.params.userId}/`;
-        }
+        const userId = this.props.route.match.params.userId;
 
         let myProfile = false;
         if (typeof this.props.route.match.params.userId === "undefined" || this.props.currentUser.user.id === Number(this.props.route.match.params.userId)) {
@@ -58,11 +58,12 @@ class UserCover extends Component {
 
         let friendStatus = 'none';
 
+        // todo move in componentDidMount
         if (typeof this.props.currentUser.user.pendingFriends !== "undefined" && typeof this.props.currentUser.user.pendingFriends[this.props.userToShow.id] !== "undefined") {
             friendStatus = this.props.currentUser.user.pendingFriends[this.props.userToShow.id];
         }
 
-        if (typeof this.props.currentUser.user.friends !== "undefined" && typeof this.props.currentUser.user.friends[this.props.userToShow.id] !== "undefined") {
+        if (this.props.currentUser.user.friends && this.props.currentUser.user.friends.indexOf(this.props.userToShow.id) !== -1) {
             friendStatus = 'friends';
         }
 
@@ -82,14 +83,14 @@ class UserCover extends Component {
                 {this.props.userToShow.id === this.props.currentUser.user.id && 
                 <label className = {coverStyle.Label+' '+ coverStyle.ProfilePhoto} htmlFor="myuniqueid2">Change avatar</label>}
 
-                <Link to={`/profile-home${userIdSuffix}`} className={coverStyle.Nickname}>{this.props.userToShow.firstName} {this.props.userToShow.lastName}</Link>
+                <Link to={`/profile-home/${userId}/`} className={coverStyle.Nickname}>{this.props.userToShow.firstName} {this.props.userToShow.lastName}</Link>
 
                 {this.props.userToShow.id === this.props.currentUser.user.id && 
                 <Link className={coverStyle.Edit} to="/profile-home/account-details-Edit"></Link>}
 
                 <div className={coverStyle.ToolbarProfile}>
-                    <Link to={`/profile-home/account-details${userIdSuffix}`} className={coverStyle.TollbarInfo}>About</Link>
-                    <Link to="a" className={coverStyle.TollbarInfo}>Friends</Link>
+                    <Link to={`/profile-home/account-details/${userId}/`} className={coverStyle.TollbarInfo}>About</Link>
+                    <Link to={`/friends-list/${userId}/`} className={coverStyle.TollbarInfo}>Friends</Link>
                     <Link to="a" className={coverStyle.TollbarInfo}>Photos</Link>
                     
                     {!myProfile && friendStatus === 'none' &&
@@ -99,7 +100,7 @@ class UserCover extends Component {
                     <Link to="#" className={coverStyle.TollbarInfo}>Request sent</Link>}
                     
                     {!myProfile && friendStatus === 'friends' &&
-                    <Link to="#" className={coverStyle.TollbarInfo}>Friends</Link>}
+                    <Link to="#" className={coverStyle.TollbarInfo}>Already Friends</Link>}
                 </div>
             </React.Fragment>
         )

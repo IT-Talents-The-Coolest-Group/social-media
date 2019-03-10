@@ -1,10 +1,11 @@
-import { USER_LOGIN, USER_REGISTER, USER_LOGOUT, USER_SEARCH, UPLOAD_PHOTO, ADD_FRIEND, MANAGE_FRIEND_REQUEST } from '../Actions/actionTypes';
-import {
-    CHANGE_POST,
+import { 
+    USER_LOGIN, USER_REGISTER, USER_LOGOUT, 
+    USER_SEARCH, UPLOAD_PHOTO, ADD_FRIEND, 
+    MANAGE_FRIEND_REQUEST, DELETE_FRIEND,
+    CHANGE_POST, NEW_POST, DELETE_POST
     // SORT_POST,
-    NEW_POST,
-    DELETE_POST
-} from '../Actions/actionTypes'
+} from '../Actions/actionTypes';
+
 const initialState = {
     users: (localStorage.getItem('userList') ? JSON.parse(localStorage.getItem('userList')) : []),
     // users: [{
@@ -175,7 +176,8 @@ const reducer = (state = initialState, action) => {
 
                 if (action.status === "accept") {
                     currentUser.user.friends.push(action.userId);
-                    me.friends.push(action.userId);
+                    // todo figure out why currentUser.user has reference to me
+                    // me.friends.push(action.userId);
                     friend.friends.push(currentUser.user.id);
                 }
 
@@ -185,9 +187,35 @@ const reducer = (state = initialState, action) => {
 
                 localStorage.setItem('userList', JSON.stringify(users));
                 sessionStorage.setItem('loggedUser', JSON.stringify(currentUser.user));
-                
+
                 return {...state, users, currentUser};
             }
+
+            return state;
+        }
+
+        case DELETE_FRIEND: {
+            const myFriendIndex = state.currentUser.user.friends.findIndex(uId => uId === action.userId);
+            if (myFriendIndex !== -1) {
+                const users = [...state.users];
+                const currentUser = {...state.currentUser};
+                const me = users[users.findIndex((u) => u.id === currentUser.user.id)];
+                const friend = users[users.findIndex((u) => u.id === action.userId)];
+                const myIndex = friend.friends.findIndex(uId => uId === currentUser.user.id);
+
+                if (myIndex !== -1) {
+                    currentUser.user.friends.splice(myFriendIndex, 1);
+                    me.friends.splice(myFriendIndex, 1);
+                    friend.friends.splice(myIndex, 1);
+
+                    localStorage.setItem('userList', JSON.stringify(users));
+                    sessionStorage.setItem('loggedUser', JSON.stringify(currentUser.user));
+
+                    return {...state, users, currentUser};
+                }
+            }
+
+            return state;
         }
 
         case CHANGE_POST: {

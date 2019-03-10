@@ -12,6 +12,7 @@ import { connect } from 'react-redux';
 import { userSearch, manageFriendRequest } from '../Actions/users';
 import HeaderAutocomplete from './HeaderAutocomplete';
 import Button from '../UI/Button/Button';
+import FriendsItem from '../Friends/FriendsItem';
 
 const themeStyles = theme => ({
   root: {
@@ -89,7 +90,7 @@ class HomeHeader extends Component {
     let count = 0;
     if (typeof this.props.currentUser.user.pendingFriends === "undefined") {
       return count;
-    } 
+    }
 
     Object.entries(this.props.currentUser.user.pendingFriends).forEach(([friendId, requestStatus]) => {
       if (requestStatus === 'pending') {
@@ -102,27 +103,33 @@ class HomeHeader extends Component {
 
   toggleFriendRequests = (event) => {
     event.preventDefault();
-    this.setState({...this.state, showFriendRequests: !this.state.showFriendRequests});
+    this.setState({ ...this.state, showFriendRequests: !this.state.showFriendRequests });
   };
+
+  acceptFriendRequest = (e, friendId) => {
+    e.preventDefault();
+    this.setState({ ...this.state, showFriendRequests: false });
+    this.props.manageFriendRequest(friendId, 'accept');
+};
+
+deleteFriendRequest = (e, friendId) => {
+    e.preventDefault();
+    this.setState({ ...this.state, showFriendRequests: false });
+    this.props.manageFriendRequest(friendId, 'delete');
+};
 
   getFriendRequests = () => {
     let requests = [];
-    if (Object.entries(this.props.currentUser.user.pendingFriends).length === 0) {
+    if (!this.props.currentUser.user.pendingFriends || Object.entries(this.props.currentUser.user.pendingFriends).length === 0) {
       requests.push(<div key="no-pending-requeusts" className={style.FriendRequest}>
-          No pending friend requests
+        No pending friend requests
         </div>);
-        return requests;
+      return requests;
     }
     Object.entries(this.props.currentUser.user.pendingFriends).forEach(([friendId, requestStatus]) => {
       const friend = this.props.users.filter(u => u.id === Number(friendId));
       if (requestStatus === 'pending') {
-        requests.push(<div key={`friend-${friend[0].id}`} className={style.FriendRequest}>
-          <Link to={`/profile-home/${friend[0].id}/`} onClick={this.visitFriend}>{friend[0].firstName} {friend[0].lastName}</Link>
-          <div>
-            <Button className="GreenBtn" onClick={(e) => { this.acceptFriendRequest(e, friend[0].id) }}>Accept</Button>
-            <Button className="LinkBtn" onClick={(e) => { this.deleteFriendRequest(e, friend[0].id) }}>Delete</Button>
-          </div>
-        </div>);
+        requests.push(<FriendsItem key={`friend-${friend[0].id}`} friend={friend[0]} deleteFriend={this.deleteFriendRequest} acceptFriend={this.acceptFriendRequest} />);
       }
     });
 
@@ -130,18 +137,18 @@ class HomeHeader extends Component {
   };
 
   visitFriend = (e) => {
-    this.setState({...this.state, showFriendRequests: false});
+    this.setState({ ...this.state, showFriendRequests: false });
   };
 
   acceptFriendRequest = (e, friendId) => {
     e.preventDefault();
-    this.setState({...this.state, showFriendRequests: false});
+    this.setState({ ...this.state, showFriendRequests: false });
     this.props.manageFriendRequest(friendId, 'accept');
   };
 
   deleteFriendRequest = (e, friendId) => {
     e.preventDefault();
-    this.setState({...this.state, showFriendRequests: false});
+    this.setState({ ...this.state, showFriendRequests: false });
     this.props.manageFriendRequest(friendId, 'delete');
   };
 
@@ -149,44 +156,59 @@ class HomeHeader extends Component {
     const { classes } = this.props;
     const { invisible, badgeContent } = this.state;
 
+    if (this.props.currentUser.user === null) {
+      return(<>Loading...</>);
+    }
+
+    // todo move in componentDidMount
+    const friendRequests = this.getFriendRequests();
+    let requestContainerClasses = [];
+    requestContainerClasses.push(style.FriendRequestsContainer);
+    if (!this.props.currentUser.user.pendingFriends || Object.entries(this.props.currentUser.user.pendingFriends).length < 1) {
+      requestContainerClasses.push(style.NoFriendRequests);
+    }
+
+    const userId = this.props.currentUser.user.id;
     return (
       <div className={style.HeadContainer}>
-      <div className={style.HeaderContent}>
-        <div className={style.FirstElem}>
-          <NavLink to="/home" className={style.LogoBox} />
-          <div className={classes.root}>
-             <Toolbar>
-              <div className={classes.grow} />
+        <div className={style.HeaderContent}>
+          <div className={style.FirstElem}>
+            <NavLink to={`/home/${userId}/`} className={style.LogoBox} />
+            <div className={classes.root}>
+              <Toolbar>
+                <div className={classes.grow} />
 
-              <div className={classes.search}>
-                <HeaderAutocomplete route={this.props.route} />
-              </div>
-            </Toolbar>
+                <div className={classes.search}>
+                  <HeaderAutocomplete route={this.props.route} />
+                </div>
+              </Toolbar>
+            </div>
           </div>
-        </div>
-        <nav className={style.SecondElem}>
-          <NavLink to="/profile-home" className={style.Icon + ' ' + style.Profile}>
-            <Avatar alt="Profile Photo" src={img} className={classes.avatar} />
-          </NavLink>
-          <div className={style.Icon}>
-            <NavLink className={style.HeaderProf} to="/profile-home">{this.props.currentUser.user.firstName}</NavLink>
-          </div>
+          <nav className={style.SecondElem}>
+            <NavLink to={`/profile-home/${userId}/`} className={style.Icon + ' ' + style.Profile}>
+              <Avatar alt="Profile Photo" src={img} className={classes.avatar} />
+            </NavLink>
+            <div className={style.Icon}>
+              <NavLink className={style.HeaderProf} to={`/profile-home/${userId}/`}>{this.props.currentUser.user.firstName}</NavLink>
+            </div>
 
-          <div className={style.Icon}>
-            <NavLink className={style.HomePage} to="/home">Home</NavLink>
-          </div>
+            <div className={style.Icon}>
+              <NavLink className={style.HomePage} to={`/home/${userId}/`}>Home</NavLink>
+            </div>
 
             <Badge color="secondary" badgeContent={this.countPendingRequests()} invisible={invisible} className={classes.Bmargin}>
               <NavLink to="/" onClick={this.toggleFriendRequests} className={style.Icon + ' ' + style.FriendsRequests} />
-              {this.state.showFriendRequests && <div className={style.FriendRequestsContainer}>{this.getFriendRequests()}</div>}
+              {this.state.showFriendRequests && <div className={requestContainerClasses.join(' ')}>
+                {friendRequests}
+              </div>}
             </Badge>
 
             <Badge color="secondary" badgeContent={badgeContent} invisible={invisible} className={classes.Bmargin}><NavLink to="/" className={style.Icon + ' ' + style.Messages} /></Badge>
-            
+
             <Badge color="secondary" badgeContent={badgeContent} invisible={invisible} className={classes.Bmargin}><NavLink to="/" className={style.Icon + ' ' + style.Notifications} /></Badge>
-          
-          <NavLink to="/logout" className={style.Icon + ' ' + style.Logout} />
-        </nav>
+
+            <NavLink to="/logout" className={style.Icon + ' ' + style.Logout} />
+          </nav>
         </div>
       </div>
     )
