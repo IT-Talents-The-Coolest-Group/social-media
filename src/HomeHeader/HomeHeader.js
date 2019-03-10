@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import style from './HomeHeader.module.css';
-import img from '../assets/images/girl.jpg';
+import img from '../assets/images/profile.png';
 import Avatar from '@material-ui/core/Avatar';
 import Toolbar from '@material-ui/core/Toolbar';
 import { fade } from '@material-ui/core/styles/colorManipulator';
@@ -201,10 +201,6 @@ deleteFriendRequest = (e, friendId) => {
                 {friendRequests}
               </div>}
             </Badge>
-
-            <Badge color="secondary" badgeContent={badgeContent} invisible={invisible} className={classes.Bmargin}><NavLink to="/" className={style.Icon + ' ' + style.Messages} /></Badge>
-
-            <Badge color="secondary" badgeContent={badgeContent} invisible={invisible} className={classes.Bmargin}><NavLink to="/" className={style.Icon + ' ' + style.Notifications} /></Badge>
 
             <NavLink to="/logout" className={style.Icon + ' ' + style.Logout} />
           </nav>

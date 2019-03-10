@@ -1,19 +1,17 @@
 import React, { Component } from 'react';
 import coverStyle from './UserCover.module.css';
-// import Avatar from '@material-ui/core/Avatar';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { addFriend, deleteFriend } from '../../Actions/users';
-// import { EventEmitter } from 'events';
 
 class UserCover extends Component {
 
     state={
         selectedFileCover:{
-            src:'12.jpg'
+            src:'cover2.jpg'
         },
         selectedFileAvatar:{
-            src:'girl.jpg'
+            src:'profile.png'
         }
     }
    
@@ -24,10 +22,6 @@ class UserCover extends Component {
         this.setState({selectedFileCover})
         console.log(this.state.selectedFileCover.src)
         console.log(this.props.currentUser.isLogged)
-
-// sessionStorage.setItem('cover',JSON.stringify({cover:selectedFileCover.src}))
-// let v=JSON.parse(sessionStorage.getItem('cover'));
-// console.log(this.props)
 
     }
 
@@ -99,7 +93,6 @@ class UserCover extends Component {
                 <div className={coverStyle.ToolbarProfile}>
                     <Link to={`/profile-home/account-details/${userId}/`} className={coverStyle.TollbarInfo}>About</Link>
                     <Link to={`/friends-list/${userId}/`} className={coverStyle.TollbarInfo}>Friends</Link>
-                    <Link to="a" className={coverStyle.TollbarInfo}>Photos</Link>
                     
                     {!myProfile && friendStatus === 'none' &&
                     <Link to="#" className={coverStyle.TollbarInfo} onClick={this.addFriend}>Add friend</Link>}
