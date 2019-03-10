@@ -2,20 +2,19 @@ import {
     USER_LOGIN, USER_REGISTER, USER_LOGOUT,
     USER_SEARCH, UPLOAD_PHOTO, ADD_FRIEND,
     MANAGE_FRIEND_REQUEST, DELETE_FRIEND,
-    CHANGE_POST, NEW_POST, DELETE_POST, UDPATE_USER_IFNO, USER_CHANGE_PASSWORD
+    CHANGE_POST, NEW_POST, DELETE_POST, UDPATE_USER_IFNO, USER_CHANGE_PASSWORD, GET_POST_LIST
     // SORT_POST,
 } from '../Actions/actionTypes';
-// import bcrypt from 'bcrypt';
 import bcrypt from 'bcryptjs';
+import { format } from 'date-fns';
 
 const BCRYPT_SALT_ROUNDS = 10;
 
 const initialState = {
     users: (localStorage.getItem('userList') ? JSON.parse(localStorage.getItem('userList')) : []),
-    posts: [
-        { id: 1, name: 'София Геогиева', info: 'Здравейте!', time: "14:40" },
-        { id: 2, name: 'Марио Стоянов', info: 'Прекрасен ден за представяне на проек! 😉 ', time: '12:18' },
-    ],
+    posts: (JSON.parse(localStorage.getItem('posts'))) ? JSON.parse(localStorage.getItem('posts'))
+    : [],
+    postList: [],
     currentUser: {
         user: (JSON.parse(sessionStorage.getItem('loggedUser'))) ? JSON.parse(sessionStorage.getItem('loggedUser'))
             : null,
@@ -215,22 +214,47 @@ const reducer = (state = initialState, action) => {
         }
 
         case CHANGE_POST:
+            const posts = state.posts.map((post, index) => {
+                if (index === action.index) {
+                    return { ...state.posts[index], name: action.change };
+                } else {
+                    return { ...post };
+                }
+            });
             return {
-                ...state, posts: state.posts.map((post, index) => {
-                    if (index === action.index) {
-                        return { ...state.posts[index], name: action.change };
-                    } else {
-                        return { ...post };
-                    }
-                })
+                ...state, posts
             }
 
         case NEW_POST: {
-            return { ...state, posts: [...state.posts, action.post] };
+            const post = action.post;
+
+            if (state.posts.length < 1) {
+                post.id = 1;
+            } else {
+                const lastId = state.posts[state.posts.length - 1].id;
+                post.id = lastId + 1;
+            }
+
+            post.posterId = state.currentUser.user.id;
+            post.createdDate = format(new Date(), 'YYYY-MM-DD HH:mm:ss');
+            const posts = [...state.posts, post];
+
+            localStorage.setItem('posts', JSON.stringify(posts));
+
+            const postList = posts.filter(p => p.posterId === state.currentUser.user.id || state.currentUser.user.friends.indexOf(p.posterId) !== -1);
+
+            postList.sort((p1, p2) => new Date(p2.createdDate).getTime() - new Date(p1.createdDate).getTime());
+
+            return { ...state, posts, postList };
         }
 
         case DELETE_POST: {
-            return { ...state, posts: state.posts.filter(a => a.id !== action.id) }
+            const posts = state.posts.filter(a => a.id !== action.id);
+            localStorage.setItem('posts', JSON.stringify(posts));
+            const postList = posts.filter(p => p.posterId === state.currentUser.user.id || state.currentUser.user.friends.indexOf(p.posterId) !== -1);
+
+            postList.sort((p1, p2) => new Date(p2.createdDate).getTime() - new Date(p1.createdDate).getTime());
+            return { ...state, posts, postList };
         }
 
         case UDPATE_USER_IFNO:
@@ -244,6 +268,13 @@ const reducer = (state = initialState, action) => {
             localStorage.setItem('userList', JSON.stringify(users));
             sessionStorage.setItem('loggedUser', JSON.stringify(currentUser.user));
             return {...state, users, currentUser};
+
+        case GET_POST_LIST:
+            const postList = state.posts.filter(p => p.posterId === state.currentUser.user.id || state.currentUser.user.friends.indexOf(p.posterId) !== -1);
+
+            postList.sort((p1, p2) => new Date(p2.createdDate).getTime() - new Date(p1.createdDate).getTime());
+
+            return {...state, postList};
 
         default: return state;
     };

@@ -189,7 +189,6 @@ class PostForm extends React.Component {
 
     state = {
         newPost: {
-            name:'',
             info: ''
         }
     }
@@ -205,20 +204,13 @@ class PostForm extends React.Component {
 
     onAddPost = event => {
         event.preventDefault();
-        let date = new Date();
-        let minutes = date.getMinutes();
-        let hour = date.getHours();
-        this.setState({
-            ...this.state, newPost: {
-                id: Math.random() * 10009,
-                time: hour + ':' + minutes + 'h',
-            }
-        });
-
-        this.props.onAddPost(this.state.newPost);
-        const newPost = { info: '' };
-        this.setState({ newPost: newPost });
-
+        if (this.state.newPost.info.trim() !== '') {
+            this.props.onAddPost(this.state.newPost);
+            const newPost = { info: '' };
+            this.setState({ newPost: newPost });
+        } else {
+            alert("Cannot submit an empty post.");
+        }
     }
 
 
