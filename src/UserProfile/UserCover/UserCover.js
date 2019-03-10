@@ -3,7 +3,7 @@ import coverStyle from './UserCover.module.css';
 // import Avatar from '@material-ui/core/Avatar';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { uploadPhoto, addFriend } from '../../Actions/users';
+import { addFriend } from '../../Actions/users';
 // import { EventEmitter } from 'events';
 
 class UserCover extends Component {

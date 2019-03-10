@@ -11,7 +11,6 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { userSearch, manageFriendRequest } from '../Actions/users';
 import HeaderAutocomplete from './HeaderAutocomplete';
-// import Button from '../UI/Button/Button';
 import FriendsItem from '../Friends/FriendsItem';
 
 const themeStyles = theme => ({
