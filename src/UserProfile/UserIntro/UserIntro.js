@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 class UserIntro extends Component {
     render() {
         // const { classes } = this.props;
+        const userId = this.props.route.match.params.userId;
         return (
             <React.Fragment>
                 <div className={homeUserStyle.Container}>
@@ -16,23 +17,23 @@ class UserIntro extends Component {
                     <div className={homeUserStyle.Active}>
                     <div className={homeUserStyle.ContainerBox}>
                         <div className={homeUserStyle.Icon + ' ' + homeUserStyle.CurrentCity}> </div>
-                        <Link className={homeUserStyle.Links} to="/profile-home/account-details">Current City</Link>
+                        <Link className={homeUserStyle.Links} to={`/profile-home/account-details/${userId}/`}>Current City</Link>
                     </div>
                     <div className={homeUserStyle.ContainerBox}>
                         <div className={homeUserStyle.Icon + ' ' + homeUserStyle.Workplace}> </div>
-                        <Link className={homeUserStyle.Links} to="/profile-home/account-details">Workplace</Link>
+                        <Link className={homeUserStyle.Links} to={`/profile-home/account-details/${userId}/`}>Workplace</Link>
                     </div> 
                     <div className={homeUserStyle.ContainerBox}>
                         <div className={homeUserStyle.Icon + ' ' + homeUserStyle.School}> </div>
-                        <Link className={homeUserStyle.Links} to="/profile-home/account-details">School</Link>
+                        <Link className={homeUserStyle.Links} to={`/profile-home/account-details/${userId}/`}>School</Link>
                     </div>
                     <div className={homeUserStyle.ContainerBox}>
                         <div className={homeUserStyle.Icon + ' ' + homeUserStyle.Hometown}> </div>
-                        <Link className={homeUserStyle.Links} to="/profile-home/account-details">Hometown</Link>
+                        <Link className={homeUserStyle.Links} to={`/profile-home/account-details/${userId}/`}>Hometown</Link>
                     </div>
                     <div className={homeUserStyle.ContainerBox}>
                         <div className={homeUserStyle.Icon + ' ' + homeUserStyle.RelationshipStatus}> </div>
-                        <Link className={homeUserStyle.Links} to="/profile-home/account-details">Relationship Status</Link>
+                        <Link className={homeUserStyle.Links} to={`/profile-home/account-details/${userId}/`}>Relationship Status</Link>
                     </div>
                     </div>
                 </div>

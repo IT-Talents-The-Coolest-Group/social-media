@@ -6,6 +6,7 @@ import UserCover from './UserCover/UserCover';
 import homeStyle from './UserProfile.module.css';
 // import image from '../assets/images/girl.jpg';
 import { connect } from 'react-redux';
+import HomeHeader from '../HomeHeader/HomeHeader';
 
 class UserProfile extends Component {
     state = {
@@ -46,9 +47,10 @@ class UserProfile extends Component {
 
         return (
             <React.Fragment>
+                <HomeHeader route={this.props.route} /> 
                 <div className={homeStyle.Main}>
                     <UserCover userToShow={this.state.userToShow} route={this.props.route} />
-                    <UserIntro />
+                    <UserIntro route={this.props.route} />
                     {/* <img alt="Profile" src={image} className={homeStyle.avatar} /> */}
                     <PostForm/>
                 {/* <PostList/> */}

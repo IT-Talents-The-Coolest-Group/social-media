@@ -1,10 +1,11 @@
-import { USER_LOGIN, USER_REGISTER, USER_LOGOUT, USER_SEARCH, UPLOAD_PHOTO, ADD_FRIEND, MANAGE_FRIEND_REQUEST } from '../Actions/actionTypes';
 import {
-    CHANGE_POST,
+    USER_LOGIN, USER_REGISTER, USER_LOGOUT,
+    USER_SEARCH, UPLOAD_PHOTO, ADD_FRIEND,
+    MANAGE_FRIEND_REQUEST, DELETE_FRIEND,
+    CHANGE_POST, NEW_POST, DELETE_POST
     // SORT_POST,
-    NEW_POST,
-    DELETE_POST
-} from '../Actions/actionTypes'
+} from '../Actions/actionTypes';
+
 const initialState = {
     users: (localStorage.getItem('userList') ? JSON.parse(localStorage.getItem('userList')) : []),
     // users: [{
@@ -37,8 +38,8 @@ const initialState = {
     //     }],
     // }],
     posts: [
-        {id: 1, name: 'София Геогиева', info: 'Здравейте!', time: "14:40"},
-        {id: 2, name: 'Марио Стоянов', info: 'Прекрасен ден за представяне на проек! 😉 ', time: '12:18'},
+        { id: 1, name: 'София Геогиева', info: 'Здравейте!', time: "14:40" },
+        { id: 2, name: 'Марио Стоянов', info: 'Прекрасен ден за представяне на проек! 😉 ', time: '12:18' },
     ],
     currentUser: {
         user: (JSON.parse(sessionStorage.getItem('loggedUser'))) ? JSON.parse(sessionStorage.getItem('loggedUser'))
@@ -105,21 +106,21 @@ const reducer = (state = initialState, action) => {
             const users = state.users;
             let searchedUsers = users.filter(u => u.firstName.toLowerCase().indexOf(action.query) === 0 || u.lastName.toLowerCase().indexOf(action.query) === 0 || u.email.toLowerCase().indexOf(action.query) === 0);
 
-            return {...state, searchedUsers};
+            return { ...state, searchedUsers };
         }
 
         case UPLOAD_PHOTO: {
             sessionStorage.setItem('loggedUser', 'cover');
             // let user = action.user
-                let v=JSON.parse(sessionStorage.getItem('cover'));
-                console.log(v)
-                return {
-                    ...state,currentUser: [...state.currentUser, action.selectedFileCover]
+            let v = JSON.parse(sessionStorage.getItem('cover'));
+            console.log(v)
+            return {
+                ...state, currentUser: [...state.currentUser, action.selectedFileCover]
             };
         }
         case ADD_FRIEND: {
             let users = [...state.users];
-            let currentUser = {...state.currentUser};
+            let currentUser = { ...state.currentUser };
             let me = users[users.findIndex((u) => u.id === currentUser.user.id)];
             let friend = users[users.findIndex((u) => u.id === action.friendId)];
 
@@ -139,7 +140,7 @@ const reducer = (state = initialState, action) => {
 
             // Friendship was already establised before or it is me
             if (
-                friend.friends.findIndex(u => u.id === currentUser.user.id) !== -1 || friend.id === currentUser.user.id || typeof friend.pendingFriends[currentUser.user.id] !== "undefined" 
+                friend.friends.findIndex(u => u.id === currentUser.user.id) !== -1 || friend.id === currentUser.user.id || typeof friend.pendingFriends[currentUser.user.id] !== "undefined"
             ) {
                 return state;
             }
@@ -152,13 +153,13 @@ const reducer = (state = initialState, action) => {
             localStorage.setItem('userList', JSON.stringify(users));
             sessionStorage.setItem('loggedUser', JSON.stringify(currentUser.user));
 
-            return {...state, users, currentUser};
+            return { ...state, users, currentUser };
         }
 
         case MANAGE_FRIEND_REQUEST: {
             if (state.currentUser.user.id !== action.userId && state.currentUser.user.pendingFriends[action.userId] && state.currentUser.user.pendingFriends[action.userId] === 'pending') {
                 let users = [...state.users];
-                let currentUser = {...state.currentUser};
+                let currentUser = { ...state.currentUser };
                 let me = users[users.findIndex((u) => u.id === currentUser.user.id)];
                 let friend = users[users.findIndex((u) => u.id === action.userId)];
 
@@ -175,7 +176,8 @@ const reducer = (state = initialState, action) => {
 
                 if (action.status === "accept") {
                     currentUser.user.friends.push(action.userId);
-                    me.friends.push(action.userId);
+                    // todo figure out why currentUser.user has reference to me
+                    // me.friends.push(action.userId);
                     friend.friends.push(currentUser.user.id);
                 }
 
@@ -185,26 +187,55 @@ const reducer = (state = initialState, action) => {
 
                 localStorage.setItem('userList', JSON.stringify(users));
                 sessionStorage.setItem('loggedUser', JSON.stringify(currentUser.user));
-                
-                return {...state, users, currentUser};
+
+                return { ...state, users, currentUser };
             }
+
+            return state;
+        }
+
+        case DELETE_FRIEND: {
+            const myFriendIndex = state.currentUser.user.friends.findIndex(uId => uId === action.userId);
+            if (myFriendIndex !== -1) {
+                const users = [...state.users];
+                const currentUser = { ...state.currentUser };
+                const me = users[users.findIndex((u) => u.id === currentUser.user.id)];
+                const friend = users[users.findIndex((u) => u.id === action.userId)];
+                const myIndex = friend.friends.findIndex(uId => uId === currentUser.user.id);
+
+                if (myIndex !== -1) {
+                    currentUser.user.friends.splice(myFriendIndex, 1);
+                    me.friends.splice(myFriendIndex, 1);
+                    friend.friends.splice(myIndex, 1);
+
+                    localStorage.setItem('userList', JSON.stringify(users));
+                    sessionStorage.setItem('loggedUser', JSON.stringify(currentUser.user));
+
+                    return { ...state, users, currentUser };
+                }
+            }
+
+            return state;
         }
 
         case CHANGE_POST: {
-            return {...state, posts: state.posts.map((post, index) => {
-                if (index === action.index) {
-                    return {...state.posts[index], name: action.change };
-                } else {
-                    return {...post};
-                }
-            })}};
-        
+            return {
+                ...state, posts: state.posts.map((post, index) => {
+                    if (index === action.index) {
+                        return { ...state.posts[index], name: action.change };
+                    } else {
+                        return { ...post };
+                    }
+                })
+            }
+        };
+
         case NEW_POST: {
-            return {...state, posts: [...state.posts, action.post]};
+            return { ...state, posts: [...state.posts, action.post] };
         }
-        
+
         case DELETE_POST: {
-            return {...state, posts: state.posts.filter(a => a.id !== action.id)}
+            return { ...state, posts: state.posts.filter(a => a.id !== action.id) }
         }
 
         default: return state;

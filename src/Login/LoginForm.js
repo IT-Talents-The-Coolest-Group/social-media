@@ -14,13 +14,13 @@ class LoginForm extends Component {
 
     componentDidMount() {
         if (this.props.currentUser.isLogged === true) {
-            this.props.route.history.push("/home");
+            this.props.route.history.push(`/home/${this.props.currentUser.user.id}/`);
         }
     }
 
     componentDidUpdate() {
         if (this.props.currentUser.isLogged === true) {
-            this.props.route.history.push("/home");
+            this.props.route.history.push(`/home/${this.props.currentUser.user.id}/`);
         } else {
             if (this.props.loginErr === true) {
                 this.props.onError();

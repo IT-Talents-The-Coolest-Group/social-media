@@ -47,36 +47,42 @@
 //     }
 // }
 // export default Post;
-import React, { PureComponent, Component } from 'react';
-// import styles from './Post.module.css';
-// import Button from '../UI/Button/Button';
-import { Link } from 'react-router-dom';
+import React from 'react';
+// import { Link } from 'react-router-dom';
 import p from './Post.module.css';
 import { deletePost } from '../Actions/CreatePost';
 import { connect } from 'react-redux';
 
 
-class  Post extends React.Component {
-        
-  shouldComponentUpdate(nextProps, nextState) {
-    if (nextProps.name !== this.props.name ||
-        nextProps.time !== this.props.time ||
-        nextProps.info !== this.props.info ||
-        nextProps.id !== this.props.id ||
-        nextProps.onDelete !== this.props.onDelete)
+class Post extends React.Component {
+
+    shouldComponentUpdate(nextProps, nextState) {
+        if (nextProps.name !== this.props.name ||
+            nextProps.time !== this.props.time ||
+            nextProps.info !== this.props.info ||
+            nextProps.id !== this.props.id ||
+            nextProps.onDelete !== this.props.onDelete) {
             return true;
-    return false;
-  }
+        } else {
+            return false;
+        }
+
+
+
+    }
 
     render() {
         return (
             <div className={p.Container}>
-                <h4 style={{color: 'black'}}> 
-                  {this.props.name}
-                </h4>
-                <p>{this.props.info}</p>
-                <p className={p.Size}>Posted in : {this.props.time}</p>
-                <br/>
+                <div>
+                    <h4 style={{ color: 'black' }}>
+                        {this.props.name}
+                    </h4></div>
+                <div style={{ width: 200 }}>
+                    <p>{this.props.info}</p></div>
+                <div>
+                    <p className={p.Size}>Posted in : {this.props.time}</p></div>
+                <br />
                 <button onClick={() => this.props.deletePost(this.props.id)} className={p.Upload}> Delete from page</button>
             </div>
         );
@@ -88,7 +94,7 @@ const mapDispatchToProps = dispatch => {
         deletePost: id => dispatch(deletePost(id))
     }
 }
-   
+
 
 export default connect(null, mapDispatchToProps)(Post);
 

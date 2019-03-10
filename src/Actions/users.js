@@ -1,4 +1,4 @@
-import { USER_LOGIN, USER_REGISTER, USER_LOGOUT, USER_SEARCH, UPLOAD_PHOTO ,ADD_POST, ADD_FRIEND, MANAGE_FRIEND_REQUEST } from "./actionTypes";
+import { USER_LOGIN, USER_REGISTER, USER_LOGOUT, USER_SEARCH, UPLOAD_PHOTO ,ADD_POST, ADD_FRIEND, MANAGE_FRIEND_REQUEST, DELETE_FRIEND } from "./actionTypes";
 
 export const userLogin = (email, password) => {
     return {
@@ -32,6 +32,13 @@ export const addFriend = friendId => {
     return {
         type: ADD_FRIEND,
         friendId
+    };
+};
+
+export const deleteFriend = userId => {
+    return {
+        type: DELETE_FRIEND,
+        userId
     };
 };
 

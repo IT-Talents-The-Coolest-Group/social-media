@@ -14,7 +14,7 @@ class HeaderAutocomplete extends React.Component {
 
     selectUser = (userId) => {
         let selectedUserId = typeof userId !== "undefined" ? userId : this.state.userId;
-        this.props.route.history.push(`/profile-home/${selectedUserId}/`);console.log(this.props)
+        this.props.route.history.push(`/profile-home/${selectedUserId}/`);
     };
 
     render() {

@@ -358,38 +358,22 @@
     
     }
 }
-  .FriendRequestsContainer {
-      position: absolute;
-      top: 21px;
-      display: flex;
-      flex-direction: column;
-      width: 20vw;
-      height: 50vh;
-      border: solid 1px #ebebeb;
-      background: rgba(255, 255, 255, 1);
-      border-radius: 3px;
-      overflow: auto;
-      padding: 10px 0;
-  }
 
-  .FriendRequest {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-direction: row;
-      border-bottom: solid 1px #ebebeb;
-      padding: 10px;
-  }
+.FriendRequestsContainer {
+    position: absolute;
+    top: 21px;
+    display: flex;
+    flex-direction: column;
+    width: 20vw;
+    height: 50vh;
+    border: solid 1px #ebebeb;
+    background: rgba(255, 255, 255, 1);
+    border-radius: 3px;
+    overflow: auto;
+    padding: 10px 0;
+}
 
-  .FriendRequest > div {
-      display: flex;
-  }
-
-  .FriendRequest button {
-      padding: 1px 2px;
-      margin-left: 5px;
-      flex: 1;
-      flex-grow: 0;
-      display: flex;
-      align-self: center;
-  }
+.NoFriendRequests {
+    justify-content: center;
+    align-items: center;
+}

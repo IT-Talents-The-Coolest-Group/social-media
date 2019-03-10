@@ -12,6 +12,10 @@ class HomePage extends Component {
         if (this.props.currentUser.isLogged === false) {
             this.props.route.history.push('/');
         }
+
+        if (!this.props.route.match.params.userId) {
+            this.props.route.history.push(`/home/${this.props.currentUser.user.id}/`);
+        }
     }
 
     componentDidUpdate() {
