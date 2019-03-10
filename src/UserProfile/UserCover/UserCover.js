@@ -8,7 +8,7 @@ class UserCover extends Component {
 
     state={
         selectedFileCover:{
-            src:'cover2.jpg'
+            src:'cover4.jpg'
         },
         selectedFileAvatar:{
             src:'profile.png'

@@ -71,8 +71,8 @@
     color:transparent;
     position:absolute;
     top:10%;
-    left:11%;
-    /* display: none; */
+    left:14%;
+    display: none;
     z-index: -1;
 }
 
@@ -91,7 +91,7 @@
 }
 
 .ProfilePhoto{
-    top:44.2%;
+    top:46.2%;
     left:14%;
     width:4%;
     text-align: center;
@@ -105,12 +105,12 @@
 }
 
 .bigAvatar{
-width:180px;
-height:170px;
+/* width:130px; */
+height:25vh;
 object-fit: cover;
 position: absolute;
 top:18%;
-max-width: 180px;
+max-width: 35wh;;
 left:14%;
 border-radius: 50%;
 z-index: 3;

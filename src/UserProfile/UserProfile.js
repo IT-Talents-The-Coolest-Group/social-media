@@ -60,7 +60,6 @@ class UserProfile extends Component {
                 <div className={homeStyle.Main}>
                     <UserCover userToShow={this.state.userToShow} route={this.props.route} />
                     <UserIntro route={this.props.route} />
-                    {/* <img alt="Profile" src={image} className={homeStyle.avatar} /> */}
                     <PostForm />
                 <PostList/>
                 </div>

@@ -7,17 +7,6 @@
     max-width: 1170px;
 }
 
-/* .avatar{
-    position:absolute;
-    top:64%;
-    left:37%;
-    object-fit: cover;
-   width:69px;
-    height:60px;
-    border:1px solid white;
-    border-radius: 50%;
-} */
-
 @media screen and (max-width: 1024px) and (orientation:portrait){
     .avatar{
         position:absolute;
