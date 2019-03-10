@@ -49,7 +49,7 @@ class UserCover extends Component {
         return(<>Loading...</>);
       }
 
-        const userId = this.props.route.match.params.userId;
+        const userId = this.props.route.match.params.userId || this.props.currentUser.user.id;
 
         let myProfile = false;
         if (typeof this.props.route.match.params.userId === "undefined" || this.props.currentUser.user.id === Number(this.props.route.match.params.userId)) {
