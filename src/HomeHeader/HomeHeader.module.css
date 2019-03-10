@@ -137,12 +137,9 @@
     }
 
     .FirstElem{
-        /* width:1%; */
         margin-right:2px;
     }
     .LogoBox{  
-        /* margin-left:-2vh;
-        margin-left:-4vh; */
         z-index: 2;
         width:6vh;
         height:6vh;
@@ -182,8 +179,6 @@
         display: flex;
         position:fixed;
         justify-content: space-between;
-        padding: 10px;
-        min-width: 820px;
         z-index: 9;
         width:100%;
         height:35px;
@@ -192,40 +187,29 @@
         display: flex;
         justify-content: flex-start;
         align-items: center;
-        margin-left:4vh;
-        width:25%;
+        margin-left:-14vh;
     }
+
     .LogoBox{
-        width:8vh;
+        width:2vh;
         background-image: url('../assets/images/fbLogo.png');
-        height:8vh;
-        margin-top:4vh;
+        height:2vh;
+        margin-top:-0.1vh;
         background-repeat: no-repeat;
         background-size: contain;
         background-color:transparent;
         cursor: pointer;
     }
     
-    .SearchInput{
-        border-radius: 5px;
-        outline: none;
-        /* margin-left:1vh; */
-        background-image: url('../assets/images/search.png');
-        background-size: 3vh;
-        background-repeat: no-repeat;
-        background-position: right;
-        border:0.5px solid rgb(99, 94, 94);
-    }
-    
     .SecondElem{
         display: flex;
-        justify-content: space-evenly;
-        width:40%;
+        justify-content: space-between;
+        margin-left:40%;
     }
     
     .Icon{
-        width:5vh;
-        background-size: 3vh;
+        width:4vh;
+        background-size: 2vh;
         background-repeat: no-repeat;
         background-position: center; 
         cursor: pointer;
@@ -293,7 +277,7 @@
     
     .Icon{
         width:5vh;
-        background-size: 3vh;
+        background-size: 2vh;
         background-repeat: no-repeat;
         background-position: center; 
         cursor: pointer;
