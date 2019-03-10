@@ -1,4 +1,4 @@
-import { USER_LOGIN, USER_REGISTER, USER_LOGOUT, USER_SEARCH, UPLOAD_PHOTO ,ADD_POST, ADD_FRIEND, MANAGE_FRIEND_REQUEST, DELETE_FRIEND } from "./actionTypes";
+import { USER_LOGIN, USER_REGISTER, USER_LOGOUT, USER_SEARCH, UPLOAD_PHOTO ,ADD_POST, ADD_FRIEND, MANAGE_FRIEND_REQUEST, DELETE_FRIEND, UDPATE_USER_IFNO } from "./actionTypes";
 
 export const userLogin = (email, password) => {
     return {
@@ -39,6 +39,13 @@ export const deleteFriend = userId => {
     return {
         type: DELETE_FRIEND,
         userId
+    };
+};
+
+export const updateUserInfo = info => {
+    return {
+        type: UDPATE_USER_IFNO,
+        info
     };
 };
 

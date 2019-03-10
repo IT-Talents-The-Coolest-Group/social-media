@@ -208,8 +208,12 @@ class PostForm extends React.Component {
         let date = new Date();
         let minutes = date.getMinutes();
         let hour = date.getHours();
-        this.state.newPost.id = Math.random() * 10009;
-        this.state.newPost.time = hour + ':' + minutes + 'h';
+        this.setState({
+            ...this.state, newPost: {
+                id: Math.random() * 10009,
+                time: hour + ':' + minutes + 'h',
+            }
+        });
 
         this.props.onAddPost(this.state.newPost);
         const newPost = { info: '' };

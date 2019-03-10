@@ -12,3 +12,4 @@ export const CHANGE_POST = "CHANGE_POST";
 export const NEW_POST = "NEW_POST";
 export const DELETE_POST = "DELETE_POST";
 export const DELETE_FRIEND = "DELETE_FRIEND";
+export const UDPATE_USER_IFNO = "UDPATE_USER_IFNO";

@@ -2,41 +2,12 @@ import {
     USER_LOGIN, USER_REGISTER, USER_LOGOUT,
     USER_SEARCH, UPLOAD_PHOTO, ADD_FRIEND,
     MANAGE_FRIEND_REQUEST, DELETE_FRIEND,
-    CHANGE_POST, NEW_POST, DELETE_POST
+    CHANGE_POST, NEW_POST, DELETE_POST, UDPATE_USER_IFNO
     // SORT_POST,
 } from '../Actions/actionTypes';
 
 const initialState = {
     users: (localStorage.getItem('userList') ? JSON.parse(localStorage.getItem('userList')) : []),
-    // users: [{
-    //     id:1,
-    //     firstName: '',
-    //     lastName:'',
-    //     email:'',
-    //     gender:'',
-    //     birthday:'',
-    //     friends:[],
-    //     password:'',
-    //     circleImgWidth: 30,
-    //     coverPhoto:'',
-    //     avatar: '',
-    //     isFriend:false,
-    //     createdPosts:[
-    //         {
-    //             content:'',
-    //             likes:'',
-    //             comments: [],
-    //             isItLiked:false
-
-    //         }
-    //     ],
-    //     uploadedPhotos:[{
-    //         imageSrc:'',
-    //         title:'',
-    //         comments:[],
-    //         isItLiked:false
-    //     }],
-    // }],
     posts: [
         { id: 1, name: 'София Геогиева', info: 'Здравейте!', time: "14:40" },
         { id: 2, name: 'Марио Стоянов', info: 'Прекрасен ден за представяне на проек! 😉 ', time: '12:18' },
@@ -109,15 +80,14 @@ const reducer = (state = initialState, action) => {
             return { ...state, searchedUsers };
         }
 
-        case UPLOAD_PHOTO: {
+        case UPLOAD_PHOTO: 
             sessionStorage.setItem('loggedUser', 'cover');
             // let user = action.user
             let v = JSON.parse(sessionStorage.getItem('cover'));
-            console.log(v)
             return {
                 ...state, currentUser: [...state.currentUser, action.selectedFileCover]
             };
-        }
+
         case ADD_FRIEND: {
             let users = [...state.users];
             let currentUser = { ...state.currentUser };
@@ -218,7 +188,7 @@ const reducer = (state = initialState, action) => {
             return state;
         }
 
-        case CHANGE_POST: {
+        case CHANGE_POST:
             return {
                 ...state, posts: state.posts.map((post, index) => {
                     if (index === action.index) {
@@ -228,7 +198,6 @@ const reducer = (state = initialState, action) => {
                     }
                 })
             }
-        };
 
         case NEW_POST: {
             return { ...state, posts: [...state.posts, action.post] };
@@ -237,6 +206,18 @@ const reducer = (state = initialState, action) => {
         case DELETE_POST: {
             return { ...state, posts: state.posts.filter(a => a.id !== action.id) }
         }
+
+        case UDPATE_USER_IFNO:
+            const users = [...state.users];
+            const currentUser = {...state.currentUser};
+            let myIndex = users.findIndex(u => u.id === currentUser.user.id);
+
+            currentUser.user = {...currentUser.user, ...action.info};
+            users[myIndex] = {...users[myIndex], ...action.info};
+
+            localStorage.setItem('userList', JSON.stringify(users));
+            sessionStorage.setItem('loggedUser', JSON.stringify(currentUser.user));
+            return {...state, users, currentUser};
 
         default: return state;
     };

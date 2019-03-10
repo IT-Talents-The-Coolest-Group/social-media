@@ -8,7 +8,7 @@ import { connect } from 'react-redux';
 
 class About extends Component {
     state = {
-        nickname:'',
+        nickname: '',
         currentCity:'Sofia',
         workplace: 'Programmer',
         school: 'НПМГ "Акад. Л. Чакалов" ',
@@ -49,30 +49,32 @@ class About extends Component {
         };
 
     render() {
+        const { userToShow } = this.state;
+
         return (
             <>
                 <HomeHeader route={this.props.route} />
                 <div className={homeStyle.Main}>
-                    <UserCover userToShow={this.state.userToShow} route={this.props.route} />
+                    <UserCover userToShow={userToShow} route={this.props.route} />
                     <div className={aboutStyle.Container}>
                         <h2>About</h2>
                         <hr className={aboutStyle.Hr} />
                         <div className={aboutStyle.DetailContainer}>
-                            <span className={aboutStyle.Span}>Nickname</span>
-                            <p>{this.state.userToShow.firstName}</p>
+                            <span className={aboutStyle.Span}>Name</span>
+                            <p>{userToShow.firstName} {userToShow.lastName}</p>
                         </div>
 
                         <div className={aboutStyle.DetailContainer}>
                             <span className={aboutStyle.Span}>Current City</span>
-                            <p>{this.state.currentCity}</p>
+                            <p>{userToShow.city || ''}</p>
                         </div>
                         <div className={aboutStyle.DetailContainer}>
                             <span className={aboutStyle.Span}>Workplace</span>
-                            <p>{this.state.workplace}</p>
+                            <p>{userToShow.workplace || ''}</p>
                         </div>
                         <div className={aboutStyle.DetailContainer}>
                             <span className={aboutStyle.Span}>School</span>
-                            <p>{this.state.school}</p>
+                            <p>{userToShow.school || ''}</p>
                         </div>
                     </div>
                 </div>

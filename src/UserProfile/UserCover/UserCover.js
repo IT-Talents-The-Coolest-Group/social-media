@@ -3,7 +3,7 @@ import coverStyle from './UserCover.module.css';
 // import Avatar from '@material-ui/core/Avatar';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { addFriend } from '../../Actions/users';
+import { addFriend, deleteFriend } from '../../Actions/users';
 // import { EventEmitter } from 'events';
 
 class UserCover extends Component {
@@ -44,11 +44,19 @@ class UserCover extends Component {
         this.props.addFriend(this.props.userToShow.id);
     }
 
+    deleteFriend = (e, friendId) => {
+        e.preventDefault();
+        if (window.confirm("Are you sure you want to unfrined your friend?")) {
+            this.props.deleteFriend(friendId);
+        }
+    };
+
     render() {
       if (this.props.currentUser.user === null) {
         return(<>Loading...</>);
       }
 
+      const { userToShow } = this.props;
         const userId = this.props.route.match.params.userId || this.props.currentUser.user.id;
 
         let myProfile = false;
@@ -59,11 +67,11 @@ class UserCover extends Component {
         let friendStatus = 'none';
 
         // todo move in componentDidMount
-        if (typeof this.props.currentUser.user.pendingFriends !== "undefined" && typeof this.props.currentUser.user.pendingFriends[this.props.userToShow.id] !== "undefined") {
-            friendStatus = this.props.currentUser.user.pendingFriends[this.props.userToShow.id];
+        if (typeof this.props.currentUser.user.pendingFriends !== "undefined" && typeof this.props.currentUser.user.pendingFriends[userToShow.id] !== "undefined") {
+            friendStatus = this.props.currentUser.user.pendingFriends[userToShow.id];
         }
 
-        if (this.props.currentUser.user.friends && this.props.currentUser.user.friends.indexOf(this.props.userToShow.id) !== -1) {
+        if (this.props.currentUser.user.friends && this.props.currentUser.user.friends.indexOf(userToShow.id) !== -1) {
             friendStatus = 'friends';
         }
 
@@ -72,7 +80,7 @@ class UserCover extends Component {
 
                 <input id="myuniqueid" className={coverStyle.Upload} type="file" onChange={this.fileSelectedHandler}/>
 
-                {this.props.userToShow.id === this.props.currentUser.user.id && 
+                {userToShow.id === this.props.currentUser.user.id && 
                 <label className = {coverStyle.Label} htmlFor="myuniqueid">Change Your Cover</label>}
 
                 <img src={require('../../assets/images/'+ this.state.selectedFileCover.src)} alt="Cover" className={coverStyle.Cover} />
@@ -80,12 +88,12 @@ class UserCover extends Component {
 
                 <input id="myuniqueid2" className={coverStyle.Upload} type="file"  onChange={this.fileSelectedHandler2}/>
 
-                {this.props.userToShow.id === this.props.currentUser.user.id && 
+                {userToShow.id === this.props.currentUser.user.id && 
                 <label className = {coverStyle.Label+' '+ coverStyle.ProfilePhoto} htmlFor="myuniqueid2">Change avatar</label>}
 
-                <Link to={`/profile-home/${userId}/`} className={coverStyle.Nickname}>{this.props.userToShow.firstName} {this.props.userToShow.lastName}</Link>
+                <Link to={`/profile-home/${userId}/`} className={coverStyle.Nickname}>{userToShow.firstName} {userToShow.lastName}</Link>
 
-                {this.props.userToShow.id === this.props.currentUser.user.id && 
+                {userToShow.id === this.props.currentUser.user.id && 
                 <Link className={coverStyle.Edit} to="/profile-home/account-details-Edit"></Link>}
 
                 <div className={coverStyle.ToolbarProfile}>
@@ -100,7 +108,9 @@ class UserCover extends Component {
                     <Link to="#" className={coverStyle.TollbarInfo}>Request sent</Link>}
                     
                     {!myProfile && friendStatus === 'friends' &&
-                    <Link to="#" className={coverStyle.TollbarInfo}>Already Friends</Link>}
+                    <Link to="#" className={coverStyle.TollbarInfo} onClick={(e) => {
+                        this.deleteFriend(e, userToShow.id);
+                    }}>Unfriend</Link>}
                 </div>
             </React.Fragment>
         )
@@ -117,7 +127,8 @@ const mapStateToProps = state => {
   const mapDispatchToProps = dispatch => {
     return {
         // fileSelectedHandler: (selectedFileCover) => dispatch(uploadPhoto(selectedFileCover))
-        addFriend: (friendId) => dispatch(addFriend(friendId))
+        addFriend: (friendId) => dispatch(addFriend(friendId)),
+        deleteFriend: (userId) => dispatch(deleteFriend(userId)),
     }
 }
    
