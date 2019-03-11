@@ -153,7 +153,7 @@ deleteFriendRequest = (e, friendId) => {
 
   render() {
     const { classes } = this.props;
-    const { invisible, badgeContent } = this.state;
+    const { invisible } = this.state;
 
     if (this.props.currentUser.user === null) {
       return(<>Loading...</>);

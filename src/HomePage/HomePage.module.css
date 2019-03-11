@@ -1,6 +1,5 @@
 .Container{
         background-color: white;
-        /* width:80%; */
         height: 100%;
         min-width: 820px;
         max-width: 1170px;
@@ -16,8 +15,6 @@
 .avatar{
         position: relative;
         z-index: 5;
-        /* top:18%;
-        left:23%; */
         object-fit: cover;
         width:69px;
         height:61px;
@@ -26,7 +23,6 @@
 }
 @media all and (max-width: 790px) {
         .avatar{
-            /* margin-left: 0px; */
             left: 20px;
         }
     }

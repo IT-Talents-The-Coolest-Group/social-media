@@ -84,7 +84,6 @@
 @media screen and (max-width: 375px) and (orientation:portrait) {
     .Container{
         width:69%;
-        /* height:50%; */
         float:right;
         border-radius: 5px;
         background-color: rgb(217, 227, 247);

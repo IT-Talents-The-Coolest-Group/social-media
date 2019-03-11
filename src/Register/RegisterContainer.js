@@ -3,7 +3,6 @@ import styles from './RegisterContainer.module.css';
 import Header from '../Header/Header';
 import RegisterContent from './RegisterContent';
 import LoginForm from '../Login/LoginForm';
-// import { withRouter } from 'react-router-dom';
 
 class RegisterContainer extends Component {
     state = {
@@ -25,4 +24,3 @@ class RegisterContainer extends Component {
 }
 
 export default RegisterContainer;
-// export default withRouter(RegisterContainer);

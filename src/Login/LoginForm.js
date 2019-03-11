@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import Button from '../UI/Button/Button';
 import Input from '../UI/Input/Input';
-// import { withRouter } from 'react-router-dom';
-// import { BASE_URL } from '../utils/Constants';
 import { connect } from 'react-redux';
 import { userLogin } from '../Actions/users';
 
@@ -35,32 +33,6 @@ class LoginForm extends Component {
     onSubmit = (e) => {
         e.preventDefault();
         this.props.userLogin(this.state.email, this.state.password);
-
-
-        // let url = BASE_URL + '/login';
-        // const data = {
-        //     email: this.state.email,
-        //     password: this.state.password
-        // };
-
-        // fetch(url, {
-        //     method: "POST",
-        //     credentials: 'include',
-        //     headers: {
-        //         "Content-Type": "application/json",
-        //     },
-        //     redirect: "follow",
-        //     body: JSON.stringify(data),
-        // })
-        //     .then(res => {
-        //         if (res.status === 200) {
-        //             sessionStorage.setItem('loggedUserId', res);
-        //             this.props.history.push("/home");
-        //         } else {
-        //             this.props.onError();
-        //         }
-        //     })
-        //     .catch(error => console.error(error));
     }
 
     render() {
@@ -89,4 +61,3 @@ const mapStateToProps = state => {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(LoginForm);
-// export default withRouter(LoginForm);

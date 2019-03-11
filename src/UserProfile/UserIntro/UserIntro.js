@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 class UserIntro extends Component {
     render() {
-        // const { classes } = this.props;
+        
         const userId = this.props.route.match.params.userId;
         return (
             <React.Fragment>
@@ -27,14 +27,6 @@ class UserIntro extends Component {
                         <div className={homeUserStyle.Icon + ' ' + homeUserStyle.School}> </div>
                         <Link className={homeUserStyle.Links} to={`/profile-home/account-details/${userId}/`}>School</Link>
                     </div>
-                    {/* <div className={homeUserStyle.ContainerBox}>
-                        <div className={homeUserStyle.Icon + ' ' + homeUserStyle.Hometown}> </div>
-                        <Link className={homeUserStyle.Links} to={`/profile-home/account-details/${userId}/`}>Hometown</Link>
-                    </div>
-                    <div className={homeUserStyle.ContainerBox}>
-                        <div className={homeUserStyle.Icon + ' ' + homeUserStyle.RelationshipStatus}> </div>
-                        <Link className={homeUserStyle.Links} to={`/profile-home/account-details/${userId}/`}>Relationship Status</Link>
-                    </div> */}
                     </div>
                 </div>
                 

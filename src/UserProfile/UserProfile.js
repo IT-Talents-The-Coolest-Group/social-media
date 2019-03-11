@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
-// import cover from '../assets/images/default_cover.jpg';
 import UserIntro from './UserIntro/UserIntro';
 import PostForm from '../Post/PostForm';
 import UserCover from './UserCover/UserCover';
 import homeStyle from './UserProfile.module.css';
-// import image from '../assets/images/girl.jpg';
 import { connect } from 'react-redux';
 import HomeHeader from '../HomeHeader/HomeHeader';
 import PostList from "../Post/PostList";

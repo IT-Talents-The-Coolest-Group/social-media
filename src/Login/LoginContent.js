@@ -13,7 +13,6 @@ class LoginContent extends Component {
     }
 
     render() {
-        // const { classes } = this.props;
 
         return (
             <div className={styles.LoginContent}>

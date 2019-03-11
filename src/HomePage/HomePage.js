@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import HomeHeader from '../HomeHeader/HomeHeader';
-// import Post from '../Post/Post';
 import homeStyle from './HomePage.module.css';
-// import image from '../assets/images/girl.jpg';
 import { connect } from 'react-redux';
 import PostList from '../Post/PostList';
 import PostForm from '../Post/PostForm';
