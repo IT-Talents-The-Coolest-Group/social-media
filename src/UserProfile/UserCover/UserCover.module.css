@@ -132,7 +132,7 @@ border:4px solid white;
     top:140px;
     left:27px;
     object-fit: cover;
-    /* width:150px; */
+    width:150px;
     height:130px;
     border:2px solid white;
     }
@@ -186,11 +186,11 @@ border:4px solid white;
     @media screen and (max-width: 1366px){
     .bigAvatar{
         position:absolute;
-        top:18%;
-        left:9%;
+        top:13%;
+        left:11%;
         object-fit: cover;
-        width:390px;
-        height:160px;
+        width:160px;
+        height:140px;
         border:2px solid white;
     }
     .ToolbarProfile{
@@ -198,17 +198,17 @@ border:4px solid white;
     }
 
      .Cover{
-        height:25vh;
+        height:45vh;
     }
 
     .ProfilePhoto{
-        top:35%;
+        top:36%;
     }
 
     .Nickname{
         position: relative; 
         top:-30px;
-        left:270px;
+        left:31%;
         z-index: 3;
         font-size: 1.3em;
         font-weight:bold;
@@ -224,7 +224,7 @@ border:4px solid white;
 }
 
 /* @media screen and (max-width: 768px) and (orientation:portrait) { */
-    @media screen and (max-width: 768px) {
+    /* @media screen and (max-width: 768px) {
     .Cover{
         width:100%;
         height:15vh;
@@ -237,7 +237,7 @@ border:4px solid white;
     top:15%;
     left:1%;
     object-fit: cover;
-    width:120px;
+    width:12px;
     height:100px;
     border:2px solid white;
     }
@@ -261,14 +261,14 @@ border:4px solid white;
         display: inline-block;
         height: 15px;
     }
-}
+} */
 
 
 /* @media screen and (max-width: 1024px) and (orientation:landscape){ */
-    @media screen and (max-width: 1024px) {
+    @media screen and (max-width: 1224px) {
     .bigAvatar{
         position:absolute;
-        top:16%;
+        top:32%;
         left:11%;
         object-fit: cover;
         width:160px;
@@ -276,29 +276,9 @@ border:4px solid white;
         border:2px solid white;
     }
 
-     .Cover{
-        height:23vh;
-    }
 
     .ProfilePhoto{
-        top:35%;
-    }
-
-    .Nickname{
-        position: absolute;
-        top:27%;
-        left:30%;
-        z-index: 3;
-        font-size: 1.3em;
-        font-weight:bold;
-    }
-    .Edit {
-        width: 15px;
-        position: absolute;
-        top: 27.5%;
-        left: 28%;
-        display: inline-block;
-        height: 15px;
+        top:55%;
     }
 }
 
@@ -397,7 +377,7 @@ border:4px solid white;
     }
     .TollbarInfo{
         margin-top:1vh;
-        /* font-size:0.8em; */
+        
     }
     .Label{
         position:absolute;
