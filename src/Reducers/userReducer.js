@@ -236,7 +236,7 @@ const reducer = (state = initialState, action) => {
 
             localStorage.setItem('posts', JSON.stringify(posts));
 
-            const postList = posts.filter(p => p.posterId === state.currentUser.user.id || state.currentUser.user.friends.indexOf(p.posterId) !== -1);
+            const postList = posts.filter(p => p.posterId === state.currentUser.user.id || (state.currentUser.user.friends && state.currentUser.user.friends.indexOf(p.posterId) !== -1));
 
             postList.sort((p1, p2) => new Date(p2.createdDate).getTime() - new Date(p1.createdDate).getTime());
 
@@ -246,7 +246,7 @@ const reducer = (state = initialState, action) => {
         case DELETE_POST: {
             const posts = state.posts.filter(a => a.id !== action.id);
             localStorage.setItem('posts', JSON.stringify(posts));
-            const postList = posts.filter(p => p.posterId === state.currentUser.user.id || state.currentUser.user.friends.indexOf(p.posterId) !== -1);
+            const postList = posts.filter(p => p.posterId === state.currentUser.user.id || (state.currentUser.user.friends && state.currentUser.user.friends.indexOf(p.posterId) !== -1));
 
             postList.sort((p1, p2) => new Date(p2.createdDate).getTime() - new Date(p1.createdDate).getTime());
             return { ...state, posts, postList };
@@ -265,7 +265,7 @@ const reducer = (state = initialState, action) => {
             return {...state, users, currentUser};
 
         case GET_POST_LIST:
-            const postList = state.posts.filter(p => p.posterId === state.currentUser.user.id || state.currentUser.user.friends.indexOf(p.posterId) !== -1);
+            const postList = state.posts.filter(p => p.posterId === state.currentUser.user.id || (state.currentUser.user.friends && state.currentUser.user.friends.indexOf(p.posterId) !== -1));
 
             postList.sort((p1, p2) => new Date(p2.createdDate).getTime() - new Date(p1.createdDate).getTime());
 
