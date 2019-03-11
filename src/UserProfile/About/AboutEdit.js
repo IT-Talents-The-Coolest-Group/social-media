@@ -18,6 +18,7 @@ class AboutEdit extends Component {
         const { currentUser } = this.props;
         if (currentUser.isLogged === false) {
             this.props.route.history.push('/');
+            return;
         }
 
         this.setState({

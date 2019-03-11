@@ -265,6 +265,9 @@ const reducer = (state = initialState, action) => {
             return {...state, users, currentUser};
 
         case GET_POST_LIST:
+            if (state.currentUser.user === null) {
+                return state;
+            }
             const postList = state.posts.filter(p => p.posterId === state.currentUser.user.id || (state.currentUser.user.friends && state.currentUser.user.friends.indexOf(p.posterId) !== -1));
 
             postList.sort((p1, p2) => new Date(p2.createdDate).getTime() - new Date(p1.createdDate).getTime());

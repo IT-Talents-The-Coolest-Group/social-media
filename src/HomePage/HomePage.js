@@ -9,20 +9,24 @@ class HomePage extends Component {
     componentDidMount() {
         if (this.props.currentUser.isLogged === false) {
             this.props.route.history.push('/');
+            return;
         }
 
         if (!this.props.route.match.params.userId || this.props.users.findIndex(u => u.id === Number(this.props.route.match.params.userId)) === -1) {
-            this.props.route.history.push(`/home/${this.props.currentUser.user.id}/`);
+            this.props.route.history.push("/");
+            return;
         }
     }
 
     componentDidUpdate() {
         if (this.props.currentUser.isLogged === false) {
             this.props.route.history.push('/');
+            return;
         }
         
         if (!this.props.route.match.params.userId || this.props.users.findIndex(u => u.id === Number(this.props.route.match.params.userId)) === -1) {
-            this.props.route.history.push(`/home/${this.props.currentUser.user.id}/`);
+            this.props.route.history.push("/");
+            return;
         }
     }
 
