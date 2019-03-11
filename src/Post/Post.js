@@ -36,7 +36,7 @@ class Post extends React.Component {
                 <div>
                     <p className={p.Size}>Posted in : {format(this.props.createdDate, 'HH:mm DD.MM.YYYY')}</p></div>
                 <br />
-                <button onClick={() => this.deletePost()} className={p.Upload}> Delete from page</button>
+                {this.props.posterId === this.props.currentUser.user.id && <button onClick={() => this.deletePost()} className={p.Upload}>Delete</button>}
             </div>
         );
     }
@@ -51,6 +51,7 @@ const mapDispatchToProps = dispatch => {
 const mapStateToProps = (state) => {
     return {
         users: state.users,
+        currentUser: state.currentUser
     }
 }
 
