@@ -156,7 +156,8 @@
     }
   }
 
-  @media screen and (max-width: 1024px) and (orientation:portrait){
+  /* @media screen and (max-width: 1024px) and (orientation:portrait){ */
+    @media screen and (max-width: 1024px){
     .FlexBox {
         display: flex;
     }
@@ -196,7 +197,7 @@
     .SecondElem{
         display: flex;
         justify-content: space-between;
-        margin-left:40%;
+        /* margin-left:40%; */
     }
     
     .Icon{
@@ -224,7 +225,8 @@
     
   }
 
-  @media screen and (max-width: 1366px) and (orientation:landscape) {
+  /* @media screen and (max-width: 1366px) and (orientation:landscape) { */
+    @media screen and (max-width: 1366px) {
     .HeadContainer{
         margin-top: 0;
         background-color: rgb(66, 103, 178);
@@ -240,7 +242,7 @@
         display: flex;
         justify-content: flex-start;
         align-items: center;
-        width:25%;
+        width:35%;
     }
     .LogoBox{
         width:4vh;
@@ -290,7 +292,8 @@
     
     }
   }
-  @media screen and (max-width: 375px) and (orientation:portrait) {
+  /* @media screen and (max-width: 375px) and (orientation:portrait) { */
+    /* @media screen and (max-width: 375px){
     .FirstElem{
         margin-left:-21;
         display: flex;
@@ -371,4 +374,4 @@
 .NoFriendRequests {
     justify-content: center;
     align-items: center;
-}
+} */
