@@ -38,7 +38,7 @@ class HeaderAutocomplete extends React.Component {
                 } }
                 onSelect={(value, item) => { this.setState({ ...this.state, value, userId: item.id }); this.selectUser(item.id); }}
             />
-            <div><SearchIcon onClick={this.selectUser} /></div>
+            {/* <div><SearchIcon onClick={this.selectUser} /></div> */}
             
         </div>)
     }

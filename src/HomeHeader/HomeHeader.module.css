@@ -353,6 +353,7 @@
     
     }
 }
+ */
 
 .FriendRequestsContainer {
     position: absolute;
@@ -374,4 +375,4 @@
 .NoFriendRequests {
     justify-content: center;
     align-items: center;
-} */
+}
